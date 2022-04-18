@@ -4,3 +4,5 @@
    <H1 align="center">Hyperbox-Brain</H1>
 
 This is an open source library implementing hyperbox-based machine learning algorithms
+
+<H1> Installation </H1>
