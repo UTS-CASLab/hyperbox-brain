@@ -184,7 +184,7 @@ a trained hyperbox-based model if input features are two-dimensional features:
 
 .. raw:: html
    
-   <p align="left"><img width="300" height="300" src="/images/hyperboxes_and_boundaries.png" alt="Hyperboxes and Decision Boundaries"/></p>
+   <p align="left"><img width="350" height="300" src="/images/hyperboxes_and_boundaries.png" alt="Hyperboxes and Decision Boundaries"/></p>
 
 For two-dimensional data, the toolbox also provides the reason behind the class prediction for each input sample 
 by showing representative hyperboxes for each class which join the prediction process of the trained model for 
@@ -192,7 +192,7 @@ an given input pattern:
 
 .. raw:: html
    
-   <p align="left"><img width="300" height="300" src="/images/hyperboxes_explanation.png" alt="2D explainations"/></p>
+   <p align="left"><img width="350" height="300" src="/images/hyperboxes_explanation.png" alt="2D explainations"/></p>
 
 For input patterns with two or more dimensions, the hyperbox-brain toolbox uses a parallel coordinates graph to display 
 representative hyperboxes for each class which join the prediction process of the trained model for 
@@ -200,7 +200,7 @@ an given input pattern:
 
 .. raw:: html
    
-   <p align="left"><img width="400" height="300" src="/images/parallel_coord_explanation.png" alt="2D explainations"/></p>
+   <p align="left"><img width="500" height="300" src="/images/parallel_coord_explanation.PNG" alt="2D explainations"/></p>
 
 Easy to use
 ~~~~~~~~~~~
