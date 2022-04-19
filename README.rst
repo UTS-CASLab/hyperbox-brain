@@ -230,6 +230,26 @@ If you use JupyterLab then the current solution is to use the `jupyter-matplotli
 ================
 Available models
 ================
+The following table summarises the supported hyperbox-based learning algorithms in this toolbox.
+
+.. list-table:: Hyperbox-based learning models
+   :widths: 15 10 10 10 30 15 10
+   :header-rows: 1
+
+   * - Model
+     - Feature type 
+     - Model type
+     - Learning type 
+     - Implementation 
+     - Example 
+     - References 
+   * - EIOL-GFMM
+     - Mixed
+     - Single 
+     - Incremental 
+     - `ExtendedImprovedOnlineGFMM </mixed_data/eiol_gfmm.py>`_
+     - `Notebook </examples/mixed_data/eiol_gfmm_general_use.ipynb>`_
+     - [1]_
 
 ========
 Citation
@@ -263,3 +283,9 @@ There are some ways for users to get involved:
 License
 =======
 Hyperbox-brain is free and open-source software licensed under the `GNU General Public License v3.0 <https://github.com/UTS-CASLab/hyperbox-brain/blob/main/LICENSE>`_.
+
+==========
+References
+==========
+
+.. [1] : T. T. Khuat and B. Gabrys "`An Online Learning Algorithm for a Neuro-Fuzzy Classifier with Mixed-Attribute Data <https://arxiv.org/abs/2009.14670>`_", ArXiv preprint, arXiv:2009.14670, 2020.
