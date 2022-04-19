@@ -1,0 +1,106 @@
+<p align="center"><img width="150" height="150" src="/images/logo.png" alt="Hyperbox-Brain logo"/></p>
+<H1 align="center">Hyperbox-Brain</H1>
+<p><strong>hyperbox-brain</strong> is a Python open source toolbox implementing hyperbox-based machine learning algorithms built on top of scikit-learn and is distributed under the 3-Clause BSD license.</p>
+<p>The project was started in 2018 by Prof. <a href="https://profiles.uts.edu.au/Bogdan.Gabrys">Bogdan Gabrys</a> and Dr. <a href="https://thanhtung09t2.wixsite.com/home">Thanh Tung Khuat</a> at the Complex Adaptive Systems Lab - The University of Technology Sydney. This project is a core module aiming to the formulation of explainable life-long learning systems in near future.</p>
+<h1 id="resources">Resources</h1>
+<ul>
+<li><a href="https://hyperbox-brain.readthedocs.io/en/latest">Documentation</a></li>
+<li><a href="https://github.com/UTS-CASLab/hyperbox-brain/">Source Code</a></li>
+<li><a href="https://github.com/UTS-CASLab/hyperbox-brain#installation">Installation</a></li>
+<li><a href="https://github.com/UTS-CASLab/hyperbox-brain/issues">Issue tracker</a></li>
+<li><a href="https://github.com/UTS-CASLab/hyperbox-brain/tree/main/examples">Examples</a></li>
+</ul>
+<h1 id="installation">Installation</h1>
+<h2 id="dependencies">Dependencies</h2>
+<p>Hyperbox-brain requires:</p>
+<ul>
+<li>Python (&gt;= 3.6)</li>
+<li>Scikit-learn (&gt;= 0.24.0)</li>
+<li>NumPy (&gt;= 1.14.6)</li>
+<li>SciPy (&gt;= 1.1.0)</li>
+<li>joblib (&gt;= 0.11)</li>
+<li>threadpoolctl (&gt;= 2.0.0)</li>
+<li>Pandas (&gt;= 0.25.0)</li>
+</ul>
+<hr />
+<p>Hyperbox-brain plotting capabilities (i.e., functions start with <code>show_</code> or <code>draw_</code>) require Matplotlib (&gt;= 2.2.3) and Plotly (&gt;= 4.10.0). For running the examples Matplotlib &gt;= 2.2.3 and Plotly &gt;= 4.10.0 are required. A few examples require pandas &gt;= 0.25.0.</p>
+<h2 id="conda-installation">conda installation</h2>
+<p>You need a working conda installation. Get the correct miniconda for your system from <a href="https://conda.io/miniconda.html">here</a>.</p>
+<p>To install hyperbox-brain, you need to use the conda-forge channel:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">conda</span> install -c conda-forge hyperbox-brain</span></code></pre></div>
+<p>We recommend to use a <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">conda virtual environment</a>.</p>
+<h2 id="pip-installation">pip installation</h2>
+<p>If you already have a working installation of numpy, scipy, pandas, matplotlib, and scikit-learn, the easiest way to install hyperbox-brain is using <code>pip</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">pip</span> install -U hyperbox-brain</span></code></pre></div>
+<p>Again, we recommend to use a <a href="https://docs.python.org/3/tutorial/venv.html">virtual environment</a> for this.</p>
+<h2 id="from-source">From source</h2>
+<p>If you would like to use the most recent additions to hyperbox-brain or help development, you should install hyperbox-brain from source.</p>
+<h3 id="using-conda">Using conda</h3>
+<p>To install hyperbox-brain from source using conda, proceed as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">git</span> clone https://github.com/UTS-CASLab/hyperbox-brain.git</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="bu">cd</span> hyperbox-brain</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">conda</span> env create</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="bu">source</span> activate hyperbox-brain</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="ex">pip</span> install .</span></code></pre></div>
+<h3 id="using-pip">Using pip</h3>
+<p>For pip, follow these instructions instead:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">git</span> clone https://github.com/UTS-CASLab/hyperbox-brain.git</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="bu">cd</span> hyperbox-brain</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co"># create and activate a virtual environment</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">pip</span> install -r requirements.txt</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="co"># install hyperbox-brain version for your system (see below)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="ex">pip</span> install .</span></code></pre></div>
+<h2 id="testing">Testing</h2>
+<p>After installation, you can launch the test suite from outside the source directory (you will need to have <code>pytest</code> &gt;= 5.0.1 installed):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">pytest</span> hbbrain</span></code></pre></div>
+<h1 id="features">Features</h1>
+<h2 id="types-of-input-variables">Types of input variables</h2>
+<p>The hyperbox-brain library separates learning models for continuous variables only and mixed-attribute data.</p>
+<h2 id="incremental-learning">Incremental learning</h2>
+<p>Incremental (online) learning models are created incrementally and are updated continuously. They are appropriate for big data applications where real-time response is an important requirement. These learning models generate a new hyperbox or expand an existing hyperbox to cover each incoming input pattern.</p>
+<h2 id="agglomerative-learning">Agglomerative learning</h2>
+<p>Agglomerative (batch) learning models are trained using all training data available at the training time. They use the aggregation of existing hyperboxes to form new larger sized hyperboxes based on the similarity measures among hyperboxes.</p>
+<h2 id="ensemble-learning">Ensemble learning</h2>
+<p>Ensemble models in the hyperbox-brain toolbox build a set of hyperbox-based learners from a subset of training samples or a subset of both training samples and features. The final predicted results of an ensemble model are an aggregation of predictions from all base learners based on a majority voting mechanism. An intersting characteristic of hyperbox-based models is resulting hyperboxes from all base learners can be merged to formulate a single model. This contributes to increasing the explainability of the estimator while still taking advantage of strong points of ensemble models.</p>
+<h2 id="multigranularity-learning">Multigranularity learning</h2>
+<p>Multi-granularity learning algorithms can construct classifiers from multiresolution hierarchical granular representations using hyperbox fuzzy sets. This algorithm forms a series of granular inferences hierarchically through many levels of abstraction. An attractive characteristic of these classifiers is that they can maintain a high accuracy in comparison to other fuzzy min-max models at a low degree of granularity based on reusing the knowledge learned from lower levels of abstraction.</p>
+<h2 id="scikit-learn-compatible-estimators">Scikit-learn compatible estimators</h2>
+<p>The estimators in hyperbox-brain is compatible with the well-known scikit-learn toolbox. Therefore, it is possible to use hyperbox-based estimators in scikit-learn <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">pipelines</a>, scikit-learn hyperparameter optimizers (e.g., <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">grid search</a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html">random search</a>), and scikit-learn model validation (e.g., <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html">cross-validation scores</a>). In addition, the hyperbox-brain toolbox can be used within hyperparameter optimisation libraries built on top of scikit-learn such as <a href="http://hyperopt.github.io/hyperopt/">hyperopt</a>.</p>
+<h2 id="explanability-of-predicted-results">Explanability of predicted results</h2>
+<p>The hyperbox-brain library can provide the explanation of predicted results via visualisation. This toolbox provides the visualisation of existing hyperboxes and the decision boundaries of a trained hyperbox-based model if input features are two-dimensional features:</p>
+<p align="left"><img width="350" height="300" src="/images/hyperboxes_and_boundaries.png" alt="Hyperboxes and Decision Boundaries"/></p>
+<p>For two-dimensional data, the toolbox also provides the reason behind the class prediction for each input sample by showing representative hyperboxes for each class which join the prediction process of the trained model for an given input pattern:</p>
+<p align="left"><img width="350" height="300" src="/images/hyperboxes_explanation.png" alt="2D explainations"/></p>
+<p>For input patterns with two or more dimensions, the hyperbox-brain toolbox uses a parallel coordinates graph to display representative hyperboxes for each class which join the prediction process of the trained model for an given input pattern:</p>
+<p align="left"><img width="500" height="300" src="/images/parallel_coord_explanation.PNG" alt="2D explainations"/></p>
+<h2 id="easy-to-use">Easy to use</h2>
+<p>Hyperbox-brain is designed for users with any experience level. Learning models are easy to create, setup, and run. Existing methods are easy to modify and extend.</p>
+<h2 id="jupyter-notebooks">Jupyter notebooks</h2>
+<p>The learning models in the hyperbox-brain toolbox can be easily retrieved in notebooks in the Jupyter or JupyterLab environments.</p>
+<p>In order to display plots from hyperbox-brain within a <a href="https://jupyter-notebook.readthedocs.io/en/latest/">Jupyter Notebook</a> we need to define the proper mathplotlib backend to use. This can be performed by including the following magic command at the beginning of the Notebook:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">%matplotlib</span> notebook</span></code></pre></div>
+<p><a href="https://github.com/jupyterlab/jupyterlab">JupyterLab</a> is the next-generation user interface for Jupyter, and it may display interactive plots with some caveats. If you use JupyterLab then the current solution is to use the <a href="https://github.com/matplotlib/ipympl">jupyter-matplotlib</a> extension:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">%matplotlib</span> widget</span></code></pre></div>
+<p><a href="https://github.com/UTS-CASLab/hyperbox-brain/tree/main/examples">Examples</a> regarding how to use the classes and functions in the hyperbox-brain toolbox have been written under the form of Jupyter notebooks.</p>
+<h1 id="available-models">Available models</h1>
+<h1 id="citation">Citation</h1>
+<p>If you use hyperbox-brain in a scientific publication, we would appreciate citations to the following paper:</p>
+<pre><code>@article{khuat2022,
+author  = {Thanh Tung Khuat and Bogdan Gabrys},
+title   = {Hyerbox-brain: A Python Toolbox for Hyperbox-based Machine Learning Algorithms},
+journal = {ArXiv},
+year    = {2022},
+volume  = {},
+number  = {0},
+pages   = {1-7},
+url     = {}
+}</code></pre>
+<h1 id="contributing">Contributing</h1>
+<p>Feel free to contribute in any way you like, we're always open to new ideas and approaches.</p>
+<p>There are some ways for users to get involved:</p>
+<ul>
+<li><a href="https://github.com/UTS-CASLab/hyperbox-brain/issues">Issue tracker</a>: this place is meant to report bugs, request for minor features, or small improvements. Issues should be short-lived and solved as fast as possible.</li>
+<li><a href="https://github.com/UTS-CASLab/hyperbox-brain/discussions">Discussions</a>: in this place, you can ask for new features, submit your questions and get help, propose new ideas, or even show the community what you are achieving with hyperbox-brain! If you have a new algorithm or want to port a new functionality to hyperbox-brain, this is the place to discuss.</li>
+</ul>
+<h1 id="license">License</h1>
+<p>Hyperbox-brain is free and open-source software licensed under the <a href="https://github.com/UTS-CASLab/hyperbox-brain/blob/main/LICENSE">GNU General Public License v3.0</a>.</p>
