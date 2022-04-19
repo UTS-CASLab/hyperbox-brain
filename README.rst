@@ -232,8 +232,9 @@ Available models
 ================
 The following table summarises the supported hyperbox-based learning algorithms in this toolbox.
 
-.. list-table:: Hyperbox-based learning models
+.. list-table:: **Hyperbox-based learning models**
    :widths: 15 10 10 10 30 15 10
+   :align: center
    :header-rows: 1
 
    * - Model
@@ -247,7 +248,7 @@ The following table summarises the supported hyperbox-based learning algorithms 
      - Mixed
      - Single 
      - Incremental 
-     - `ExtendedImprovedOnlineGFMM </mixed_data/eiol_gfmm.py>`_
+     - `ExtendedImprovedOnlineGFMM <hbbrain/mixed_data/eiol_gfmm.py>`_
      - `Notebook </examples/mixed_data/eiol_gfmm_general_use.ipynb>`_
      - [1]_
 
