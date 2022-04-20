@@ -23,6 +23,9 @@ The project was started in 2018 by Prof. `Bogdan Gabrys <https://profiles.uts.ed
 University of Technology Sydney. This project is a core module aiming to the formulation of explainable life-long learning 
 systems in near future.
 
+.. contents:: **Table of Contents**
+   :depth: 2
+
 =========
 Resources
 =========
