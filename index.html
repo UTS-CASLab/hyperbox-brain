@@ -14,21 +14,44 @@
 
 <div class="hero-container"><div class="hero-content"><div class="hero-title-content"><div class="flex-column"><div class="hero-title"><img class="hero-logo" src="./index_files/hyperbox-brain-logo.png" alt="hyperbox-brain logo."></div><div class="flex-column"><div class="hero-subtitle">A hyperbox-brain machine learning package in Python</div><div class="hero-cta"><a href="https://github.com/UTS-CASLab/hyperbox-brain"><button class="cta-button">GitHub repository</button></a></div></div></div></div></div></div><div class="hero-foot mb-20"><div class="container"><div class="tabs is-centered"><ul></ul></div></div></div>
 
-<section class="keyfeatures"><div class="container"><div class="keyfeatures-box-container"><div class="keyfeatures-box-content keyfeatures-underline"><p></p>
-<div class="keyfeatures-box-title">Incremental learning</div>
-	<div class="keyfeatures-box-text">Incremental (online) learning models are created incrementally and are updated continuously.
-They are appropriate for big data applications where real-time response is an important requirement.
-These learning models generate a new hyperbox or expand an existing hyperbox to cover each incoming
-input pattern.</div>
+<section class="keyfeatures"><div class="container"><div class="keyfeatures-box-container">
+<div class="keyfeatures-box-content keyfeatures-underline"><p></p>
+	<div class="keyfeatures-box-title">Types of input variables</div>
+		<div class="keyfeatures-box-text">The hyperbox-brain library separates learning models for continuous variables only and mixed-attribute data.
+		</div>
 <p></p></div>
-<div class="keyfeatures-box-content keyfeatures-underline"><p></p><div class="keyfeatures-box-title">Adaptive learning</div><div class="keyfeatures-box-text">Changes in data distribution harm learning. Adaptive methods are specifically designed to be robust to concept drift changes in dynamic environments.</div><p></p></div>
-<div class="keyfeatures-box-content keyfeatures-underline"><p></p><div class="keyfeatures-box-title">Resource-wise efficient</div><div class="keyfeatures-box-text">Streaming techniques efficiently handle resources such as memory and processing time given the unbounded nature of data streams.</div><p></p></div>
-<div class="keyfeatures-box-content keyfeatures-underline"><p></p><div class="keyfeatures-box-title">Easy to use</div>
-	<div class="keyfeatures-box-text">hyperbox-brain is designed for users with any experience level. Experiments are easy to design, setup, and run. Existing methods are easy to modify and extend.</div><p></p></div>
-	<div class="keyfeatures-box-content keyfeatures-underline"><p></p><div class="keyfeatures-box-title">Stream learning tools</div>
-		<div class="keyfeatures-box-text">In its current state, hyperbox-brain contains data generators, multi-output/multi-target stream learning methods, change detection methods, evaluation methods, and more.</div><p></p></div>
-		<div class="keyfeatures-box-content keyfeatures-underline"><p></p><div class="keyfeatures-box-title">Open source</div><div class="keyfeatures-box-text">Distributed under the <a href="https://github.com/UTS-CASLab/hyperbox-brain/blob/main/LICENSE">BSD 3-Clause</a>, hyperbox-brain is developed and maintained <a href="https://github.com/UTS-CASLab/hyperbox-brain">publicly on GitHub</a> by an active, diverse and growing <a href="https://uts-caslab.github.io/hyperbox-brain/community">community</a>.</div><p></p></div>
-		</div></div></section>
+<div class="keyfeatures-box-content keyfeatures-underline"><p></p>
+<div class="keyfeatures-box-title">Incremental learning</div>
+	<div class="keyfeatures-box-text">Incremental (online) learning models are created incrementally and are updated continuously. They are appropriate for big data applications where real-time response is an important requirement. These learning models generate a new hyperbox or expand an existing hyperbox to cover each incoming input pattern.
+	</div>
+<p></p></div>
+<div class="keyfeatures-box-content keyfeatures-underline"><p></p>
+	<div class="keyfeatures-box-title">Agglomerative learning</div>
+	<div class="keyfeatures-box-text">Agglomerative (batch) learning models are trained using all training data available at the training time. They use the aggregation of existing hyperboxes to form new larger sized hyperboxes based on the similarity measures among hyperboxes.</div>
+<p></p></div>
+<div class="keyfeatures-box-content keyfeatures-underline"><p></p>
+	<div class="keyfeatures-box-title">Ensemble learning</div>
+	<div class="keyfeatures-box-text">Ensemble models in the hyperbox-brain toolbox build a set of hyperbox-based learners from a subset of training samples or a subset of both training samples and features. Training subsets of base learners can be formed by stratified random subsampling, resampling, or class-balanced random subsampling. The final predicted results of an ensemble model are an aggregation of predictions from all base learners based on a majority voting mechanism. An intersting characteristic of hyperbox-based models is resulting hyperboxes from all base learners can be merged to formulate a single model. This contributes to increasing the explainability of the estimator while still taking advantage of strong points of ensemble models.</div>
+<p></p></div>
+<div class="keyfeatures-box-content keyfeatures-underline"><p></p>
+	<div class="keyfeatures-box-title">Multigranularity learning</div>
+	<div class="keyfeatures-box-text">Multi-granularity learning algorithms can construct classifiers from multiresolution hierarchical granular representations using hyperbox fuzzy sets. This algorithm forms a series of granular inferences hierarchically through many levels of abstraction. An attractive characteristic of these classifiers is that they can maintain a high accuracy in comparison to other fuzzy min-max models at a low degree of granularity based on reusing the knowledge learned from lower levels of abstraction.
+	</div>
+<p></p></div>
+<div class="keyfeatures-box-content keyfeatures-underline"><p></p>
+	<div class="keyfeatures-box-title">Scikit-learn compatible estimators<div>
+	<div class="keyfeatures-box-text">The estimators in hyperbox-brain is compatible with the well-known scikit-learn toolbox. 
+		Therefore, it is possible to use hyperbox-based estimators in scikit-learn <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">pipelines</a>, scikit-learn hyperparameter optimizers (e.g., <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">grid search</a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html">random search</a>), and scikit-learn model validation (e.g., <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html">cross-validation scores</a>. In addition, the hyperbox-brain toolbox can be used within hyperparameter optimisation libraries built on top of scikit-learn such as <a href="http://hyperopt.github.io/hyperopt/">hyperopt</a>.</div>
+<p></p></div>
+<div class="keyfeatures-box-content keyfeatures-underline"><p></p>
+	<div class="keyfeatures-box-title">Explainability<div>
+	<div class="keyfeatures-box-text">The hyperbox-brain library can provide the explanation of predicted results via visualisation. 
+		This toolbox provides the visualisation of existing hyperboxes and the decision boundaries of  a trained hyperbox-based model if input features are two-dimensional features. For two-dimensional data, the toolbox also provides the reason behind the class prediction for each input sample by showing representative hyperboxes for each class which join the prediction process of the trained model for an given input pattern. For input patterns with two or more dimensions, the hyperbox-brain toolbox uses a parallel coordinates graph to display representative hyperboxes.</div>
+<p></p></div>
+<div class="keyfeatures-box-content keyfeatures-underline"><p></p>
+	<div class="keyfeatures-box-title">Open source</div>
+	<div class="keyfeatures-box-text">Distributed under the <a href="https://github.com/UTS-CASLab/hyperbox-brain/blob/main/LICENSE">BSD 3-Clause</a>, hyperbox-brain is developed and maintained <a href="https://github.com/UTS-CASLab/hyperbox-brain">publicly on GitHub</a> by an active, diverse and growing <a href="https://uts-caslab.github.io/hyperbox-brain/community">community</a>.</div><p></p></div>
+</div></div></section>
 		
 <section class="section is-medium"><div class="container"><div class="columns"><div class="column is-centered-tablet-portrait"><h1 class="title section-title">Use cases</h1><h3 class="subtitle is-5 is-muted">Learning tasks supported in hyperbox-brain</h3><div class="divider"></div></div><div class="column is-7 mt-60"><article class="media icon-box"><div class="media-content mt-50"><div class="content"><p><span class="icon-box-title">Supervised learning</span>
 <span class="icon-box-text">When working with labeled data. Depending on the target type can be either classification (discrete values) or regression (continuous values)</span></p></div></div></article><article class="media icon-box"><div class="media-content mt-50"><div class="content"><p><span class="icon-box-title">Single/multi output</span>

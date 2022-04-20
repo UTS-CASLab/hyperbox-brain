@@ -14,9 +14,9 @@
 }
 
 .keyfeatures-box-content {
-    height: 175px;
-    min-width: 275px;
-    width: 325px;
+    height: 300px;
+    min-width: 375px;
+    width: 425px;
     margin: 30px auto;
     border-radius: 3px;
 }
@@ -24,6 +24,7 @@
 .keyfeatures-box-title {
     margin: 15px;
     font-size: 16px;
+	font-weight: bold;
     text-transform: uppercase;
 }
 
