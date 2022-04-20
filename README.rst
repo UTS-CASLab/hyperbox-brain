@@ -235,7 +235,7 @@ The following table summarises the supported hyperbox-based learning algorithms 
 
 .. list-table::
    :widths: 20 10 10 10 30 10 10
-   :align: center
+   :align: left
    :header-rows: 1
 
    * - Model
@@ -314,14 +314,14 @@ The following table summarises the supported hyperbox-based learning algorithms 
      - Batch 
      - `AgglomerativeLearningGFMM </hbbrain/numerical_data/batch_learner/agglo_gfmm.py>`_
      - `Notebook </examples/numerical_data/batch_learner/agglo_gfmm_general_use.ipynb>`_
-     - [10]_ 
+     - [10]_, [4]_
    * - AGGLO-2
      - Continuous 
      - Single 
      - Batch
      - `AccelAgglomerativeLearningGFMM </hbbrain/numerical_data/batch_learner/accel_agglo_gfmm.py>`_
      - `Notebook </examples/numerical_data/batch_learner/accel_agglo_gfmm_general_use.ipynb>`_
-     - [10]_
+     - [10]_, [4]_
    * - MRHGRC
      - Continuous 
      - Granularity 
