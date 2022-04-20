@@ -376,6 +376,36 @@ The following table summarises the supported hyperbox-based learning algorithms 
      -  
 
 ========
+Examples
+========
+To see more elaborate examples, look `here
+<https://github.com/UTS-CASLab/hyperbox-brain/tree/main/examples>`__.
+
+Simply use an estimator by creating, initialising, fitting and predicting:
+
+.. code:: python
+
+   from sklearn.datasets import load_iris
+   from sklearn.preprocessing import MinMaxScaler
+   from sklearn.model_selection import train_test_split
+   from sklearn.metrics import accuracy_score
+   from hbbrain.numerical_data.incremental_learner.onln_gfmm import OnlineGFMM
+   # Load dataset
+   X, y = load_iris(return_X_y=True)
+   # Normalise features into the range of [0, 1] because hyperbox-based models only work in a unit range
+   scaler = MinMaxScaler()
+   scaler.fit(X)
+   X = scaler.transform(X)
+   # Split data into training and testing sets
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+   # Training a model
+   clf = OnlineGFMM(theta=0.1).fit(X_train, y_train)
+   # Make prediction
+   y_pred = clf.predict(X_test)
+   acc = accuracy_score(y_test, y_pred)
+   print(f'Accuracy = {acc * 100: .2f}%')
+
+========
 Citation
 ========
 
