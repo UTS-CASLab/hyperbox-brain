@@ -279,7 +279,7 @@ The following table summarises the supported hyperbox-based learning algorithms 
      - `ImprovedOnlineGFMM </hbbrain/numerical_data/incremental_learner/iol_gfmm.py>`_
      - - `Notebook </examples/numerical_data/incremental_learner/iol_gfmm_general_use.ipynb>`_
      - [5]_, [4]_
- - 
+  
 
 ========
 Citation
