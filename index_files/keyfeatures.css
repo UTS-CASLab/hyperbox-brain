@@ -14,16 +14,18 @@
 }
 
 .keyfeatures-box-content {
-    height: 300px;
-    min-width: 375px;
-    width: 425px;
+    height: 350px;
+    min-width: 300px;
+    width: 350px;
     margin: 30px auto;
     border-radius: 3px;
+    background-color: hsl(233, 86%, 92%);
 }
 
 .keyfeatures-box-title {
     margin: 15px;
     font-size: 16px;
+    color: blue;
 	font-weight: bold;
     text-transform: uppercase;
 }
@@ -35,10 +37,11 @@
 .keyfeatures-box-text {
     margin: 30px 15px;
     font-size: 14px;
+    text-align: justify;
 }
 
 .keyfeatures-box-content:hover > .keyfeatures-box-text, .keyfeatures-box-content:focus > .keyfeatures-box-text, .keyfeatures-box-content:active > .keyfeatures-box-text {
-    color: #6C7A89;
+    color: #f02f2f;
 }
 
 @media only screen and (max-width: 1280px) {

@@ -1,18 +1,114 @@
 <!DOCTYPE html>
-<html lang="en-us" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="generator" content="Hugo 0.73.0"><script type="application/javascript">var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-169598487-2','auto');ga('send','pageview');}</script><script async="" src="./index_files/analytics.js.download"></script><meta property="og:title" content="hyperbox-brain"><meta property="og:description" content="Machine learning package for streaming data in Python"><meta property="og:type" content="website"><meta property="og:url" content="https://uts-caslab.github.io/hyperbox-brain"><meta property="og:updated_time" content="2020-06-17T00:00:00+00:00"><meta name="description" content="Machine learning package for streaming data in Python"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>hyperbox-brain</title><link rel="icon" type="image/png" href="https://uts-caslab.github.io/hyperbox-brain/images/logo.png"><link href="./index_files/css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="./index_files/style.min.cf5efcb8a6e49b945af419cd8b208a5ae87eb3015995b9afc61218743a0fed3e.css" integrity="sha256-z178uKbkm5Ra9BnNiyCKWuh+swFZlbmvxhIYdDoP7T4="><link rel="stylesheet" type="text/css" href="./index_files/icons.css"><link href="./index_files/css(1)" rel="stylesheet"><link href="./index_files/css(2)" rel="stylesheet"><link rel="stylesheet" type="text/css" href="./index_files/custom_style.css"><link rel="stylesheet" type="text/css" href="./index_files/content.css"><link rel="stylesheet" type="text/css" href="./index_files/keyfeatures.css"></head><body style="overflow: visible;"><div id="preloader" style="display: none;"><div id="status" style="display: none;"></div></div><nav id="nav" class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation"><div class="container"><div class="navbar-brand"><a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div><div id="navbar-menu" class="navbar-menu is-static"><div class="navbar-end"><a href="https://hyperbox-brain.readthedocs.io/en/stable/installation.html" id="navbar-item" class="navbar-item is-secondary">Installation</a>
-<a href="https://hyperbox-brain.readthedocs.io/en/stable/" id="navbar-item" class="navbar-item is-secondary">Documentation</a>
-<a href="https://hyperbox-brain.readthedocs.io/en/stable/user-guide/user-guide.html" id="navbar-item" class="navbar-item is-secondary">User Guide</a>
-<a href="https://uts-caslab.github.io/hyperbox-brain/community" id="navbar-item" class="navbar-item is-secondary">Community</a>
-<a href="https://uts-caslab.github.io/hyperbox-brain/about" id="navbar-item" class="navbar-item is-secondary">About</a>
-<a href="https://uts-caslab.github.io/hyperbox-brain/posts" id="navbar-item" class="navbar-item is-secondary">News</a></div></div></div></nav><nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation"><div class="container"><div class="navbar-brand"><a id="navbar-item" class="navbar-item" href="https://uts-caslab.github.io/hyperbox-brain"><img src="./index_files/hyperbox-brain-logo.png" alt="" width="260" height="20"></a>
-<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div><div id="cloned-navbar-menu" class="navbar-menu is-fixed"><div class="navbar-end"><a href="https://hyperbox-brain.readthedocs.io/en/stable/installation.html" id="navbar-item" class="navbar-item is-secondary">Installation</a>
-<a href="https://hyperbox-brain.readthedocs.io/en/stable/" id="navbar-item" class="navbar-item is-secondary">Documentation</a>
-<a href="https://hyperbox-brain.readthedocs.io/en/stable/user-guide/user-guide.html" id="navbar-item" class="navbar-item is-secondary">User Guide</a>
-<a href="https://uts-caslab.github.io/hyperbox-brain/community" id="navbar-item" class="navbar-item is-secondary">Community</a>
-<a href="https://uts-caslab.github.io/hyperbox-brain/about" id="navbar-item" class="navbar-item is-secondary">About</a>
-<a href="https://uts-caslab.github.io/posts" id="navbar-item" class="navbar-item is-secondary">News</a></div></div></div></nav>
+<html lang="en-us" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="generator" content="Hugo 0.73.0">
+			<script type="application/javascript">
+				var doNotTrack=false;
+				if(!doNotTrack){
+					window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};
+					ga.l=+new Date;
+					ga('create','UA-169598487-2','auto');
+					ga('send','pageview');
+				}
+			</script>
+			<script async="" src="./index_files/analytics.js.download">
+			</script>
+			<meta property="og:title" content="hyperbox-brain">
+			<meta property="og:description" content="Machine learning package for streaming data in Python">
+			<meta property="og:type" content="website">
+			<meta property="og:url" content="https://uts-caslab.github.io/hyperbox-brain">
+			<meta property="og:updated_time" content="2020-06-17T00:00:00+00:00">
+			<meta name="description" content="Machine learning package for streaming data in Python">
+			<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+			<meta http-equiv="x-ua-compatible" content="ie=edge">
+				<title>hyperbox-brain</title>
+				<link rel="icon" type="image/png" href="https://uts-caslab.github.io/hyperbox-brain/images/logo.png">
+				<link href="./index_files/css" rel="stylesheet">
+				<link rel="stylesheet" type="text/css" href="./index_files/style.min.cf5efcb8a6e49b945af419cd8b208a5ae87eb3015995b9afc61218743a0fed3e.css" integrity="sha256-z178uKbkm5Ra9BnNiyCKWuh+swFZlbmvxhIYdDoP7T4=">
+				<link rel="stylesheet" type="text/css" href="./index_files/icons.css">
+				<link href="./index_files/css(1)" rel="stylesheet"><link href="./index_files/css(2)" rel="stylesheet">
+				<link rel="stylesheet" type="text/css" href="./index_files/custom_style.css">
+				<link rel="stylesheet" type="text/css" href="./index_files/content.css">
+				<link rel="stylesheet" type="text/css" href="./index_files/keyfeatures.css">
+</head>
+<body style="overflow: visible;">
+	<div id="preloader" style="display: none;">
+		<div id="status" style="display: none;">
+		</div>
+	</div>
+	<nav id="nav" class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+		<div class="container">
+			<div class="navbar-brand">
+				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div>
+			<div id="navbar-menu" class="navbar-menu is-static">
+				<div class="navbar-end">
+					<a href="https://hyperbox-brain.readthedocs.io/en/stable/installation.html" id="navbar-item" class="navbar-item is-secondary">Installation</a>
+					<a href="https://hyperbox-brain.readthedocs.io/en/stable/" id="navbar-item" class="navbar-item is-secondary">Documentation</a>
+					<a href="https://hyperbox-brain.readthedocs.io/en/stable/user-guide/user-guide.html" id="navbar-item" class="navbar-item is-secondary">User Guide</a>
+					<a href="https://uts-caslab.github.io/hyperbox-brain/community" id="navbar-item" class="navbar-item is-secondary">Community</a>
+					<a href="https://uts-caslab.github.io/hyperbox-brain/about" id="navbar-item" class="navbar-item is-secondary">About</a>
+					<a href="https://uts-caslab.github.io/hyperbox-brain/posts" id="navbar-item" class="navbar-item is-secondary">News</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
+		<div class="container">
+			<div class="navbar-brand">
+				<a id="navbar-item" class="navbar-item" href="https://uts-caslab.github.io/hyperbox-brain">
+					<img src="./index_files/hyperbox-brain-logo.png" alt="" width="260" height="20">
+				</a>
+				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div>
+			<div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+				<div class="navbar-end">
+					<a href="https://hyperbox-brain.readthedocs.io/en/stable/installation.html" id="navbar-item" class="navbar-item is-secondary">Installation</a>
+					<a href="https://hyperbox-brain.readthedocs.io/en/stable/" id="navbar-item" class="navbar-item is-secondary">Documentation</a>
+					<a href="https://hyperbox-brain.readthedocs.io/en/stable/user-guide/user-guide.html" id="navbar-item" class="navbar-item is-secondary">User Guide</a>
+					<a href="https://uts-caslab.github.io/hyperbox-brain/community" id="navbar-item" class="navbar-item is-secondary">Community</a>
+					<a href="https://uts-caslab.github.io/hyperbox-brain/about" id="navbar-item" class="navbar-item is-secondary">About</a>
+					<a href="https://uts-caslab.github.io/posts" id="navbar-item" class="navbar-item is-secondary">News</a>
+				</div>
+			</div>
+		</div>
+	</nav>
 
-<div class="hero-container"><div class="hero-content"><div class="hero-title-content"><div class="flex-column"><div class="hero-title"><img class="hero-logo" src="./index_files/hyperbox-brain-logo.png" alt="hyperbox-brain logo."></div><div class="flex-column"><div class="hero-subtitle">A hyperbox-brain machine learning package in Python</div><div class="hero-cta"><a href="https://github.com/UTS-CASLab/hyperbox-brain"><button class="cta-button">GitHub repository</button></a></div></div></div></div></div></div><div class="hero-foot mb-20"><div class="container"><div class="tabs is-centered"><ul></ul></div></div></div>
+<div class="hero-container">
+	<div class="hero-content">
+		<div class="hero-title-content">
+			<div class="flex-column">
+				<div class="hero-title">
+					<img class="hero-logo" src="./index_files/hyperbox-brain-logo.png" alt="hyperbox-brain logo.">
+				</div>
+				<div class="flex-column">
+					<div class="hero-subtitle">A hyperbox-brain machine learning package in Python
+					</div>
+					<div class="hero-cta">
+						<a href="https://github.com/UTS-CASLab/hyperbox-brain">
+							<button class="cta-button">GitHub repository</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="hero-foot mb-20">
+	<div class="container">
+		<div class="tabs is-centered"><ul></ul>
+		</div>
+	</div>
+</div>
 
 <section class="keyfeatures"><div class="container"><div class="keyfeatures-box-container">
 <div class="keyfeatures-box-content keyfeatures-underline"><p></p>
@@ -39,34 +135,218 @@
 	</div>
 <p></p></div>
 <div class="keyfeatures-box-content keyfeatures-underline"><p></p>
-	<div class="keyfeatures-box-title">Scikit-learn compatible estimators<div>
+	<div class="keyfeatures-box-title">Scikit-learn compatible estimators</div>
 	<div class="keyfeatures-box-text">The estimators in hyperbox-brain is compatible with the well-known scikit-learn toolbox. 
 		Therefore, it is possible to use hyperbox-based estimators in scikit-learn <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">pipelines</a>, scikit-learn hyperparameter optimizers (e.g., <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">grid search</a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html">random search</a>), and scikit-learn model validation (e.g., <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html">cross-validation scores</a>. In addition, the hyperbox-brain toolbox can be used within hyperparameter optimisation libraries built on top of scikit-learn such as <a href="http://hyperopt.github.io/hyperopt/">hyperopt</a>.</div>
 <p></p></div>
 <div class="keyfeatures-box-content keyfeatures-underline"><p></p>
-	<div class="keyfeatures-box-title">Explainability<div>
+	<div class="keyfeatures-box-title">Explainability</div>
 	<div class="keyfeatures-box-text">The hyperbox-brain library can provide the explanation of predicted results via visualisation. 
 		This toolbox provides the visualisation of existing hyperboxes and the decision boundaries of  a trained hyperbox-based model if input features are two-dimensional features. For two-dimensional data, the toolbox also provides the reason behind the class prediction for each input sample by showing representative hyperboxes for each class which join the prediction process of the trained model for an given input pattern. For input patterns with two or more dimensions, the hyperbox-brain toolbox uses a parallel coordinates graph to display representative hyperboxes.</div>
+<p></p></div>
+<div class="keyfeatures-box-content keyfeatures-underline"><p></p>
+	<div class="keyfeatures-box-title">Easy to use</div>
+	<div class="keyfeatures-box-text">Hyperbox-brain toolbox is designed for users with any experience level. Learning models are easy to create, setup, and run. Existing methods are easy to modify and extend.</div>
 <p></p></div>
 <div class="keyfeatures-box-content keyfeatures-underline"><p></p>
 	<div class="keyfeatures-box-title">Open source</div>
 	<div class="keyfeatures-box-text">Distributed under the <a href="https://github.com/UTS-CASLab/hyperbox-brain/blob/main/LICENSE">BSD 3-Clause</a>, hyperbox-brain is developed and maintained <a href="https://github.com/UTS-CASLab/hyperbox-brain">publicly on GitHub</a> by an active, diverse and growing <a href="https://uts-caslab.github.io/hyperbox-brain/community">community</a>.</div><p></p></div>
 </div></div></section>
 		
-<section class="section is-medium"><div class="container"><div class="columns"><div class="column is-centered-tablet-portrait"><h1 class="title section-title">Use cases</h1><h3 class="subtitle is-5 is-muted">Learning tasks supported in hyperbox-brain</h3><div class="divider"></div></div><div class="column is-7 mt-60"><article class="media icon-box"><div class="media-content mt-50"><div class="content"><p><span class="icon-box-title">Supervised learning</span>
-<span class="icon-box-text">When working with labeled data. Depending on the target type can be either classification (discrete values) or regression (continuous values)</span></p></div></div></article><article class="media icon-box"><div class="media-content mt-50"><div class="content"><p><span class="icon-box-title">Single/multi output</span>
-<span class="icon-box-text">Single-output methods predict a single target-label (binary or multi-class) for classification or a single target-value for regression. Multi-output methods simultaneously predict multiple variables given an input.</span></p></div></div></article><article class="media icon-box"><div class="media-content mt-50"><div class="content"><p><span class="icon-box-title">Concept drift detection</span>
-<span class="icon-box-text">Changes in data distribution can harm learning. Drift detection methods are designed to rise an alarm in the presence of drift and are used alongside learning methods to improve their robustness against this phenomenon in evolving data streams.</span></p></div></div></article><article class="media icon-box"><div class="media-content mt-50"><div class="content"><p><span class="icon-box-title">Unsupervised learning</span>
-<span class="icon-box-text">When working with unlabeled data. For example, anomaly detection where the goal is the identification of rare events or samples which differ significantly from the majority of the data.</span></p></div></div></article></div></div></div></section>
-
-<section class="section section-feature-grey"><div class="container"><h5 class="title is-5">Sponsors</h5><div class="sponsor-images">
-<a href="https://uts.edu.au/"><img src="./index_files/UTS-logo.jpg" height="150" width="290" alt="UTS logo."></a>
+<section class="section is-medium">
+	<div class="container">
+	<div class="columns">
+		<div class="column is-centered-tablet-portrait">
+		<h1 class="title section-title">Explainability</h1>
+		<h3 class="subtitle is-5 is-muted">Explanation of predicted results in hyperbox-brain</h3>
+		<div class="divider"></div></div>
+		<div class="column is-7 mt-60">
+			<article class="media icon-box">
+				<div class="media-content mt-50">
+					<div class="content">
+					<p>
+						<span class="icon-box-title">Showing hyperboxes and decision boundaries</span>
+						<span class="icon-box-text">For two-dimensional training data, the hyperbox-brain provides the visualisation of 
+						hyperboxes and their decision boundaries on a two-dimensional plane.</span>
+						<div class="container">
+							<img src="./index_files/hyperboxes_and_boundaries.png" height="300" width="250" alt="hyperboxes and boundaries">
+						</div>
+					</p>
+					</div>
+				</div>
+			</article>
+			<article class="media icon-box">
+				<div class="media-content mt-50">
+					<div class="content">
+						<p>
+							<span class="icon-box-title">Explanation for 2D samples</span>
+							<span class="icon-box-text">For two-dimensional data, the hyperbox-brain toolbox can explain the reason behind the class prediction for each input sample by showing representative hyperboxes for each class which join the prediction process of the trained model for an given input pattern as follows:</span>
+							<div class="container">
+								<img src="./index_files/hyperboxes_explanation.png" height="300" width="250" alt="hyperboxes explanation">
+							</div>
+						</p>
+					</div>
+				</div>
+			</article>
+			<article class="media icon-box">
+				<div class="media-content mt-50">
+					<div class="content">
+						<p>
+							<span class="icon-box-title">Explanation for n-D samples</span>
+							<span class="icon-box-text">For samples with two or more dimensions, the hyperbox-brain toolbox can explain the reason behind the class prediction for each input sample by using a parallel coordinates graph to display representative hyperboxes for each class which join the prediction process of the trained model for an given input pattern as follows:</span>
+							<div class="container">
+								<img src="./index_files/parallel_coord_explanation.png" height="400" width="300" alt="parallel coordinates hyperboxes">
+							</div>
+						</p>
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
 </div>
-<style>.sponsor-images{display:flex;flex-direction:row;max-width:1000px;justify-content:center;margin:30px}.sponsor-images>a{height:75px;width:auto;padding:0 30px;margin:30px 0}@media only screen and (max-width:850px){.sponsor-images{flex-direction:column}.sponsor-images>img{height:auto;margin:30px 0;padding:0}}</style></div>
-<div class="container"><h5 class="title is-5">Research group</h5><div class="partner-images"><img src="./index_files/cas-logo.png" height="180" width="180" alt="CAS logo"></div><style>.partner-images{display:flex;flex-direction:row;max-width:1000px;justify-content:center;margin:30px}.partner-images>a{height:75px;width:auto;padding:0 30px;margin:30px 0}@media only screen and (max-width:850px){.partner-images{flex-direction:column}.partner-images>img{height:auto;margin:30px 0;padding:0}}</style></div><div class="container"><h5 class="title is-5">Citing</h5></div><div class="container"><br>If you want to cite hyperbox-brain, please use the following <a href="#">ArXiv paper</a> (<a href="https://uts-caslab.github.io/hyperbox-brain/misc/hbbrain.bib">bibtex</a>).<br><blockquote><p>T. T. Khuat and B. Gabrys (2022). Hyperbox-brain: A Python ToolBox for Hyperbox-based Machine Learning. ArXiv, 00(00):1−8.</p></blockquote></div></section><footer id="footer" class="footer"><div class="container"><div id="footer-columns" class="columns"><div class="footer-logo-column"><img id="footer-logo" src="./index_files/footer-logo.png" alt="hyperbox-brain logo"></div><div class="link-column"><div class="footer-column"><div class="footer-header"></div><ul class="link-list"><li class="link-list"><a class="footer-link" href="https://hyperbox-brain.readthedocs.io/en/stable/installation.html">Install</a></li><li class="link-list"><a class="footer-link" href="https://hyperbox-brain.readthedocs.io/en/stable/index.html">Documentation</a></li><li class="link-list"><a class="footer-link" href="https://hyperbox-brain.readthedocs.io/en/stable/user-guide/user-guide.html">User Guide</a></li><li class="link-list"><a class="footer-link" href="https://uts-caslab.github.io/hyperbox-brain/about#citing">Citing</a></li></ul></div></div><div class="link-column"><div class="footer-column"><div class="footer-header"></div><ul class="link-list"><li class="link-list"><a class="footer-link" href="https://uts-caslab.github.io/hyperbox-brain/community">Community</a></li><li class="link-list"><a class="footer-link" href="https://github.com/UTS-CASLab/hyperbox-brain/blob/master/CONTRIBUTING.md">Contribute</a></li><li class="link-list"><a class="footer-link" href="https://uts-caslab.github.io/hyperbox-brain/about">About</a></li><li class="link-list"><a class="footer-link" href="https://uts-caslab.github.io/hyperbox-brain/posts">News</a></li></ul></div></div><div class="footer-actions"><nav class="level is-mobile"><div class="social-media-icons"><a class="level-item" href="https://github.com/UTS-CASLab/hyperbox-brain" aria-label="https://github.com/UTS-CASLab/hyperbox-brain"><span class="icon"><i class="fa fa-github" aria-hidden="true"></i></span></a><a class="level-item" href="https://gitter.im/hyperbox-brain/community" aria-label="https://gitter.im/hyperbox-brain/community"><span class="icon"><i class="fa fa-gitter" aria-hidden="true"></i></span></a></div></nav></div></div><div class="container"><div class="copyright" style="font-size:80%">© 2022 hyperbox-brain. Landing page based on hugo-fresh and numpy.org.</div></div></div></footer><div id="backtotop"><a href="https://uts-caslab.github.io/hyperbox-brain/#"></a></div><div id="backtotop"><a href="https://uts-caslab.github.io/hyperbox-brain/#"></a></div><script src="./index_files/jquery.min.js.download"></script><script src="./index_files/feather-icons"></script><script src="./index_files/fresh.js.download"></script><script src="./index_files/jquery.panelslider.min.js.download"></script><script src="./index_files/modernizr.min.js.download"></script><script src="./index_files/26fe64c428.js.download" crossorigin="anonymous"></script><style media="all" id="fa-v4-font-face">/*!
+</section>
+
+<section class="section section-feature-grey">
+	<div class="container">
+		<h5 class="title is-5">Sponsors</h5>
+		<div class="sponsor-images">
+			<a href="https://uts.edu.au/"><img src="./index_files/UTS-logo.jpg" height="150" width="290" alt="UTS logo."></a>
+		</div>
+		<style>
+			.sponsor-images{
+				display:flex;flex-direction:row;max-width:1000px;justify-content:center;margin:30px
+			}
+			.sponsor-images>a{
+				height:75px;width:auto;padding:0 30px;margin:30px 0
+			}
+			@media only screen and (max-width:850px)
+			{
+				.sponsor-images{flex-direction:column}
+				.sponsor-images>img{height:auto;margin:30px 0;padding:0}
+			}
+		</style>
+	</div>
+	<div class="container">
+		<h5 class="title is-5">Research group</h5>
+		<div class="partner-images">
+			<img src="./index_files/cas-logo.png" height="180" width="180" alt="CAS logo">
+		</div>
+		<style>
+			.partner-images{
+				display:flex;flex-direction:row;max-width:1000px;justify-content:center;margin:30px
+			}
+			.partner-images>a{
+				height:75px;width:auto;padding:0 30px;margin:30px 0
+			}
+			@media only screen and (max-width:850px){
+				.partner-images{flex-direction:column}
+				.partner-images>img{height:auto;margin:30px 0;padding:0}
+			}
+		</style>
+	</div>
+	<div class="container">
+		<h5 class="title is-5">Citing</h5>
+	</div>
+	<div class="container">
+		<br>If you want to cite hyperbox-brain, please use the following <a href="#">ArXiv paper</a> (<a href="https://uts-caslab.github.io/hyperbox-brain/misc/hbbrain.bib">bibtex</a>).
+		<br>
+		<blockquote>
+			<p>T. T. Khuat and B. Gabrys (2022). Hyperbox-brain: A Python ToolBox for Hyperbox-based Machine Learning. ArXiv, 00(00):1-8
+			</p>
+		</blockquote>
+	</div>
+</section>
+
+<footer id="footer" class="footer">
+	<div class="container">
+		<div id="footer-columns" class="columns">
+			<div class="footer-logo-column">
+				<img id="footer-logo" src="./index_files/footer-logo.png" alt="hyperbox-brain logo">
+			</div>
+			<div class="link-column">
+				<div class="footer-column">
+					<div class="footer-header"></div>
+					<ul class="link-list">
+						<li class="link-list">
+							<a class="footer-link" href="https://hyperbox-brain.readthedocs.io/en/stable/installation.html">Install</a>
+						</li>
+						<li class="link-list">
+							<a class="footer-link" href="https://hyperbox-brain.readthedocs.io/en/stable/index.html">Documentation</a>
+						</li>
+						<li class="link-list">
+							<a class="footer-link" href="https://hyperbox-brain.readthedocs.io/en/stable/user-guide/user-guide.html">User Guide</a>
+						</li>
+						<li class="link-list">
+							<a class="footer-link" href="https://uts-caslab.github.io/hyperbox-brain/about#citing">Citing</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="link-column">
+				<div class="footer-column">
+					<div class="footer-header">
+					</div>
+					<ul class="link-list">
+						<li class="link-list">
+							<a class="footer-link" href="https://uts-caslab.github.io/hyperbox-brain/community">Community</a>
+						</li>
+						<li class="link-list">
+							<a class="footer-link" href="https://github.com/UTS-CASLab/hyperbox-brain/blob/master/CONTRIBUTING.md">Contribute</a>
+						</li>
+						<li class="link-list">
+							<a class="footer-link" href="https://uts-caslab.github.io/hyperbox-brain/about">About</a>
+						</li>
+						<li class="link-list">
+							<a class="footer-link" href="https://uts-caslab.github.io/hyperbox-brain/posts">News</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-actions">
+				<nav class="level is-mobile">
+					<div class="social-media-icons">
+						<a class="level-item" href="https://github.com/UTS-CASLab/hyperbox-brain" aria-label="https://github.com/UTS-CASLab/hyperbox-brain">
+							<span class="icon"><i class="fa fa-github" aria-hidden="true"></i></span>
+						</a>
+						<a class="level-item" href="https://gitter.im/hyperbox-brain/community" aria-label="https://gitter.im/hyperbox-brain/community">
+							<span class="icon"><i class="fa fa-gitter" aria-hidden="true"></i>
+							</span>
+						</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="container">
+			<div class="copyright" style="font-size:80%">© 2022 Hyperbox-Brain. Landing page based on hugo-fresh and numpy.org.
+			</div>
+		</div>
+	</div>
+</footer>
+<div id="backtotop">
+	<a href="https://uts-caslab.github.io/hyperbox-brain/#"></a>
+</div>
+<div id="backtotop">
+	<a href="https://uts-caslab.github.io/hyperbox-brain/#"></a>
+</div>
+<script src="./index_files/jquery.min.js.download">
+</script>
+<script src="./index_files/feather-icons">
+</script>
+<script src="./index_files/fresh.js.download">
+</script>
+<script src="./index_files/jquery.panelslider.min.js.download">
+</script>
+<script src="./index_files/modernizr.min.js.download">
+</script>
+<script src="./index_files/26fe64c428.js.download" crossorigin="anonymous">
+</script>
+<style media="all" id="fa-v4-font-face">
+/*!
  * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */@font-face{font-family:"FontAwesome";font-display:block;src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.eot);src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.eot?#iefix) format("embedded-opentype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.woff2) format("woff2"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.woff) format("woff"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.ttf) format("truetype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.svg#fontawesome) format("svg")}@font-face{font-family:"FontAwesome";font-display:block;src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.eot);src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.eot?#iefix) format("embedded-opentype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.woff2) format("woff2"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.woff) format("woff"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.ttf) format("truetype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.svg#fontawesome) format("svg")}@font-face{font-family:"FontAwesome";font-display:block;src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.eot);src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.eot?#iefix) format("embedded-opentype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.woff2) format("woff2"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.woff) format("woff"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.ttf) format("truetype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.svg#fontawesome) format("svg");unicode-range:U+f004-f005,U+f007,U+f017,U+f022,U+f024,U+f02e,U+f03e,U+f044,U+f057-f059,U+f06e,U+f070,U+f075,U+f07b-f07c,U+f080,U+f086,U+f089,U+f094,U+f09d,U+f0a0,U+f0a4-f0a7,U+f0c5,U+f0c7-f0c8,U+f0e0,U+f0eb,U+f0f3,U+f0f8,U+f0fe,U+f111,U+f118-f11a,U+f11c,U+f133,U+f144,U+f146,U+f14a,U+f14d-f14e,U+f150-f152,U+f15b-f15c,U+f164-f165,U+f185-f186,U+f191-f192,U+f1ad,U+f1c1-f1c9,U+f1cd,U+f1d8,U+f1e3,U+f1ea,U+f1f6,U+f1f9,U+f20a,U+f247-f249,U+f24d,U+f254-f25b,U+f25d,U+f271-f274,U+f279,U+f28b,U+f28d,U+f2b5-f2b6,U+f2b9,U+f2bb,U+f2bd,U+f2c1-f2c2,U+f2d0,U+f2d2,U+f2dc,U+f2ed,U+f3a5,U+f3d1,U+f410}@font-face{font-family:"FontAwesome";font-display:block;src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.eot);src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.eot?#iefix) format("embedded-opentype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.woff2) format("woff2"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.woff) format("woff"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.ttf) format("truetype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.svg#fontawesome) format("svg");unicode-range:U+f003,U+f006,U+f014,U+f016,U+f01a-f01b,U+f01d,U+f040,U+f045-f047,U+f05c-f05d,U+f07d-f07e,U+f087-f088,U+f08a-f08b,U+f08e,U+f090,U+f096-f097,U+f0a2,U+f0e4-f0e6,U+f0ec-f0ee,U+f0f5-f0f7,U+f10c,U+f112,U+f114-f115,U+f11d,U+f123,U+f132,U+f145,U+f147-f149,U+f14c,U+f166,U+f16a,U+f172,U+f175-f178,U+f18e,U+f190,U+f196,U+f1b1,U+f1d9,U+f1db,U+f1f7,U+f20c,U+f219,U+f230,U+f24a,U+f250,U+f278,U+f27b,U+f283,U+f28c,U+f28e,U+f29b-f29c,U+f2b7,U+f2ba,U+f2bc,U+f2be,U+f2c0,U+f2c3,U+f2d3-f2d4}</style><style media="all" id="fa-v4-shims">/*!
+ */
+ @font-face{font-family:"FontAwesome";font-display:block;src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.eot);src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.eot?#iefix) format("embedded-opentype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.woff2) format("woff2"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.woff) format("woff"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.ttf) format("truetype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.svg#fontawesome) format("svg")}
+ @font-face{font-family:"FontAwesome";font-display:block;src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.eot);src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.eot?#iefix) format("embedded-opentype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.woff2) format("woff2"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.woff) format("woff"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.ttf) format("truetype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-brands-400.svg#fontawesome) format("svg")}@font-face{font-family:"FontAwesome";font-display:block;src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.eot);src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.eot?#iefix) format("embedded-opentype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.woff2) format("woff2"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.woff) format("woff"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.ttf) format("truetype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-regular-400.svg#fontawesome) format("svg");unicode-range:U+f004-f005,U+f007,U+f017,U+f022,U+f024,U+f02e,U+f03e,U+f044,U+f057-f059,U+f06e,U+f070,U+f075,U+f07b-f07c,U+f080,U+f086,U+f089,U+f094,U+f09d,U+f0a0,U+f0a4-f0a7,U+f0c5,U+f0c7-f0c8,U+f0e0,U+f0eb,U+f0f3,U+f0f8,U+f0fe,U+f111,U+f118-f11a,U+f11c,U+f133,U+f144,U+f146,U+f14a,U+f14d-f14e,U+f150-f152,U+f15b-f15c,U+f164-f165,U+f185-f186,U+f191-f192,U+f1ad,U+f1c1-f1c9,U+f1cd,U+f1d8,U+f1e3,U+f1ea,U+f1f6,U+f1f9,U+f20a,U+f247-f249,U+f24d,U+f254-f25b,U+f25d,U+f271-f274,U+f279,U+f28b,U+f28d,U+f2b5-f2b6,U+f2b9,U+f2bb,U+f2bd,U+f2c1-f2c2,U+f2d0,U+f2d2,U+f2dc,U+f2ed,U+f3a5,U+f3d1,U+f410}@font-face{font-family:"FontAwesome";font-display:block;src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.eot);src:url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.eot?#iefix) format("embedded-opentype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.woff2) format("woff2"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.woff) format("woff"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.ttf) format("truetype"),url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-v4deprecations.svg#fontawesome) format("svg");unicode-range:U+f003,U+f006,U+f014,U+f016,U+f01a-f01b,U+f01d,U+f040,U+f045-f047,U+f05c-f05d,U+f07d-f07e,U+f087-f088,U+f08a-f08b,U+f08e,U+f090,U+f096-f097,U+f0a2,U+f0e4-f0e6,U+f0ec-f0ee,U+f0f5-f0f7,U+f10c,U+f112,U+f114-f115,U+f11d,U+f123,U+f132,U+f145,U+f147-f149,U+f14c,U+f166,U+f16a,U+f172,U+f175-f178,U+f18e,U+f190,U+f196,U+f1b1,U+f1d9,U+f1db,U+f1f7,U+f20c,U+f219,U+f230,U+f24a,U+f250,U+f278,U+f27b,U+f283,U+f28c,U+f28e,U+f29b-f29c,U+f2b7,U+f2ba,U+f2bc,U+f2be,U+f2c0,U+f2c3,U+f2d3-f2d4}</style><style media="all" id="fa-v4-shims">/*!
  * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */.fa.fa-glass:before{content:"\f000"}.fa.fa-meetup{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-star-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-star-o:before{content:"\f005"}.fa.fa-close:before,.fa.fa-remove:before{content:"\f00d"}.fa.fa-gear:before{content:"\f013"}.fa.fa-trash-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-trash-o:before{content:"\f2ed"}.fa.fa-file-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-o:before{content:"\f15b"}.fa.fa-clock-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-clock-o:before{content:"\f017"}.fa.fa-arrow-circle-o-down{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-arrow-circle-o-down:before{content:"\f358"}.fa.fa-arrow-circle-o-up{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-arrow-circle-o-up:before{content:"\f35b"}.fa.fa-play-circle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-play-circle-o:before{content:"\f144"}.fa.fa-repeat:before,.fa.fa-rotate-right:before{content:"\f01e"}.fa.fa-refresh:before{content:"\f021"}.fa.fa-list-alt{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-dedent:before{content:"\f03b"}.fa.fa-video-camera:before{content:"\f03d"}.fa.fa-picture-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-picture-o:before{content:"\f03e"}.fa.fa-photo{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-photo:before{content:"\f03e"}.fa.fa-image{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-image:before{content:"\f03e"}.fa.fa-pencil:before{content:"\f303"}.fa.fa-map-marker:before{content:"\f3c5"}.fa.fa-pencil-square-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-pencil-square-o:before{content:"\f044"}.fa.fa-share-square-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-share-square-o:before{content:"\f14d"}.fa.fa-check-square-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-check-square-o:before{content:"\f14a"}.fa.fa-arrows:before{content:"\f0b2"}.fa.fa-times-circle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-times-circle-o:before{content:"\f057"}.fa.fa-check-circle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-check-circle-o:before{content:"\f058"}.fa.fa-mail-forward:before{content:"\f064"}.fa.fa-expand:before{content:"\f424"}.fa.fa-compress:before{content:"\f422"}.fa.fa-eye,.fa.fa-eye-slash{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-warning:before{content:"\f071"}.fa.fa-calendar:before{content:"\f073"}.fa.fa-arrows-v:before{content:"\f338"}.fa.fa-arrows-h:before{content:"\f337"}.fa.fa-bar-chart{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-bar-chart:before{content:"\f080"}.fa.fa-bar-chart-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-bar-chart-o:before{content:"\f080"}.fa.fa-facebook-square,.fa.fa-twitter-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-gears:before{content:"\f085"}.fa.fa-thumbs-o-up{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-thumbs-o-up:before{content:"\f164"}.fa.fa-thumbs-o-down{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-thumbs-o-down:before{content:"\f165"}.fa.fa-heart-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-heart-o:before{content:"\f004"}.fa.fa-sign-out:before{content:"\f2f5"}.fa.fa-linkedin-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-linkedin-square:before{content:"\f08c"}.fa.fa-thumb-tack:before{content:"\f08d"}.fa.fa-external-link:before{content:"\f35d"}.fa.fa-sign-in:before{content:"\f2f6"}.fa.fa-github-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-lemon-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-lemon-o:before{content:"\f094"}.fa.fa-square-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-square-o:before{content:"\f0c8"}.fa.fa-bookmark-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-bookmark-o:before{content:"\f02e"}.fa.fa-facebook,.fa.fa-twitter{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-facebook:before{content:"\f39e"}.fa.fa-facebook-f{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-facebook-f:before{content:"\f39e"}.fa.fa-github{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-credit-card{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-feed:before{content:"\f09e"}.fa.fa-hdd-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hdd-o:before{content:"\f0a0"}.fa.fa-hand-o-right{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-o-right:before{content:"\f0a4"}.fa.fa-hand-o-left{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-o-left:before{content:"\f0a5"}.fa.fa-hand-o-up{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-o-up:before{content:"\f0a6"}.fa.fa-hand-o-down{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-o-down:before{content:"\f0a7"}.fa.fa-arrows-alt:before{content:"\f31e"}.fa.fa-group:before{content:"\f0c0"}.fa.fa-chain:before{content:"\f0c1"}.fa.fa-scissors:before{content:"\f0c4"}.fa.fa-files-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-files-o:before{content:"\f0c5"}.fa.fa-floppy-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-floppy-o:before{content:"\f0c7"}.fa.fa-navicon:before,.fa.fa-reorder:before{content:"\f0c9"}.fa.fa-google-plus,.fa.fa-google-plus-square,.fa.fa-pinterest,.fa.fa-pinterest-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-google-plus:before{content:"\f0d5"}.fa.fa-money{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-money:before{content:"\f3d1"}.fa.fa-unsorted:before{content:"\f0dc"}.fa.fa-sort-desc:before{content:"\f0dd"}.fa.fa-sort-asc:before{content:"\f0de"}.fa.fa-linkedin{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-linkedin:before{content:"\f0e1"}.fa.fa-rotate-left:before{content:"\f0e2"}.fa.fa-legal:before{content:"\f0e3"}.fa.fa-dashboard:before,.fa.fa-tachometer:before{content:"\f3fd"}.fa.fa-comment-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-comment-o:before{content:"\f075"}.fa.fa-comments-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-comments-o:before{content:"\f086"}.fa.fa-flash:before{content:"\f0e7"}.fa.fa-clipboard,.fa.fa-paste{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-paste:before{content:"\f328"}.fa.fa-lightbulb-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-lightbulb-o:before{content:"\f0eb"}.fa.fa-exchange:before{content:"\f362"}.fa.fa-cloud-download:before{content:"\f381"}.fa.fa-cloud-upload:before{content:"\f382"}.fa.fa-bell-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-bell-o:before{content:"\f0f3"}.fa.fa-cutlery:before{content:"\f2e7"}.fa.fa-file-text-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-text-o:before{content:"\f15c"}.fa.fa-building-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-building-o:before{content:"\f1ad"}.fa.fa-hospital-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hospital-o:before{content:"\f0f8"}.fa.fa-tablet:before{content:"\f3fa"}.fa.fa-mobile-phone:before,.fa.fa-mobile:before{content:"\f3cd"}.fa.fa-circle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-circle-o:before{content:"\f111"}.fa.fa-mail-reply:before{content:"\f3e5"}.fa.fa-github-alt{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-folder-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-folder-o:before{content:"\f07b"}.fa.fa-folder-open-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-folder-open-o:before{content:"\f07c"}.fa.fa-smile-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-smile-o:before{content:"\f118"}.fa.fa-frown-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-frown-o:before{content:"\f119"}.fa.fa-meh-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-meh-o:before{content:"\f11a"}.fa.fa-keyboard-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-keyboard-o:before{content:"\f11c"}.fa.fa-flag-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-flag-o:before{content:"\f024"}.fa.fa-mail-reply-all:before{content:"\f122"}.fa.fa-star-half-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-star-half-o:before{content:"\f089"}.fa.fa-star-half-empty{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-star-half-empty:before{content:"\f089"}.fa.fa-star-half-full{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-star-half-full:before{content:"\f089"}.fa.fa-code-fork:before{content:"\f126"}.fa.fa-chain-broken:before{content:"\f127"}.fa.fa-shield:before{content:"\f3ed"}.fa.fa-calendar-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-calendar-o:before{content:"\f133"}.fa.fa-css3,.fa.fa-html5,.fa.fa-maxcdn{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-ticket:before{content:"\f3ff"}.fa.fa-minus-square-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-minus-square-o:before{content:"\f146"}.fa.fa-level-up:before{content:"\f3bf"}.fa.fa-level-down:before{content:"\f3be"}.fa.fa-pencil-square:before{content:"\f14b"}.fa.fa-external-link-square:before{content:"\f360"}.fa.fa-compass{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-caret-square-o-down{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-caret-square-o-down:before{content:"\f150"}.fa.fa-toggle-down{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-toggle-down:before{content:"\f150"}.fa.fa-caret-square-o-up{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-caret-square-o-up:before{content:"\f151"}.fa.fa-toggle-up{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-toggle-up:before{content:"\f151"}.fa.fa-caret-square-o-right{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-caret-square-o-right:before{content:"\f152"}.fa.fa-toggle-right{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-toggle-right:before{content:"\f152"}.fa.fa-eur:before,.fa.fa-euro:before{content:"\f153"}.fa.fa-gbp:before{content:"\f154"}.fa.fa-dollar:before,.fa.fa-usd:before{content:"\f155"}.fa.fa-inr:before,.fa.fa-rupee:before{content:"\f156"}.fa.fa-cny:before,.fa.fa-jpy:before,.fa.fa-rmb:before,.fa.fa-yen:before{content:"\f157"}.fa.fa-rouble:before,.fa.fa-rub:before,.fa.fa-ruble:before{content:"\f158"}.fa.fa-krw:before,.fa.fa-won:before{content:"\f159"}.fa.fa-bitcoin,.fa.fa-btc{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-bitcoin:before{content:"\f15a"}.fa.fa-file-text:before{content:"\f15c"}.fa.fa-sort-alpha-asc:before{content:"\f15d"}.fa.fa-sort-alpha-desc:before{content:"\f881"}.fa.fa-sort-amount-asc:before{content:"\f160"}.fa.fa-sort-amount-desc:before{content:"\f884"}.fa.fa-sort-numeric-asc:before{content:"\f162"}.fa.fa-sort-numeric-desc:before{content:"\f886"}.fa.fa-xing,.fa.fa-xing-square,.fa.fa-youtube,.fa.fa-youtube-play,.fa.fa-youtube-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-youtube-play:before{content:"\f167"}.fa.fa-adn,.fa.fa-bitbucket,.fa.fa-bitbucket-square,.fa.fa-dropbox,.fa.fa-flickr,.fa.fa-instagram,.fa.fa-stack-overflow{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-bitbucket-square:before{content:"\f171"}.fa.fa-tumblr,.fa.fa-tumblr-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-long-arrow-down:before{content:"\f309"}.fa.fa-long-arrow-up:before{content:"\f30c"}.fa.fa-long-arrow-left:before{content:"\f30a"}.fa.fa-long-arrow-right:before{content:"\f30b"}.fa.fa-android,.fa.fa-apple,.fa.fa-dribbble,.fa.fa-foursquare,.fa.fa-gittip,.fa.fa-gratipay,.fa.fa-linux,.fa.fa-skype,.fa.fa-trello,.fa.fa-windows{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-gittip:before{content:"\f184"}.fa.fa-sun-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-sun-o:before{content:"\f185"}.fa.fa-moon-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-moon-o:before{content:"\f186"}.fa.fa-pagelines,.fa.fa-renren,.fa.fa-stack-exchange,.fa.fa-vk,.fa.fa-weibo{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-arrow-circle-o-right{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-arrow-circle-o-right:before{content:"\f35a"}.fa.fa-arrow-circle-o-left{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-arrow-circle-o-left:before{content:"\f359"}.fa.fa-caret-square-o-left{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-caret-square-o-left:before{content:"\f191"}.fa.fa-toggle-left{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-toggle-left:before{content:"\f191"}.fa.fa-dot-circle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-dot-circle-o:before{content:"\f192"}.fa.fa-vimeo-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-try:before,.fa.fa-turkish-lira:before{content:"\f195"}.fa.fa-plus-square-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-plus-square-o:before{content:"\f0fe"}.fa.fa-openid,.fa.fa-slack,.fa.fa-wordpress{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-bank:before,.fa.fa-institution:before{content:"\f19c"}.fa.fa-mortar-board:before{content:"\f19d"}.fa.fa-delicious,.fa.fa-digg,.fa.fa-drupal,.fa.fa-google,.fa.fa-joomla,.fa.fa-pied-piper-alt,.fa.fa-pied-piper-pp,.fa.fa-reddit,.fa.fa-reddit-square,.fa.fa-stumbleupon,.fa.fa-stumbleupon-circle,.fa.fa-yahoo{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-spoon:before{content:"\f2e5"}.fa.fa-behance,.fa.fa-behance-square,.fa.fa-steam,.fa.fa-steam-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-automobile:before{content:"\f1b9"}.fa.fa-envelope-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-envelope-o:before{content:"\f0e0"}.fa.fa-deviantart,.fa.fa-soundcloud,.fa.fa-spotify{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-file-pdf-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-pdf-o:before{content:"\f1c1"}.fa.fa-file-word-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-word-o:before{content:"\f1c2"}.fa.fa-file-excel-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-excel-o:before{content:"\f1c3"}.fa.fa-file-powerpoint-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-powerpoint-o:before{content:"\f1c4"}.fa.fa-file-image-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-image-o:before{content:"\f1c5"}.fa.fa-file-photo-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-photo-o:before{content:"\f1c5"}.fa.fa-file-picture-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-picture-o:before{content:"\f1c5"}.fa.fa-file-archive-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-archive-o:before{content:"\f1c6"}.fa.fa-file-zip-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-zip-o:before{content:"\f1c6"}.fa.fa-file-audio-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-audio-o:before{content:"\f1c7"}.fa.fa-file-sound-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-sound-o:before{content:"\f1c7"}.fa.fa-file-video-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-video-o:before{content:"\f1c8"}.fa.fa-file-movie-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-movie-o:before{content:"\f1c8"}.fa.fa-file-code-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-file-code-o:before{content:"\f1c9"}.fa.fa-codepen,.fa.fa-jsfiddle,.fa.fa-vine{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-life-bouy,.fa.fa-life-ring{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-life-bouy:before{content:"\f1cd"}.fa.fa-life-buoy{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-life-buoy:before{content:"\f1cd"}.fa.fa-life-saver{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-life-saver:before{content:"\f1cd"}.fa.fa-support{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-support:before{content:"\f1cd"}.fa.fa-circle-o-notch:before{content:"\f1ce"}.fa.fa-ra,.fa.fa-rebel{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-ra:before{content:"\f1d0"}.fa.fa-resistance{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-resistance:before{content:"\f1d0"}.fa.fa-empire,.fa.fa-ge{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-ge:before{content:"\f1d1"}.fa.fa-git,.fa.fa-git-square,.fa.fa-hacker-news,.fa.fa-y-combinator-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-y-combinator-square:before{content:"\f1d4"}.fa.fa-yc-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-yc-square:before{content:"\f1d4"}.fa.fa-qq,.fa.fa-tencent-weibo,.fa.fa-wechat,.fa.fa-weixin{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-wechat:before{content:"\f1d7"}.fa.fa-send:before{content:"\f1d8"}.fa.fa-paper-plane-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-paper-plane-o:before{content:"\f1d8"}.fa.fa-send-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-send-o:before{content:"\f1d8"}.fa.fa-circle-thin{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-circle-thin:before{content:"\f111"}.fa.fa-header:before{content:"\f1dc"}.fa.fa-sliders:before{content:"\f1de"}.fa.fa-futbol-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-futbol-o:before{content:"\f1e3"}.fa.fa-soccer-ball-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-soccer-ball-o:before{content:"\f1e3"}.fa.fa-slideshare,.fa.fa-twitch,.fa.fa-yelp{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-newspaper-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-newspaper-o:before{content:"\f1ea"}.fa.fa-cc-amex,.fa.fa-cc-discover,.fa.fa-cc-mastercard,.fa.fa-cc-paypal,.fa.fa-cc-stripe,.fa.fa-cc-visa,.fa.fa-google-wallet,.fa.fa-paypal{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-bell-slash-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-bell-slash-o:before{content:"\f1f6"}.fa.fa-trash:before{content:"\f2ed"}.fa.fa-copyright{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-eyedropper:before{content:"\f1fb"}.fa.fa-area-chart:before{content:"\f1fe"}.fa.fa-pie-chart:before{content:"\f200"}.fa.fa-line-chart:before{content:"\f201"}.fa.fa-angellist,.fa.fa-ioxhost,.fa.fa-lastfm,.fa.fa-lastfm-square{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-cc{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-cc:before{content:"\f20a"}.fa.fa-ils:before,.fa.fa-shekel:before,.fa.fa-sheqel:before{content:"\f20b"}.fa.fa-meanpath{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-meanpath:before{content:"\f2b4"}.fa.fa-buysellads,.fa.fa-connectdevelop,.fa.fa-dashcube,.fa.fa-forumbee,.fa.fa-leanpub,.fa.fa-sellsy,.fa.fa-shirtsinbulk,.fa.fa-simplybuilt,.fa.fa-skyatlas{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-diamond{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-diamond:before{content:"\f3a5"}.fa.fa-intersex:before{content:"\f224"}.fa.fa-facebook-official{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-facebook-official:before{content:"\f09a"}.fa.fa-pinterest-p,.fa.fa-whatsapp{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-hotel:before{content:"\f236"}.fa.fa-medium,.fa.fa-viacoin,.fa.fa-y-combinator,.fa.fa-yc{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-yc:before{content:"\f23b"}.fa.fa-expeditedssl,.fa.fa-opencart,.fa.fa-optin-monster{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-battery-4:before,.fa.fa-battery:before{content:"\f240"}.fa.fa-battery-3:before{content:"\f241"}.fa.fa-battery-2:before{content:"\f242"}.fa.fa-battery-1:before{content:"\f243"}.fa.fa-battery-0:before{content:"\f244"}.fa.fa-object-group,.fa.fa-object-ungroup,.fa.fa-sticky-note-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-sticky-note-o:before{content:"\f249"}.fa.fa-cc-diners-club,.fa.fa-cc-jcb{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-clone,.fa.fa-hourglass-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hourglass-o:before{content:"\f254"}.fa.fa-hourglass-1:before{content:"\f251"}.fa.fa-hourglass-2:before{content:"\f252"}.fa.fa-hourglass-3:before{content:"\f253"}.fa.fa-hand-rock-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-rock-o:before{content:"\f255"}.fa.fa-hand-grab-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-grab-o:before{content:"\f255"}.fa.fa-hand-paper-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-paper-o:before{content:"\f256"}.fa.fa-hand-stop-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-stop-o:before{content:"\f256"}.fa.fa-hand-scissors-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-scissors-o:before{content:"\f257"}.fa.fa-hand-lizard-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-lizard-o:before{content:"\f258"}.fa.fa-hand-spock-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-spock-o:before{content:"\f259"}.fa.fa-hand-pointer-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-pointer-o:before{content:"\f25a"}.fa.fa-hand-peace-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-hand-peace-o:before{content:"\f25b"}.fa.fa-registered{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-chrome,.fa.fa-creative-commons,.fa.fa-firefox,.fa.fa-get-pocket,.fa.fa-gg,.fa.fa-gg-circle,.fa.fa-internet-explorer,.fa.fa-odnoklassniki,.fa.fa-odnoklassniki-square,.fa.fa-opera,.fa.fa-safari,.fa.fa-wikipedia-w{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-television:before{content:"\f26c"}.fa.fa-500px,.fa.fa-amazon,.fa.fa-contao{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-calendar-plus-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-calendar-plus-o:before{content:"\f271"}.fa.fa-calendar-minus-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-calendar-minus-o:before{content:"\f272"}.fa.fa-calendar-times-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-calendar-times-o:before{content:"\f273"}.fa.fa-calendar-check-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-calendar-check-o:before{content:"\f274"}.fa.fa-map-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-map-o:before{content:"\f279"}.fa.fa-commenting:before{content:"\f4ad"}.fa.fa-commenting-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-commenting-o:before{content:"\f4ad"}.fa.fa-houzz,.fa.fa-vimeo{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-vimeo:before{content:"\f27d"}.fa.fa-black-tie,.fa.fa-edge,.fa.fa-fonticons,.fa.fa-reddit-alien{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-credit-card-alt:before{content:"\f09d"}.fa.fa-codiepie,.fa.fa-fort-awesome,.fa.fa-mixcloud,.fa.fa-modx,.fa.fa-product-hunt,.fa.fa-scribd,.fa.fa-usb{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-pause-circle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-pause-circle-o:before{content:"\f28b"}.fa.fa-stop-circle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-stop-circle-o:before{content:"\f28d"}.fa.fa-bluetooth,.fa.fa-bluetooth-b,.fa.fa-envira,.fa.fa-gitlab,.fa.fa-wheelchair-alt,.fa.fa-wpbeginner,.fa.fa-wpforms{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-wheelchair-alt:before{content:"\f368"}.fa.fa-question-circle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-question-circle-o:before{content:"\f059"}.fa.fa-volume-control-phone:before{content:"\f2a0"}.fa.fa-asl-interpreting:before{content:"\f2a3"}.fa.fa-deafness:before,.fa.fa-hard-of-hearing:before{content:"\f2a4"}.fa.fa-glide,.fa.fa-glide-g{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-signing:before{content:"\f2a7"}.fa.fa-first-order,.fa.fa-google-plus-official,.fa.fa-pied-piper,.fa.fa-snapchat,.fa.fa-snapchat-ghost,.fa.fa-snapchat-square,.fa.fa-themeisle,.fa.fa-viadeo,.fa.fa-viadeo-square,.fa.fa-yoast{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-google-plus-official:before{content:"\f2b3"}.fa.fa-google-plus-circle{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-google-plus-circle:before{content:"\f2b3"}.fa.fa-fa,.fa.fa-font-awesome{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-fa:before{content:"\f2b4"}.fa.fa-handshake-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-handshake-o:before{content:"\f2b5"}.fa.fa-envelope-open-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-envelope-open-o:before{content:"\f2b6"}.fa.fa-linode{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-address-book-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-address-book-o:before{content:"\f2b9"}.fa.fa-vcard:before{content:"\f2bb"}.fa.fa-address-card-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-address-card-o:before{content:"\f2bb"}.fa.fa-vcard-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-vcard-o:before{content:"\f2bb"}.fa.fa-user-circle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-user-circle-o:before{content:"\f2bd"}.fa.fa-user-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-user-o:before{content:"\f007"}.fa.fa-id-badge{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-drivers-license:before{content:"\f2c2"}.fa.fa-id-card-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-id-card-o:before{content:"\f2c2"}.fa.fa-drivers-license-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-drivers-license-o:before{content:"\f2c2"}.fa.fa-free-code-camp,.fa.fa-quora,.fa.fa-telegram{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-thermometer-4:before,.fa.fa-thermometer:before{content:"\f2c7"}.fa.fa-thermometer-3:before{content:"\f2c8"}.fa.fa-thermometer-2:before{content:"\f2c9"}.fa.fa-thermometer-1:before{content:"\f2ca"}.fa.fa-thermometer-0:before{content:"\f2cb"}.fa.fa-bathtub:before,.fa.fa-s15:before{content:"\f2cd"}.fa.fa-window-maximize,.fa.fa-window-restore{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-times-rectangle:before{content:"\f410"}.fa.fa-window-close-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-window-close-o:before{content:"\f410"}.fa.fa-times-rectangle-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-times-rectangle-o:before{content:"\f410"}.fa.fa-bandcamp,.fa.fa-eercast,.fa.fa-etsy,.fa.fa-grav,.fa.fa-imdb,.fa.fa-ravelry{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-eercast:before{content:"\f2da"}.fa.fa-snowflake-o{font-family:"Font Awesome 5 Free";font-weight:400}.fa.fa-snowflake-o:before{content:"\f2dc"}.fa.fa-superpowers,.fa.fa-wpexplorer{font-family:"Font Awesome 5 Brands";font-weight:400}.fa.fa-cab:before{content:"\f1ba"}</style><style media="all" id="fa-main">/*!
