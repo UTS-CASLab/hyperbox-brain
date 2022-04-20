@@ -384,7 +384,7 @@ citations to the following paper::
 
   @article{khuat2022,
   author  = {Thanh Tung Khuat and Bogdan Gabrys},
-  title   = {Hyerbox-brain: A Python Toolbox for Hyperbox-based Machine Learning Algorithms},
+  title   = {Hyperbox-brain: A Python Toolbox for Hyperbox-based Machine Learning Algorithms},
   journal = {ArXiv},
   year    = {2022},
   volume  = {},
