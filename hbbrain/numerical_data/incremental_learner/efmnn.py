@@ -54,7 +54,7 @@ class EFMNNClassifier(BaseFMNNClassifier):
 
     References
     ----------
-    .. [1] M. Mohammed and C. P. Lim, "An enhanced fuzzy min–max neural network
+    .. [1] M. Mohammed and C. P. Lim, "An enhanced fuzzy min-max neural network
     for pattern classification," IEEE Transactions on Neural Networks and
     Learning Systems, vol. 26, no. 3, pp. 417-429, 2014.
 

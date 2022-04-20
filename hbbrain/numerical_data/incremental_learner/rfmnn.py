@@ -124,7 +124,7 @@ class RFMNNClassifier(BaseFMNNClassifier):
     References
     ----------
     .. [1] O. N. Al-Sayaydeh, M. F. Mohammed, E. Alhroob, H. Tao, and C. P. Lim,
-    "A refined fuzzy min–max neural network with new learning procedures for
+    "A refined fuzzy min-max neural network with new learning procedures for
     pattern classification," IEEE Transactions on Fuzzy Systems, vol. 28, no.
     10, pp. 2480-2494, 2019.
     

@@ -149,7 +149,7 @@ class RandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
     
     References
     ----------
-    .. [1] T. T. Khuat and B. Gabrys "Random Hyperboxes", IEEE Transactions on Neural Networks 
+    .. [1] T. T. Khuat and B. Gabrys, "Random Hyperboxes", IEEE Transactions on Neural Networks 
            and Learning Systems, 2021.
            
     Examples
