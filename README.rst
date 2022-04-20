@@ -180,7 +180,7 @@ and scikit-learn model validation (e.g., `cross-validation scores <https://sciki
 In addition, the hyperbox-brain toolbox can be used within hyperparameter optimisation libraries built on top of 
 scikit-learn such as `hyperopt <http://hyperopt.github.io/hyperopt/>`_.
 
-Explanability of predicted results
+Explainability of predicted results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The hyperbox-brain library can provide the explanation of predicted results via visualisation. 
 This toolbox provides the visualisation of existing hyperboxes and the decision boundaries of 
