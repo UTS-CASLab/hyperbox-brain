@@ -51,7 +51,7 @@ class FMNNClassifier(BaseFMNNClassifier):
     References
     ----------
     .. [1] P. Simpson, "Fuzzy min—max neural networks—Part 1: Classiﬁcation," 
-    IEEE transactions on neural networks, vol. 3, no. 5, pp. 776-786, 1992.
+    IEEE Transactions on Neural Networks, vol. 3, no. 5, pp. 776-786, 1992.
 
     Examples
     --------
