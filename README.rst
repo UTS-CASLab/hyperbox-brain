@@ -265,6 +265,21 @@ The following table summarises the supported hyperbox-based learning algorithms 
      - `OneHotOnlineGFMM </hbbrain/mixed_data/onehot_onln_gfmm.py>`_
      - `Notebook </examples/mixed_data/onehot_onln_gfmm_general_use.ipynb>`_
      - [2]_
+   * - Onln-GFMM 
+     - Continuous 
+     - Single 
+     - Instance-incremental 
+     - `OnlineGFMM </hbbrain/numerical_data/incremental_learner/onln_gfmm.py>`_
+     - `Notebook </examples/numerical_data/incremental_learner/onln_gfmm_general_use.ipynb>`_
+     - [3]_, [4]_
+   * - IOL-GFMM 
+     - Continuous 
+     - Single 
+     - Instance-incremental 
+     - `ImprovedOnlineGFMM </hbbrain/numerical_data/incremental_learner/iol_gfmm.py>`_
+     - - `Notebook </examples/numerical_data/incremental_learner/iol_gfmm_general_use.ipynb>`_
+     - [5]_, [4]_
+ - 
 
 ========
 Citation
@@ -304,5 +319,7 @@ References
 ==========
 
 .. [1] : T. T. Khuat and B. Gabrys "`An Online Learning Algorithm for a Neuro-Fuzzy Classifier with Mixed-Attribute Data <https://arxiv.org/abs/2009.14670>`_", ArXiv preprint, arXiv:2009.14670, 2020.
-
 .. [2] : T. T. Khuat and B. Gabrys "`An in-depth comparison of methods handling mixed-attribute data for general fuzzy min–max neural network <https://doi.org/10.1016/j.neucom.2021.08.083>`_", Neurocomputing, vol 464, pp. 175-202, 2021.
+.. [3] : B. Gabrys and A. Bargiela, "`General fuzzy min-max neural network for clustering and classification <https://doi.org/10.1109/72.846747>`_", IEEE transactions on neural networks, vol. 11, no. 3, pp. 769-783, 2000.
+.. [4] : T. T. Khuat and B. Gabrys, "`Accelerated learning algorithms of general fuzzy min-max neural network using a novel hyperbox selection rule <https://doi.org/10.1016/j.ins.2020.08.046>`_", Information Sciences, vol. 547, pp. 887-909, 2021.
+.. [5] : T. T. Khuat, F. Chen, and B. Gabrys, "`An improved online learning algorithm for general fuzzy min-max neural network <https://doi.org/10.1109/IJCNN48605.2020.9207534>`", in Proceedings of the International Joint Conference on Neural Networks (IJCNN), pp. 1-9, 2020.
