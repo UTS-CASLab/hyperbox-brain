@@ -232,7 +232,7 @@ Available models
 ================
 The following table summarises the supported hyperbox-based learning algorithms in this toolbox.
 
-.. list-table:: **Hyperbox-based learning models**
+.. list-table::
    :widths: 15 10 10 10 30 15 10
    :align: center
    :header-rows: 1
@@ -247,10 +247,24 @@ The following table summarises the supported hyperbox-based learning algorithms 
    * - EIOL-GFMM
      - Mixed
      - Single 
-     - Incremental 
-     - `ExtendedImprovedOnlineGFMM <hbbrain/mixed_data/eiol_gfmm.py>`_
+     - Instance-incremental 
+     - `ExtendedImprovedOnlineGFMM </hbbrain/mixed_data/eiol_gfmm.py>`_
      - `Notebook </examples/mixed_data/eiol_gfmm_general_use.ipynb>`_
      - [1]_
+   * - Freq-Cat-Onln-GFMM 
+     - Mixed 
+     - Single 
+     - Batch-incremental 
+     - `FreqCatOnlineGFMM </hbbrain/mixed_data/freq_cat_onln_gfmm.py>`_
+     - `Notebook </examples/mixed_data/freq_cat_onln_gfmm_general_use.ipynb>`_
+     - [2]_
+   * - OneHot-Onln-GFMM 
+     - Mixed 
+     - Single 
+     - Batch-incremental 
+     - `OneHotOnlineGFMM </hbbrain/mixed_data/onehot_onln_gfmm.py>`_
+     - `Notebook </examples/mixed_data/onehot_onln_gfmm_general_use.ipynb>`_
+     - [2]_
 
 ========
 Citation
@@ -290,3 +304,5 @@ References
 ==========
 
 .. [1] : T. T. Khuat and B. Gabrys "`An Online Learning Algorithm for a Neuro-Fuzzy Classifier with Mixed-Attribute Data <https://arxiv.org/abs/2009.14670>`_", ArXiv preprint, arXiv:2009.14670, 2020.
+
+.. [2] : T. T. Khuat and B. Gabrys "`An in-depth comparison of methods handling mixed-attribute data for general fuzzy min–max neural network <https://doi.org/10.1016/j.neucom.2021.08.083>`_", Neurocomputing, vol 464, pp. 175-202, 2021.
