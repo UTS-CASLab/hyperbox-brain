@@ -6,3 +6,4 @@ scikit-learn>=0.24.0
 sphinx>=1.5.1
 nbsphinx>=0.7.0
 IPython>=7.14.0
+pandas >= 0.25.0
