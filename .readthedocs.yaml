@@ -27,6 +27,10 @@ formats:
 python:
    install:
    - requirements: docs/requirements.txt
+   - method: pip
+     path: .
+     extra_requirements:
+     - docs
    
  # use a conda environment file
 #conda:
