@@ -56,6 +56,7 @@ pygments_style = 'sphinx'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+	'sphinx.ext.autodoc',
 	'sphinx.ext.duration',
     'sphinx.ext.doctest',
 	'sphinx.ext.autosummary',
@@ -68,7 +69,6 @@ extensions = [
 ]
 #'sphinx.ext.linkcode',
 # 'sphinx.ext.napoleon',
-# 'sphinx.ext.autodoc',
 numpydoc_class_members_toctree = False
 
 source_suffix = ['.rst', '.ipynb']
