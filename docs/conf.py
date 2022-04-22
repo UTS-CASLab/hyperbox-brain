@@ -18,20 +18,20 @@ import sys
 sys.path.insert(0, os.path.abspath('..'))
 
 sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../../../hbbrain")
+    os.path.join(__file__, "../../hbbrain")
 ))
 
 sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../../../hbbrain/base")
+    os.path.join(__file__, "../../hbbrain/base")
 ))
 sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../../../hbbrain/mixed_data")
+    os.path.join(__file__, "../../hbbrain/mixed_data")
 ))
 sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../../../hbbrain/numerical_data")
+    os.path.join(__file__, "../../hbbrain/numerical_data")
 ))
 sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../../../hbbrain/utils")
+    os.path.join(__file__, "../../hbbrain/utils")
 ))
 
 #  on_rtd is whether we are on readthedocs.org, this line of code grabbed
