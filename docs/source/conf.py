@@ -15,9 +15,8 @@
 # sys.path.insert(0, os.path.abspath('.'))
 import os
 import sys
-sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('..'))
 
-"""
 sys.path.append(os.path.abspath(
     os.path.join(__file__, "../../../hbbrain")
 ))
@@ -34,7 +33,6 @@ sys.path.append(os.path.abspath(
 sys.path.append(os.path.abspath(
     os.path.join(__file__, "../../../hbbrain/utils")
 ))
-"""
 
 #  on_rtd is whether we are on readthedocs.org, this line of code grabbed
 #  from docs.readthedocs.org
