@@ -1,1 +1,1 @@
--e .[docs]
+pip install -e .[docs]
