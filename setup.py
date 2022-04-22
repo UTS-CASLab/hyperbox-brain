@@ -33,18 +33,18 @@ builtins.__HBBRAIN_SETUP__ = True
 
 DISTNAME = "hyperbox-brain"
 DESCRIPTION = "A set of python modules for hyperbox-based machine learning algorithms"
-with open("README.rst") as f:
+with open("README.rst", encoding="utf-8") as f:
     LONG_DESCRIPTION = f.read()
 
 MAINTAINER = "Thanh Tung KHUAT"
 MAINTAINER_EMAIL = "thanhtung09t2@gmail.com"
-URL = "http://hyperbox-brain.org"
+URL = "https://uts-caslab.github.io/hyperbox-brain/"
 DOWNLOAD_URL = "https://pypi.org/project/hyperbox-brain/#files"
 LICENSE = "new BSD"
 PROJECT_URLS = {
-    "Bug Tracker": "https://github.com/hyperbox-brain/issues",
-    "Documentation": "https://hyperbox-brain.org/stable/documentation.html",
-    "Source Code": "https://github.com/hyperbox-brain/hyperbox-brain",
+    "Bug Tracker": "https://github.com/UTS-CASLab/hyperbox-brain/issues",
+    "Documentation": "https://hyperbox-brain.readthedocs.io/en/stable/",
+    "Source Code": "https://github.com/UTS-CASLab/hyperbox-brain",
 }
 
 # We can actually import a restricted version of sklearn that

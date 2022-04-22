@@ -82,13 +82,13 @@ class OnlineGFMM(BaseGFMMClassifier):
     References
     ----------
     .. [1] B. Gabrys and A. Bargiela, "General fuzzy min-max neural network for
-    clustering and classification," IEEE Transactions on Neural Networks, vol.
-    11, no. 3, pp. 769-783, 2000.
+           clustering and classification," IEEE Transactions on Neural Networks,
+           vol. 11, no. 3, pp. 769-783, 2000.
     .. [2] T.T. Khuat and B. Gabrys, "Accelerated learning algorithms of general fuzzy min-max neural network using a novel hyperbox selection rule,"
-    Information Sciences, vol. 547, pp. 887-909, 2021.
+           Information Sciences, vol. 547, pp. 887-909, 2021.
     .. [3] B. Gabrys, "Agglomerative learning algorithms for general fuzzy
-    min-max neural network", Journal of VLSI Signal Processing Systems for
-    Signal, Image and Video Technology, vol. 32, no. 1, pp. 67-82, 2002.
+           min-max neural network", Journal of VLSI Signal Processing Systems
+           for Signal, Image and Video Technology, vol. 32, no. 1, pp. 67-82, 2002.
     
     Examples
     --------
@@ -103,6 +103,7 @@ class OnlineGFMM(BaseGFMMClassifier):
     >>> clf = OnlineGFMM(theta=0.1).fit(X, y)
     >>> clf.predict(X[[10, 50, 100]])
     array([0, 1, 2])
+
     """
 
     def __init__(self, theta=0.5, theta_min=1, gamma=1, alpha=0.9, is_draw=False, V=None, W=None, C=None):

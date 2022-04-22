@@ -1,5 +1,5 @@
 """
-General fuzzy min-max neural network trained by the original incremental
+General fuzzy min-max neural network trained by the batch incremental
 learning algorithm for mixed attribute data, in which categorical features are
 encoded using one-hot encoding.
 """
@@ -41,20 +41,18 @@ def one_hot_encoding_cat_feature(X, categorical_features, encodings=None):
     contains only one value of True and the rest elements show False values.
 
     For examples:
-            X = array([[4, 2, 'red', 4],
-                       [5, 6, 'green', 6],
-                       [5, 1, 'red', 10],
-                       [6, 4, 'yellows', 2],
-                       [5, 5, 'green', 7],
+            X = array([[4, 2, 'red', 4],\n
+                       [5, 6, 'green', 6],\n
+                       [5, 1, 'red', 10],\n
+                       [6, 4, 'yellows', 2],\n
+                       [5, 5, 'green', 7],\n
                        [9, 5, 'red', 12]], dtype=object)
-
-            X_transformed = array([[4, 2, array([ True, False, False]), 4],
-                                   [5, 6, array([False,  True, False]), 6],
-                                   [5, 1, array([ True, False, False]), 10],
-                                   [6, 4, array([False, False,  True]), 2],
-                                   [5, 5, array([False,  True, False]), 7],
-                                   [9, 5, array([ True, False, False]), 12]],
-                                  dtype=object)
+            X_transformed = array([[4, 2, array([ True, False, False]), 4],\n
+                                   [5, 6, array([False,  True, False]), 6],\n
+                                   [5, 1, array([ True, False, False]), 10],\n
+                                   [6, 4, array([False, False,  True]), 2],\n
+                                   [5, 5, array([False,  True, False]), 7],\n
+                                   [9, 5, array([ True, False, False]), 12]], dtype=object)
 
     Parameters
     ----------
@@ -68,9 +66,9 @@ def one_hot_encoding_cat_feature(X, categorical_features, encodings=None):
     Returns
     -------
     X_out : array-like of shape (n_samples, n_features)
-        DESCRIPTION.
+        An input data matrix with the encoded categorical features.
     encodings_out : TYPE
-        DESCRIPTION.
+        An one-hot encoder was used to encode categorical features.
 
     """
     X_out = X.copy()
@@ -242,14 +240,15 @@ def impute_missing_value_cat_feature(Xd):
 
 
 class OneHotOnlineGFMM(BaseHyperboxClassifier):
-    """Online learning algorithm with mixed-attribute data for a general fuzzy
-    min-max neural network, in which categorical features are encoded using
-    the one-hot encoding method and the similarity degrees among categorical
-    values are computed using one-hot encoding values with logical operators.
-    The final membership value is the average of membership values for continuous
-    features and membership values for categorical features.
+    """Batch incremental learning algorithm with mixed-attribute data for a
+    general fuzzy min-max neural network, in which categorical features are
+    encoded using the one-hot encoding method and the similarity degrees among
+    categorical values are computed using one-hot encoding values with logical
+    operators. The final membership value is the average of membership values
+    for continuous features and membership values for categorical features.
 
-    See [1]_ for more detailed information regarding this online learning algorithm.
+    See [1]_ for more detailed information regarding this batch incremental
+    learning algorithm.
 
     Parameters
     ----------
@@ -301,8 +300,8 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
     References
     ----------
     .. [1] T. T. Khuat and B. Gabrys "An in-depth comparison of methods handling
-    mixed-attribute data for general fuzzy min–max neural network", Neurocomputing,
-    vol 464, pp. 175-202, 2021.
+           mixed-attribute data for general fuzzy min–max neural network",
+           Neurocomputing, vol 464, pp. 175-202, 2021.
 
     Examples
     --------
@@ -322,6 +321,7 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
     Number of hyperboxes = 236
     >>> clf.predict(X[[10, 100]])
     array([0, 0])
+
     """
 
     def __init__(self, theta=0.5, theta_min=1, min_percent_overlap_cat=0.5, gamma=1, alpha=0.9, V=None, W=None, D=None, C=None):
@@ -657,6 +657,7 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
         y_pred : ndarray of shape (n_samples,)
             Vector containing the predictions. In binary and
             multiclass problems, this is a vector containing `n_samples`.
+
         """
         X = np.array(X)
 
@@ -698,7 +699,7 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
 
         Another important point to pay attention is that the categorical
         features storing in `Xd` need to be encoded by using the function
-        :py:function:`one_hot_encoding_cat_feature` before pushing the values
+        :func:`one_hot_encoding_cat_feature` before pushing the values
         to this method.
 
         Parameters
@@ -997,6 +998,7 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
             the maximum membership value for each class. The key is the class
             label and the value is the bound of categeorical features of the
             hyperbox corresponding to that class.
+
         """
         if self.categorical_features_ is not None:
             x[self.categorical_features_] = np.where(pd.isna(x[self.categorical_features_]), CAT_MISSING_FEATURE, x[self.categorical_features_])
@@ -1020,7 +1022,7 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
         Notes
         -----
         The categorical features storing in `xd` need to be encoded by using
-        the function :py:function:`one_hot_encoding_cat_feature` before pushing
+        the function :func:`one_hot_encoding_cat_feature` before pushing
         the values to this method.
 
         Parameters
@@ -1055,6 +1057,7 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
             the maximum membership value for each class. The key is the class
             label and the value is the bound of categeorical features of the
             hyperbox corresponding to that class.
+
         """
         mem_vals_for_classes, hyperbox_id_for_classes = get_membership_onehot_gfmm_all_classes(xl, xu, xd, self.V, self.W, self.D, self.C, self.gamma)
         class_values = np.unique(self.C)

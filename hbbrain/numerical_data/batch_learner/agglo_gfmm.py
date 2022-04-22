@@ -88,11 +88,12 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
     References
     ----------
     .. [1] B. Gabrys, "Agglomerative learning algorithms for general fuzzy
-    min-max neural network", Journal of VLSI signal processing systems for
-    signal, image and video technology, vol. 32, no. 1, pp. 67-82, 2002.
-    .. [2] T.T. Khuat and B. Gabrys, "Accelerated learning algorithms of general
-    fuzzy min-max neural network using a novel hyperbox selection rule,"
-    Information Sciences, vol. 547, pp. 887-909, 2021.
+           min-max neural network", Journal of VLSI signal processing systems
+           for signal, image and video technology, vol. 32, no. 1, pp. 67-82, 2002.
+
+    .. [2] T.T. Khuat and B. Gabrys, "Accelerated learning algorithms of
+           general fuzzy min-max neural network using a novel hyperbox
+           selection rule," Information Sciences, vol. 547, pp. 887-909, 2021.
 
     Examples
     --------
@@ -110,6 +111,7 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
     Number of hyperboxes = 65
     >>> clf.predict(X[[10, 50, 100]])
     array([0, 1, 2])
+
     """
 
     def __init__(self, theta=0.5, gamma=1, min_simil=0.5, simil_measure='mid', asimil_type='max', is_draw=False):
@@ -393,6 +395,7 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
         y_pred : ndarray of shape (n_samples,)
             Vector containing the predictions. In binary and
             multiclass problems, this is a vector containing `n_samples`.
+
         """
         X = np.array(X)
         y_pred = self._predict(X, X, type_boundary_handling)

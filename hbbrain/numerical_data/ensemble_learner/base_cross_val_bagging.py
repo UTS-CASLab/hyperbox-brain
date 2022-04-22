@@ -120,6 +120,7 @@ class BaseCrossValBagging(BaseEnsemble, metaclass=ABCMeta):
         -------
         self : object
             Fitted estimator.
+
         """
         if X.ndim == 1:
             X = np.reshape(X, (1, -1))
@@ -146,6 +147,7 @@ class BaseCrossValBagging(BaseEnsemble, metaclass=ABCMeta):
         -------
         self : object
             Fitted estimator.
+
         """
         random_state = check_random_state(self.random_state)
         self.estimators_ = list()
@@ -215,6 +217,7 @@ class BaseCrossValBagging(BaseEnsemble, metaclass=ABCMeta):
         -------
         self
             A bagging model with base estimators prunned.
+
         """
         for estimator in self.estimators_:
             if isinstance(estimator, BaseGFMMClassifier):

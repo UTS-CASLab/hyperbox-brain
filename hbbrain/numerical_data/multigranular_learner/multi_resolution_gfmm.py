@@ -106,6 +106,7 @@ def remove_contained_hyperboxes(V, W, C, N_samples, Centroids):
     n_removed_hyperboxes : int
         Numer of hyperboxes has been removed because they are included in at
         least one larger hyperbox with the same class label.
+
     """
     n_hyperboxes = len(C)
     # an array of indices showing the position of all hyperboxes kept
@@ -330,9 +331,9 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
     References
     ----------
     .. [1] T.T. Khuat, F. Chen, and B. Gabrys, "An Effective Multiresolution
-    Hierarchical Granular Representation Based Classifier Using General Fuzzy
-    Min-Max Neural Network," IEEE Transactions on Fuzzy Systems, vol. 29, no. 2,
-    pp. 427-441, 2021.
+           Hierarchical Granular Representation Based Classifier Using General
+           Fuzzy Min-Max Neural Network," IEEE Transactions on Fuzzy Systems,
+           vol. 29, no. 2, pp. 427-441, 2021.
 
     Examples
     --------
@@ -356,6 +357,7 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
     array([0, 1, 2])
     >>> print("Number of hyperboxes at granularity 5 = %d"%clf.get_n_hyperboxes(4))
     Number of hyperboxes at granularity 5 = 11
+
     """
 
     def __init__(self, n_partitions=4, granular_theta=[0.1, 0.2, 0.3], gamma=1, min_membership_aggregation=0.5, random_state=0):
@@ -394,6 +396,7 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
             A trained base learner with lower and upper bounds, class labels,
             number of fully included samples within each hyperbox and centroids
             of hyperboxes.
+
         """
         if Xl.ndim == 1:
             Xl = Xl.reshape(1, -1)
@@ -1096,6 +1099,7 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
         y_pred : ndarray of shape (n_samples,)
             Vector containing the predictions. In binary and
             multiclass problems, this is a vector containing `n_samples`.
+
         """
         X = np.array(X)
         y_pred = self._predict(X, X, level)

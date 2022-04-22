@@ -15,9 +15,9 @@ def _ramp_func(z, g):
 
     Notes
     -----
-        f = 1,          if z*g > 1
-        f = z*g,        if 0 <= z*g <= 1
-        f = 0,          if z*g < 0
+        f = 1,          if z*g > 1\n
+        f = z*g,        if 0 <= z*g <= 1\n
+        f = 0,          if z*g < 0\n
 
     Parameters
     ----------
@@ -54,8 +54,7 @@ def n_cat_features_containing_bit_one(v):
 
 
 def bitwise_membership(x_cat, D):
-    """
-    Compute membership values between categorical features in the input pattern
+    """Compute membership values between categorical features in the input pattern
     `X_cat` and all categorical features of existing hyperboxes stored in `D`.
 
     Parameters
@@ -173,7 +172,10 @@ def membership_function_freq_cat(x_cat, E, F, similarity_of_cat_vals):
 
 def membership_func_gfmm(xl, xu, V, W, g=1):
     """Compute fuzzy membership values between an input pattern and a list of
-    existing hyperboxes of a general fuzzy min-max neural network
+    existing hyperboxes of a general fuzzy min-max neural network.
+    
+    For more details regarding how to calculate fuzzy membership values, please
+    refer to the publications [1]_ and [2]_.
 
     Notes
     -----
@@ -207,14 +209,12 @@ def membership_func_gfmm(xl, xu, V, W, g=1):
 
     References
     ----------
-    For more details regarding how to calculate fuzzy membership values, please
-    refer to the following publications:
     .. [1] Gabrys, B., & Bargiela, A. (2000). General fuzzy min-max neural
-            network for clustering and classification. IEEE transactions on
-            neural networks, 11(3), 769-783.
+           network for clustering and classification. IEEE transactions on
+           neural networks, 11(3), 769-783.
     .. [2] Khuat, T. T., & Gabrys, B. (2021). Accelerated learning algorithms
-            of general fuzzy min-max neural network using a novel hyperbox
-            selection rule. Information Sciences, 547, 887-909.
+           of general fuzzy min-max neural network using a novel hyperbox
+           selection rule. Information Sciences, 547, 887-909.
 
     """
     yW = W.shape[0]
@@ -380,7 +380,10 @@ def _min_func(x, g):
 def membership_func_fmnn(x, V, W, g=1):
     """Compute fuzzy membership values between an input pattern and a list of
     existing hyperboxes of a fuzzy min-max neural network and its improved
-    versions
+    versions.
+
+    For more details regarding how to calculate fuzzy membership values, please
+    refer to the publication [1]_.
 
     Notes
     -----
@@ -412,8 +415,6 @@ def membership_func_fmnn(x, V, W, g=1):
 
     References
     ----------
-    For more details regarding how to calculate fuzzy membership values, please
-    refer to the following publication:
     .. [1] Simpson, P. (1992). Fuzzy min—max neural networks—Part 1:
            Classiﬁcation. IEEE transactions on neural networks, 3(5), 776-786.
 
@@ -641,6 +642,9 @@ def membership_func_freq_cat_gfmm(xl, xu, x_cat, V, W, E, F, similarity_of_cat_v
     values for categorical features is computed based on the occurrence
     frequency values of different class labels with regards to each categorical
     values in each categorical feature.
+    
+    For more details regarding how to calculate fuzzy membership values, please
+    refer to the publications [1]_ and [2]_.
 
     Parameters
     ----------
@@ -681,8 +685,6 @@ def membership_func_freq_cat_gfmm(xl, xu, x_cat, V, W, E, F, similarity_of_cat_v
 
     References
     ----------
-    For more details regarding how to calculate fuzzy membership values, please
-    refer to the following publications:
     .. [1] T.T. Khuat, B. Gabrys, "An in-depth comparison of methods handling
            mixed-attribute data for general fuzzy min–max neural network",
            Neurocomputing, vol. 464, pp. 175-202, 2021.
@@ -819,7 +821,7 @@ def membership_cat_feature_eiol_gfmm(x_cat, D):
         features bound for a hyperbox. Each element :math:`d_{ij} \in D` is a
         set of symbolic values with their cardinalities for the j-th
         categorical dimension of the hyperbox :math:`B_i`. For example,
-        :math:`d_{i1} = \{apple : 5, orange : 1\}1 means that the first
+        :math:`d_{i1} = \{apple : 5, orange : 1\}` means that the first
         categorical feature of the hyperbox :math:`B_i` contains 5 values of
         apple and 1 value of orange.
 
@@ -856,16 +858,16 @@ def membership_func_extended_iol_gfmm(xl, xu, x_cat, V, W, D, g=1, alpha = 0.5):
     -----
     This function provides the degrees of membership `b` of an input pattern `x`
     (in form of upper bound `xu` and lower bound `xl` for continuous features
-     and categorical features `x_cat`) with respect to the existing hyperboxes
+    and categorical features `x_cat`) with respect to the existing hyperboxes
     represented by minimal points `V` and maximal points `W` for continuous
     features and the bound `D` for categorical features. The sensitivity
     parameter `g` regulates how fast the membership values decrease
     when an input continuous pattern is separeted from hyperbox core. The 
     parameter `alpha` is the trade-off factor between impacts of continuous
     features and categorical features on the output of membership values.
-    Each element :math:`d_{ij} \in D` is a set of symbolic values with their cardinalities for the j-th
-    categorical dimension of the hyperbox :math:`B_i`. For example,
-    :math:`d_{i1} = \{apple : 5, orange : 1\}1 means that the first
+    Each element :math:`d_{ij} \in D` is a set of symbolic values with their
+    cardinalities for the j-th categorical dimension of the hyperbox :math:`B_i`. For example,
+    :math:`d_{i1} = \{apple : 5, orange : 1\}` means that the first
     categorical feature of the hyperbox :math:`B_i` contains 5 values of
     apple and 1 value of orange.
 
@@ -1037,12 +1039,6 @@ def membership_func_free_range_gfmm(xl, xu, V, W, g=1):
     b : array-like of shape (n_hyperboxes,)
         Degrees of membership of the input pattern X=[Xl, Xu] corresponding to
         each hyperbox in the current list of existing hyperboxes.
-
-    References
-    ----------
-    For more details regarding how to calculate fuzzy membership values, please
-    refer to the following publications:
-    .. [1]
 
     """
     yW = W.shape[0]

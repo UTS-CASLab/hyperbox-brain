@@ -115,6 +115,7 @@ class ModelCombinationBagging(ClassifierMixin, BaseBagging):
     ...                         n_estimators=10, random_state=0).fit(X, y)
     >>> clf.predict([[1, 0.6, 0.5, 0.2]])
     array([1])
+
     """
 
     def __init__(
@@ -179,6 +180,7 @@ class ModelCombinationBagging(ClassifierMixin, BaseBagging):
         -------
         self : object
             Fitted estimator.
+
         """
         if X.ndim == 1:
             X = np.reshape(X, (1, -1))
@@ -248,6 +250,7 @@ class ModelCombinationBagging(ClassifierMixin, BaseBagging):
         -------
         y_pred : ndarray of shape (n_samples,)
             The predicted classes.
+
         """
         X = np.array(X)
         if isinstance(self.model_level_estimator_, (AccelAgglomerativeLearningGFMM, AgglomerativeLearningGFMM, ImprovedOnlineGFMM)) == True:
@@ -272,6 +275,7 @@ class ModelCombinationBagging(ClassifierMixin, BaseBagging):
         -------
         y : ndarray of shape (n_samples,)
             The predicted classes.
+
         """
         # Parallel loop
         n_jobs, n_estimators, starts = _partition_estimators(
@@ -315,6 +319,7 @@ class ModelCombinationBagging(ClassifierMixin, BaseBagging):
         -------
         self
             A final hyperbox-based model is prunned of low-quality hyperboxes.
+
         """
         self.model_level_estimator_.simple_pruning(X_val, X_val, y_val, acc_threshold, keep_empty_boxes)
            

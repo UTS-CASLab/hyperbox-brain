@@ -46,6 +46,7 @@ def predict_with_manhattan_fmnn(V, W, C, X, g=1):
     y_pred : ndarray of shape (n_samples,)
         A vector contains the predictions. In binary and multiclass problems, this 
         is a vector containing `n_samples`. 
+
     """
     if X.ndim == 1:
         X = X.reshape(1, -1)
@@ -81,7 +82,7 @@ def predict_with_manhattan_fmnn(V, W, C, X, g=1):
     return y_pred
 
 
-class BaseFMNNClassifier(BaseHyperboxClassifier): 
+class BaseFMNNClassifier(BaseHyperboxClassifier):
     """
     Base class for all hyperbox-based estimators in hyperbox-brain.
     
@@ -93,7 +94,6 @@ class BaseFMNNClassifier(BaseHyperboxClassifier):
 
     This class only initialises all common parameters for hyperbox-based 
     estimators
-    ------
 
     Parameters
     ----------
@@ -146,6 +146,7 @@ class BaseFMNNClassifier(BaseHyperboxClassifier):
         y_pred : ndarray of shape (n_samples,)
             Vector containing the predictions. In binary and
             multiclass problems, this is a vector containing `n_samples`.
+
         """
         X = np.array(X)
         y_pred = predict_with_manhattan_fmnn(self.V, self.W, self.C, X, self.gamma)

@@ -10,9 +10,10 @@ import numpy as np
 def split_matrix(A, asimil_type='max', is_sort=True):
     """
     Split an input matrix `A` into a maxtrix with three columns:
-    + The first column contains the row indices of `A`
-    + The second column contains the column indices of A
-    + The third column contains the values corresponding to each row and column
+
+    - The first column contains the row indices of `A`
+    - The second column contains the column indices of `A`
+    - The third column contains the values corresponding to each row and column
 
     Parameters
     ----------

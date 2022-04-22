@@ -49,7 +49,8 @@ def predict_rfmnn(V, W, C, X, g):
     -------
     y_pred : ndarray of shape (n_samples,)
         A vector contains the predictions. In binary and multiclass problems, this 
-        is a vector containing `n_samples`. 
+        is a vector containing `n_samples`.
+
     """
     if X.ndim == 1:
         X = X.reshape(1, -1)
@@ -124,9 +125,9 @@ class RFMNNClassifier(BaseFMNNClassifier):
     References
     ----------
     .. [1] O. N. Al-Sayaydeh, M. F. Mohammed, E. Alhroob, H. Tao, and C. P. Lim,
-    "A refined fuzzy min-max neural network with new learning procedures for
-    pattern classification," IEEE Transactions on Fuzzy Systems, vol. 28, no.
-    10, pp. 2480-2494, 2019.
+           "A refined fuzzy min-max neural network with new learning procedures
+           for pattern classification," IEEE Transactions on Fuzzy Systems,
+           vol. 28, no. 10, pp. 2480-2494, 2019.
     
     Examples
     --------
@@ -141,6 +142,7 @@ class RFMNNClassifier(BaseFMNNClassifier):
     >>> clf = RFMNNClassifier(theta=0.1).fit(X, y)
     >>> clf.predict(X[[10, 50, 100]])
     array([0, 1, 2])
+
     """
 
     def __init__(self, theta=0.5, gamma=1, is_draw=False, V=None, W=None, C=None):
@@ -369,6 +371,7 @@ class RFMNNClassifier(BaseFMNNClassifier):
         y_pred : ndarray of shape (n_samples,)
             Vector containing the predictions. In binary and
             multiclass problems, this is a vector containing `n_samples`.
+
         """
         X = np.array(X)
         y_pred = predict_rfmnn(self.V, self.W, self.C, X, self.gamma)

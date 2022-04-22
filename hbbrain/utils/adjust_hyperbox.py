@@ -109,7 +109,7 @@ def is_two_hyperboxes_overlap_num_data_general(Vi, Wi, Vk, Wk):
     This function uses a general formula built from a shortest gap-based similarity
     measure. If this measure returns a value of 1, it means that these two hyperboxes 
     overlap with each other. Otherwise, two hyperboxes `Bi` and `Bk` do not overlap.
-    See the references for more details.
+    See the references [1]_ and [2]_ for more details.
 
     Parameters
     ----------
@@ -155,7 +155,8 @@ def is_two_hyperboxes_overlap_num_data_general(Vi, Wi, Vk, Wk):
 
 def overlap_resolving_num_data(Vi, Wi, ci, Vk, Wk, ck, alpha=0.00001):
     """Resolve overlap between two hyperboxes `Bi` and `Bk` with coordinates being 
-    numerical features.
+    numerical features. For more details regarding the way of contracting two
+    overlapping hyperboxes, please see the article [1]_:
 
     Parameters
     ----------
@@ -188,9 +189,6 @@ def overlap_resolving_num_data(Vi, Wi, ci, Vk, Wk, ck, alpha=0.00001):
         
     References
     ----------
-    For more details regarding the way of contracting two overlapping hyperboxes, 
-    please see the following articles:
-
     .. [1] T.T. Khuat and B. Gabrys, "Accelerated learning algorithms of general 
            fuzzy min-max neural network using a novel hyperbox selection rule,"
            Information Sciences, vol. 547, pp. 887-909, 2021.
@@ -388,7 +386,7 @@ def hyperbox_contraction_fmnn(V, W, case_contraction, id_extended_box, id_tested
     W : array-like of shape (n_hyperboxes, n_features)
         Upper bounds (maximum points) of all existing hyperboxes in the trained model.
     case_contraction : a list of two elements
-        This is a special struct which is the outcomes of the :function:`hyperbox_overlap_test_fmnn` function to 
+        This is a special struct which is the outcomes of the :func:`hyperbox_overlap_test_fmnn` function to 
         determine the overlap test case and corresponding overlapped dimension.
     id_extended_box : int
         id_extended_boxex of the extended hyperbox which needs to test for overlap.
@@ -600,7 +598,8 @@ def is_overlap_diff_labels_num_data_rfmnn(V, W, V_cmp, W_cmp, find_dim_min_overl
     """
     Check whether there is any overlapping region between the hyperbox represented by 
     minimum point `V_cmp` and maximum point `W_cmp` and any hyperbox in the existing list of 
-    hyperboxes belonging to other classes.
+    hyperboxes belonging to other classes. The detailed information of this
+    procedure can be found in [1]_.
 
     Parameters
     ----------
@@ -631,9 +630,10 @@ def is_overlap_diff_labels_num_data_rfmnn(V, W, V_cmp, W_cmp, find_dim_min_overl
                 
     References
     ----------
-    The detailed information of this procedure can be found in [1]_.
-    .. [1] O. N. Al-Sayaydeh, M. F. Mohammed, E. Alhroob, H. Tao, and C. P. Lim, "A refined fuzzy min–max neural network with 
-    new learning procedures for pattern classification," IEEE Transactions on Fuzzy Systems, vol. 28, no. 10, pp. 2480-2494, 2019.
+    .. [1] O. N. Al-Sayaydeh, M. F. Mohammed, E. Alhroob, H. Tao, and C. P. Lim,
+           "A refined fuzzy min–max neural network with new learning procedures
+           for pattern classification," IEEE Transactions on Fuzzy Systems,
+           vol. 28, no. 10, pp. 2480-2494, 2019.
     
     """
     if (V is None) or (len(V) == 0):
@@ -680,7 +680,9 @@ def is_overlap_diff_labels_num_data_rfmnn(V, W, V_cmp, W_cmp, find_dim_min_overl
 
 def hyperbox_contraction_rfmnn(V, W, C, ids_parent_box, id_child_box, overlap_dim, scale=0.001):
     """
-    Adjusting or splitting min-max points of overlaping clusters in the refined fuzzy min-max neural network classifier.
+    Adjusting or splitting min-max points of overlaping clusters in the refined
+    fuzzy min-max neural network classifier. The detailed information of this
+    procedure can be found in [1]_.
 
     Parameters
     ----------
@@ -710,9 +712,10 @@ def hyperbox_contraction_rfmnn(V, W, C, ids_parent_box, id_child_box, overlap_di
         
     References
     ----------
-    The detailed information of this procedure can be found in [1]_.
-    .. [1] O. N. Al-Sayaydeh, M. F. Mohammed, E. Alhroob, H. Tao, and C. P. Lim, "A refined fuzzy min–max neural network with 
-    new learning procedures for pattern classification," IEEE Transactions on Fuzzy Systems, vol. 28, no. 10, pp. 2480-2494, 2019.
+    .. [1] O. N. Al-Sayaydeh, M. F. Mohammed, E. Alhroob, H. Tao, and C. P. Lim,
+           "A refined fuzzy min–max neural network with new learning procedures
+           for pattern classification," IEEE Transactions on Fuzzy Systems,
+           vol. 28, no. 10, pp. 2480-2494, 2019.
 
     """
     Vout = V.copy()
@@ -949,7 +952,7 @@ def hyperbox_contraction_freq_cat_gfmm(Ei, Fi, case_contraction):
         contraction.
     case_contraction : a list of two elements
         This is a special struct which is the outcomes of the
-        :function:`hyperbox_overlap_test_freq_cat_gfmm` function to determine
+        :func:`hyperbox_overlap_test_freq_cat_gfmm` function to determine
         the overlap test case and corresponding overlapped dimension for
         categorical features.
 
@@ -1083,7 +1086,6 @@ def is_two_hyperboxes_overlap_num_data_free_range_general(Vi, Wi, Vk, Wk):
     This function uses a general formula concerning the determination of
     an hyperbox within the overlaping region. If this hyperbox exists for all
     dimensions, two hyperboxes `Bi` and `Bk` overlap, else no overlap occurs.
-    See the references for more details.
 
     Parameters
     ----------
@@ -1100,13 +1102,7 @@ def is_two_hyperboxes_overlap_num_data_free_range_general(Vi, Wi, Vk, Wk):
     -------
     is_overlap : boolean
         Show if two hyperboxes `Bi` and `Bk` overlap or not.
-        
-    References
-    ----------
-    For more details regarding the way of checking the overlap between two hyperboxes, 
-    please see the following articles:
 
-    .. [1] 
     """
     overlap_vec = np.minimum(Wi, Wk) - np.maximum(Vi, Vk)
     is_overlap = (overlap_vec >= 0).all()
@@ -1116,7 +1112,8 @@ def is_two_hyperboxes_overlap_num_data_free_range_general(Vi, Wi, Vk, Wk):
 
 def overlap_resolving_num_data_free_range(Vi, Wi, ci, Vk, Wk, ck, alpha=0.00001):
     """Resolve overlap between two hyperboxes `Bi` and `Bk` with coordinates
-    being numerical features with unlimited ranges.
+    being numerical features with unlimited ranges. For more details regarding
+    the way of contracting two overlapping hyperboxes, please see [1]_.
 
     Parameters
     ----------
@@ -1149,9 +1146,6 @@ def overlap_resolving_num_data_free_range(Vi, Wi, ci, Vk, Wk, ck, alpha=0.00001)
         
     References
     ----------
-    For more details regarding the way of contracting two overlapping hyperboxes, 
-    please see the following articles:
-
     .. [1] T.T. Khuat and B. Gabrys, "Accelerated learning algorithms of general 
            fuzzy min-max neural network using a novel hyperbox selection rule,"
            Information Sciences, vol. 547, pp. 887-909, 2021.

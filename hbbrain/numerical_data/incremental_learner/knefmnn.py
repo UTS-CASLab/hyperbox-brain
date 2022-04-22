@@ -60,8 +60,8 @@ class KNEFMNNClassifier(BaseFMNNClassifier):
     References
     ----------
     .. [1] M. Mohammed and C. P. Lim, "Improving the Fuzzy Min-Max neural
-    network with a k-nearest hyperbox expansion rule for pattern classification,"
-    Applied Soft Computing, vol. 52, pp. 135-145, 2017.
+           network with a k-nearest hyperbox expansion rule for pattern
+           classification," Applied Soft Computing, vol. 52, pp. 135-145, 2017.
 
     Examples
     --------
@@ -76,6 +76,7 @@ class KNEFMNNClassifier(BaseFMNNClassifier):
     >>> clf = KNEFMNNClassifier(theta=0.1, k_neighbors=5).fit(X, y)
     >>> clf.predict(X[[10, 50, 100]])
     array([0, 1, 2])
+
     """
 
     def __init__(self, theta=0.5, gamma=1, k_neighbors=5, is_draw=False, V=None, W=None, C=None):

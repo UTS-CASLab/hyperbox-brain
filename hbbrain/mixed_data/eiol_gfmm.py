@@ -364,8 +364,8 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
     References
     ----------
     .. [1] T. T. Khuat and B. Gabrys "An Online Learning Algorithm for a
-    Neuro-Fuzzy Classifier with Mixed-Attribute Data", ArXiv preprint
-    arXiv:2009.14670, 2020.
+           Neuro-Fuzzy Classifier with Mixed-Attribute Data", ArXiv preprint
+           arXiv:2009.14670, 2020.
 
     Examples
     --------

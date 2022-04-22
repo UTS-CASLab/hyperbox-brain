@@ -102,6 +102,7 @@ class DecisionCombinationBagging(ClassifierMixin, BaseBagging):
     ...                         n_estimators=10, random_state=0).fit(X, y)
     >>> clf.predict([[1, 0.6, 0.5, 0.2]])
     array([1])
+
     """
     
     def __init__(
@@ -142,6 +143,7 @@ class DecisionCombinationBagging(ClassifierMixin, BaseBagging):
         -------
         self : object
             Fitted estimator.
+
         """
         y = _covert_empty_class(y)
         
@@ -175,6 +177,7 @@ class DecisionCombinationBagging(ClassifierMixin, BaseBagging):
         -------
         y : ndarray of shape (n_samples,)
             The predicted classes.
+
         """
         X = np.array(X)
         # Parallel loop

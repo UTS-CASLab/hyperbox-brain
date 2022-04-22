@@ -126,6 +126,7 @@ class DecisionCombinationCrossValBagging(ClassifierMixin, BaseCrossValBagging):
     ...                         n_estimators=10, random_state=0).fit(X, y)
     >>> clf.predict([[1, 0.6, 0.5, 0.2]])
     array([1])
+
     """
 
     def __init__(
@@ -174,6 +175,7 @@ class DecisionCombinationCrossValBagging(ClassifierMixin, BaseCrossValBagging):
         -------
         self : object
             Fitted estimator.
+
         """
         if X.ndim == 1:
             X = np.reshape(X, (1, -1))
@@ -210,6 +212,7 @@ class DecisionCombinationCrossValBagging(ClassifierMixin, BaseCrossValBagging):
         -------
         y : ndarray of shape (n_samples,)
             The predicted classes.
+
         """
         X = np.array(X)
         # Parallel loop

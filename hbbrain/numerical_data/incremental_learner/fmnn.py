@@ -51,7 +51,7 @@ class FMNNClassifier(BaseFMNNClassifier):
     References
     ----------
     .. [1] P. Simpson, "Fuzzy min—max neural networks—Part 1: Classiﬁcation," 
-    IEEE Transactions on Neural Networks, vol. 3, no. 5, pp. 776-786, 1992.
+           IEEE Transactions on Neural Networks, vol. 3, no. 5, pp. 776-786, 1992.
 
     Examples
     --------
@@ -66,6 +66,7 @@ class FMNNClassifier(BaseFMNNClassifier):
     >>> clf = FMNNClassifier(theta=0.1).fit(X, y)
     >>> clf.predict(X[[10, 50, 100]])
     array([0, 1, 2])
+
     """
 
     def __init__(self, theta=0.5, gamma=1, is_draw=False, V=None, W=None, C=None):

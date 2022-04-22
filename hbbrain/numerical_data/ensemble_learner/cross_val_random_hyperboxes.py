@@ -194,6 +194,7 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
     ...                         n_estimators=10, random_state=0).fit(X, y)
     >>> clf.predict([[1, 0.6, 0.5, 0.2]])
     array([1])
+
     """
 
     def __init__(
@@ -231,6 +232,7 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
         ----------
         n_features: int
             The number of features of input data
+
         """
         if (self.max_features == 'auto') or (self.max_features == 'sqrt'):
             self._max_features = int(math.sqrt(n_features))
@@ -320,6 +322,7 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
         -------
         self : object
             Fitted estimator.
+
         """
         if X.ndim == 1:
             X = np.reshape(X, (1, -1))
@@ -409,6 +412,7 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
         -------
         y : ndarray of shape (n_samples,)
             The predicted classes.
+
         """
         X = np.array(X)
         # Parallel loop
@@ -454,6 +458,7 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
         -------
         self
             A random hyperboxes model with base estimators prunned.
+
         """
         for estimator, features in zip(self.estimators_, self.estimators_features_):
             if isinstance(estimator, BaseGFMMClassifier):

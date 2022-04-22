@@ -1,6 +1,6 @@
 """
 The :mod:`hbbrain.utils.drawing_func` submodule implements various functions 
-to sup_boundport for drawing the hyperboxes.
+to support for drawing the hyperboxes.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
 # License: BSD 3 clause
@@ -128,7 +128,7 @@ def generate_grid_decision_boundary_2D(min_x=0, max_x=1, min_y=0, max_y=1, step=
     Notes
     -----
     The number of elements `n_points` in the matrix `grid` is computed by 
-    .. math:: \cfrac{max_x - min_x}{step} \cdot \cfrac{max_y - min_y}{step} 
+    :math:`\cfrac{max_x - min_x}{step} \cdot \cfrac{max_y - min_y}{step}`.
 
     """
     # define the x and y scale

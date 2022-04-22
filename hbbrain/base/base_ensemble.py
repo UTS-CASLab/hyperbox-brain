@@ -124,12 +124,14 @@ class BaseEnsemble(MetaEstimatorMixin, BaseEstimator, metaclass=ABCMeta):
     estimator_params : list of str, default=tuple()
         The list of attributes to use as parameters when instantiating a
         new base estimator. If none are given, default parameters are used.
+    
     Attributes
-    ----------
+    -----------
     base_estimator_ : estimator
         The base estimator from which the ensemble is grown.
     estimators_ : list of estimators
         The collection of fitted base estimators.
+
     """
 
     # overwrite _required_parameters from MetaEstimatorMixin

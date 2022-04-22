@@ -44,6 +44,7 @@ def predict_with_manhattan(V, W, C, Xl, Xu, g=1):
     y_pred : ndarray of shape (n_samples,)
         A vector contains the predictions. In binary and multiclass problems, this 
         is a vector containing `n_samples`. 
+
     """
     if Xl.ndim == 1:
         Xl = Xl.reshape(1, -1)
@@ -257,7 +258,7 @@ def is_contain_missing_value(X):
         return False
 
 
-class BaseGFMMClassifier(BaseHyperboxClassifier): 
+class BaseGFMMClassifier(BaseHyperboxClassifier):
     """
     Base class for all hyperbox-based estimators in hyperbox-brain.
 
@@ -269,7 +270,6 @@ class BaseGFMMClassifier(BaseHyperboxClassifier):
 
     This class only initialises all common parameters for hyperbox-based
     estimators
-    ------
 
     Parameters
     ----------
@@ -323,6 +323,7 @@ class BaseGFMMClassifier(BaseHyperboxClassifier):
         y_pred : ndarray of shape (n_samples,)
             Vector containing the predictions. In binary and
             multiclass problems, this is a vector containing `n_samples`.
+
         """
         X = np.array(X)
         y_pred = self._predict(X, X)

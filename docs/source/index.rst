@@ -1,15 +1,22 @@
 .. hyperbox-brain documentation master file, created by
-   sphinx-quickstart on Tue Feb 15 22:06:12 2022.
+   sphinx-quickstart on Thu Apr 21 11:06:56 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to hyperbox-brain's documentation!
-==========================================
+hyperbox-brain documentation
+============================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started:
+   
+   README
 
+.. toctree::
+   :maxdepth: 4
+   :caption: Hyperbox-brain API:
+
+   api/api_index
 
 
 Indices and tables

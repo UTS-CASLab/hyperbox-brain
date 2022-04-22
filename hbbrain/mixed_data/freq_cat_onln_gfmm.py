@@ -1,5 +1,5 @@
 """
-General fuzzy min-max neural network trained by the original incremental
+General fuzzy min-max neural network trained by the batch incremental
 learning algorithm, in which categorical features are encoded using
 the ordinal encoding method and the similarity among categorical
 values are computed using their frequency of occurence with respect to all
@@ -167,7 +167,7 @@ def predict_freq_cat_feature_manhanttan(V, W, E, F, C, Xl, Xu, X_cat, similarity
 
     Another important point to pay attention is that the categorical
     features storing in :math:`X_cat` need to be encoded by using the function
-    :py:function:`ordinal_encode_categorical_features` before pushing the values
+    :func:`ordinal_encode_categorical_features` before pushing the values
     to this method.
 
     Parameters
@@ -290,11 +290,11 @@ def predict_freq_cat_feature_manhanttan(V, W, E, F, C, Xl, Xu, X_cat, similarity
 
 
 class FreqCatOnlineGFMM(BaseHyperboxClassifier):
-    """Online learning algorithm with mixed-attribute data for a general fuzzy
-    min-max neural network, in which categorical features are encoded using
-    the ordinal encoding method and the similarity degrees among categorical
-    values are computed using their frequency of occurence with respect to all
-    class labels in a training set.
+    """Batch Incremental learning algorithm with mixed-attribute data for a
+    general fuzzy min-max neural network, in which categorical features are
+    encoded using the ordinal encoding method and the similarity degrees among
+    categorical values are computed using their frequency of occurence with
+    respect to all class labels in a training set.
 
     This algorithm uses a distance measure between any two values of a categorical
     variable based on the occurrence probability of such categorical values with
@@ -303,7 +303,8 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
     with membership values of continuous features to generate the final membership
     values for mixed-attribute data.
 
-    See [1]_ for more detailed information regarding this online learning algorithm.
+    See [1]_ for more detailed information regarding this batch incremental
+    learning algorithm.
 
     Parameters
     ----------
@@ -360,8 +361,8 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
     References
     ----------
     .. [1] T. T. Khuat and B. Gabrys "An in-depth comparison of methods handling
-    mixed-attribute data for general fuzzy min–max neural network", Neurocomputing,
-    vol 464, pp. 175-202, 2021.
+           mixed-attribute data for general fuzzy min–max neural network",
+           Neurocomputing, vol 464, pp. 175-202, 2021.
 
     Examples
     --------
@@ -381,6 +382,7 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
     Number of hyperboxes = 416
     >>> clf.predict(X[[10, 100]])
     array([1, 0])
+
     """
 
     def __init__(self, theta=0.5, theta_min=1, eta=0.5, gamma=1, alpha=0.9, V=None, W=None, E=None, F=None, C=None):
@@ -797,6 +799,7 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
         y_pred : ndarray of shape (n_samples,)
             Vector containing the predictions. In binary and
             multiclass problems, this is a vector containing `n_samples`.
+
         """
         X = np.array(X)
 
@@ -837,7 +840,7 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
 
         Another important point to pay attention is that the categorical
         features storing in :math:`X_cat` need to be encoded by using the function
-        :py:function:`ordinal_encode_categorical_features` before pushing the values
+        :func:`ordinal_encode_categorical_features` before pushing the values
         to this method.
 
         Parameters
@@ -1168,6 +1171,7 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
             the hyperboxes having the maximum membership value for each class.
             The key is the class label and the value is the upper bound of
             categorical features for the hyperboxes corresponding to each class.
+
         """
         if self.categorical_features_ is not None:
             x = ordinal_encode_categorical_features(x.reshape(1, -1), self.categorical_features_, self.encoder_)[0][0]
@@ -1191,7 +1195,7 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
         Notes
         -----
         The categorical features storing in `x_cat` need to be encoded by using
-        the function :py:function:`ordinal_encode_categorical_features` before pushing
+        the function :func:`ordinal_encode_categorical_features` before pushing
         the values to this method.
 
         Parameters
@@ -1234,6 +1238,7 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
             the hyperboxes having the maximum membership value for each class.
             The key is the class label and the value is the upper bound of
             categorical features for the hyperboxes corresponding to each class.
+
         """
         mem_vals_for_classes, hyperbox_id_for_classes = get_membership_freq_cat_gfmm_all_classes(xl, xu, x_cat, self.V, self.W, self.E, self.F, self.C, self.similarity_of_cat_vals, self.gamma)
         class_values = np.unique(self.C)

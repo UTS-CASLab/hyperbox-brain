@@ -55,8 +55,8 @@ class EFMNNClassifier(BaseFMNNClassifier):
     References
     ----------
     .. [1] M. Mohammed and C. P. Lim, "An enhanced fuzzy min-max neural network
-    for pattern classification," IEEE Transactions on Neural Networks and
-    Learning Systems, vol. 26, no. 3, pp. 417-429, 2014.
+           for pattern classification," IEEE Transactions on Neural Networks
+           and Learning Systems, vol. 26, no. 3, pp. 417-429, 2014.
 
     Examples
     --------
@@ -71,6 +71,7 @@ class EFMNNClassifier(BaseFMNNClassifier):
     >>> clf = EFMNNClassifier(theta=0.1).fit(X, y)
     >>> clf.predict(X[[10, 50, 100]])
     array([0, 1, 2])
+
     """
 
     def __init__(self, theta=0.5, gamma=1, is_draw=False, V=None, W=None, C=None):

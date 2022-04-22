@@ -72,11 +72,12 @@ class ImprovedOnlineGFMM(BaseGFMMClassifier):
     References
     ----------
     .. [1] T.T. Khuat, F. Chen, and B. Gabrys, "An improved online learning
-    algorithm for general fuzzy min-max neural network," in Proceedings of the
-    International Joint Conference on Neural Networks (IJCNN), pp. 1-9, 2020.
+           algorithm for general fuzzy min-max neural network," in Proceedings
+           of the International Joint Conference on Neural Networks (IJCNN),
+           pp. 1-9, 2020.
     .. [2] T.T. Khuat and B. Gabrys, "Accelerated learning algorithms of general
-    fuzzy min-max neural network using a novel hyperbox selection rule,"
-    Information Sciences, vol. 547, pp. 887-909, 2021.
+           fuzzy min-max neural network using a novel hyperbox selection rule,"
+           Information Sciences, vol. 547, pp. 887-909, 2021.
 
     Examples
     --------
@@ -91,6 +92,7 @@ class ImprovedOnlineGFMM(BaseGFMMClassifier):
     >>> clf = ImprovedOnlineGFMM(theta=0.1).fit(X, y)
     >>> clf.predict(X[[10, 50, 100]])
     array([0, 1, 2])
+
     """
 
     def __init__(self, theta=0.5, gamma=1, is_draw=False, V=None, W=None, C=None, N_samples=None):
@@ -432,6 +434,7 @@ class ImprovedOnlineGFMM(BaseGFMMClassifier):
         y_pred : ndarray of shape (n_samples,)
             Vector containing the predictions. In binary and
             multiclass problems, this is a vector containing `n_samples`.
+
         """
         X = np.array(X)
         y_pred = self._predict(X, X, type_boundary_handling)

@@ -29,8 +29,7 @@ class BaseHyperboxClassifier(BaseEstimator, ClassifierMixin):
     arguments (no ``*args`` or ``**kwargs``).
 
     This class only initialises all common parameters for hyperbox-based
-    estimators
-    ------
+    estimators.
 
     Parameters
     ----------
@@ -94,6 +93,7 @@ class BaseHyperboxClassifier(BaseEstimator, ClassifierMixin):
         -------
         self
             Fitted estimator.
+
         """
         return self
 
