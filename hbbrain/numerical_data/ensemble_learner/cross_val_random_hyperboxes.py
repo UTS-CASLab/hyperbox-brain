@@ -97,7 +97,7 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
     its construction procedures and then making an ensemble out of it. Subsets of features and samples 
     of the random hyperboxes are builts by random subsampling without replacement.
     See [1]_ for more detailed information regarding the random hyperboxes classifier.
-    
+
     Parameters
     ----------
     base_estimator : object, default=None
@@ -154,7 +154,7 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
         If the base estimator accepts a `random_state` attribute, a different
         seed is generated for each instance in the ensemble.
         Pass an int for reproducible output across multiple function calls.
-    
+
     Attributes
     ----------
     base_estimator_ : estimator
@@ -170,7 +170,7 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
         The classes labels.
     n_classes_ : int or list
         The number of classes.
-    
+
     References
     ----------
     .. [1] T. T. Khuat and B. Gabrys "Random Hyperboxes", IEEE Transactions on Neural Networks 

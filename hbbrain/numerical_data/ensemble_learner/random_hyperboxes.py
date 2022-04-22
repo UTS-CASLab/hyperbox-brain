@@ -171,7 +171,7 @@ class RandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
     array([1])
 
     """
-    
+
     def __init__(
         self,
         base_estimator=None,
