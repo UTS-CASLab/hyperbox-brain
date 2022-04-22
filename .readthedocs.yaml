@@ -31,5 +31,5 @@ python:
    - requirements: docs/requirements.txt
    
  # use a conda environment file
-conda:
-  file: docs/readthedocs-environment.yml
+#conda:
+#  file: docs/readthedocs-environment.yml
