@@ -60,7 +60,7 @@ extensions = [
 	'sphinx.ext.duration',
     'sphinx.ext.doctest',
 	'sphinx.ext.autosummary',
-	'numpydoc',
+	'sphinx.ext.napoleon',
 	'sphinx.ext.autosectionlabel',
     'nbsphinx',
     'sphinx.ext.mathjax',
@@ -69,12 +69,13 @@ extensions = [
 ]
 #'sphinx.ext.linkcode',
 # 'sphinx.ext.napoleon',
-numpydoc_class_members_toctree = False
+#numpydoc_class_members_toctree = False
+# 'numpydoc',
 
 source_suffix = ['.rst', '.ipynb']
 
 autosummary_generate = True
-#napoleon_google_docstring = False
+napoleon_google_docstring = False
 
 # The master toctree document.
 master_doc = 'index'
