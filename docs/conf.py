@@ -143,12 +143,32 @@ import subprocess
 from functools import partial
 
 def linkcode_resolve(domain, info):
-    if domain != 'py':
+    def find_source():
+        # try to find the file and line number, based on code from numpy:
+        # https://github.com/numpy/numpy/blob/master/doc/source/conf.py#L286
+        obj = sys.modules[info['module']]
+        for part in info['fullname'].split('.'):
+            obj = getattr(obj, part)
+        import inspect
+        import os
+        fn = inspect.getsourcefile(obj)
+        fn = os.path.relpath(fn, start=os.path.abspath('..'))
+        source, lineno = inspect.getsourcelines(obj)
+        return fn, lineno, lineno + len(source) - 1
+
+    if domain != 'py' or not info['module']:
         return None
-    if not info['module']:
-        return None
-    filename = info['module'].replace('.', '/')
-    return "https://github.com/UTS-CASLab/hyperbox-brain/blob/main/%s.py" % filename
+    try:
+        filename = '%s#L%d-L%d' % find_source()
+    except Exception:
+        filename = info['module'].replace('.', '/') + '.py'
+    import subprocess
+    # tag = subprocess.Popen(['git', 'rev-parse', 'HEAD'],
+    #                        stdout=subprocess.PIPE,
+    #                        universal_newlines=True).communicate()[0][:-1]
+    # https://github.com/runawayhorse001/statspy/blob/master/statspy/basics.py
+    # https://github.com/runawayhorse001/SphinxGithub/blob/master/statspy/basics.py
+    return "https://github.com/UTS-CASLab/hyperbox-brain/blob/main/%s" % (filename)
 
 # The following is used by sphinx.ext.linkcode to provide links to github
 linkcode_resolve = linkcode_resolve
