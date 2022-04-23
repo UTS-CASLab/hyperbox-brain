@@ -56,7 +56,7 @@ The hyperbox-brain library can provide the explanation of predicted results via 
 This toolbox provides the visualisation of existing hyperboxes and the decision boundaries of 
 a trained hyperbox-based model if input features are two-dimensional features:
 
-.. image:: ../_static/hyperboxes_and_boundaries.png
+.. image:: _static/hyperboxes_and_boundaries.png
    :height: 300 px
    :width: 350 px
    :alt: Hyperboxes and Decision Boundaries
@@ -66,7 +66,7 @@ For two-dimensional data, the toolbox also provides the reason behind the class 
 by showing representative hyperboxes for each class which join the prediction process of the trained model for 
 an given input pattern:
 
-.. image:: ../_static/hyperboxes_explanation.png
+.. image:: _static/hyperboxes_explanation.png
    :height: 300 px
    :width: 350 px
    :alt: 2D explainations
@@ -76,7 +76,7 @@ For input patterns with two or more dimensions, the hyperbox-brain toolbox uses 
 representative hyperboxes for each class which join the prediction process of the trained model for 
 an given input pattern:
 
-.. image:: ../_static/parallel_coord_explanation.PNG
+.. image:: _static/parallel_coord_explanation.PNG
    :height: 300 px
    :width: 500 px
    :alt: Parallel coordinates explainations
