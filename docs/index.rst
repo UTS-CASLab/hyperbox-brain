@@ -1,7 +1,7 @@
 hyperbox-brain documentation
 ============================
 
-.. image:: https://github.com/UTS-CASLab/hyperbox-brain/blob/main/images/logo.png
+.. image:: _static/logo.png
    :height: 150px
    :width: 150px
    :align: center
@@ -56,7 +56,13 @@ method, this part of the documentation is for you.
    :maxdepth: 4
    :caption: Hyperbox-brain API
 
-   hbbrain api <api/api_index>
+   api/utils
+   api/base
+   api/mixed_data
+   api/batch_learner
+   api/ensemble_learner
+   api/incremental_learner
+   api/multigranular_learner
 
 
 Indices and tables
