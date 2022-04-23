@@ -16,7 +16,7 @@ hyperbox-brain documentation
    :maxdepth: 4
    :caption: Hyperbox-brain API:
 
-   api/api_index
+   hbbrain api <api/api_index>
 
 
 Indices and tables
