@@ -12,6 +12,7 @@ hyperbox-brain documentation
    
    README
 
+
 .. toctree::
    :maxdepth: 4
    :caption: Hyperbox-brain API:
