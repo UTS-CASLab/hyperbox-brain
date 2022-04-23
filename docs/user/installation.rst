@@ -1,3 +1,15 @@
+.. |PythonMinVersion| replace:: 3.6
+.. |NumPyMinVersion| replace:: 1.14.6
+.. |SciPyMinVersion| replace:: 1.1.0
+.. |JoblibMinVersion| replace:: 0.11
+.. |ThreadpoolctlMinVersion| replace:: 2.0.0
+.. |MatplotlibMinVersion| replace:: 2.2.3
+.. |Scikit-ImageMinVersion| replace:: 0.14.5
+.. |SklearnMinVersion| replace:: 0.24.0
+.. |PandasMinVersion| replace:: 0.25.0
+.. |PlotlyMinVersion| replace:: 4.10.0
+.. |PytestMinVersion| replace:: 5.0.1
+
 ============
 Installation
 ============

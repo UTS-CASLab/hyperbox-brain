@@ -1,8 +1,14 @@
 hyperbox-brain documentation
 ============================
+
+.. image:: https://github.com/UTS-CASLab/hyperbox-brain/blob/main/images/logo.png
+   :height: 150px
+   :width: 150px
+   :align: center
+   :target: https://uts-caslab.github.io/hyperbox-brain/
+
 .. raw:: html
-   
-   <p align="center"><img width="150" height="150" src="https://github.com/UTS-CASLab/hyperbox-brain/blob/main/images/logo.png" alt="Hyperbox-Brain logo"/></p>
+
    <H1 align="center">Hyperbox-Brain</H1>
 
 A scikit-learn compatible hyperbox-base machine learning library in Python.
@@ -28,9 +34,6 @@ If you use hyperbox-brain, please use this BibTeX entry:
      year         = 2022,
      url          = {https://hyperbox-brain.readthedocs.io/en/latest/}
    }
-
-User's Guides
-------------
 
 .. toctree::
    :maxdepth: 2
