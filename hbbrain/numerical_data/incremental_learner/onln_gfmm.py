@@ -33,6 +33,17 @@ class OnlineGFMM(BaseGFMMClassifier):
     general fuzzy min-max neural network. The details of this algorithm can
     be found in [1]_.
 
+    .. note::
+
+        This implementation uses the accelerated mechanism presented in [2]_ to
+        accelerate the improved online learning algorithm. Compared to the
+        original online learning algorithm proposed in [1]_, this implementation
+        uses the similarity measure between two hyperboxes by shortest gap
+        distance presented in [3]_ for overlap test. In addition, we extend the
+        number of hyperbox contraction cases from four in the original algorithm
+        to eight cases aiming to cover more overlapping cases between two
+        hyperboxes.
+
     Parameters
     ----------
     theta : float, optional, default=0.5
@@ -68,17 +79,6 @@ class OnlineGFMM(BaseGFMMClassifier):
         Training time in seconds.
     n_passes : int
         Number of training loops.
-
-    .. note::
-
-        This implementation uses the accelerated mechanism presented in [2]_ to
-        accelerate the improved online learning algorithm. Compared to the
-        original online learning algorithm proposed in [1]_, this implementation
-        uses the similarity measure between two hyperboxes by shortest gap
-        distance presented in [3]_ for overlap test. In addition, we extend the
-        number of hyperbox contraction cases from four in the original algorithm
-        to eight cases aiming to cover more overlapping cases between two
-        hyperboxes.
 
     References
     ----------

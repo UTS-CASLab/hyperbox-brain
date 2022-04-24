@@ -30,6 +30,11 @@ class AccelAgglomerativeLearningGFMM(BaseGFMMClassifier):
 
     See [1]_ for more detailed information regarding this learning algorithm.
 
+    .. note::
+
+        This implementation uses the accelerated mechanism presented in
+        [2]_ to accelerate the improved online learning algorithm.
+
     Parameters
     ----------
     theta : float, optional, default=0.5
@@ -68,11 +73,6 @@ class AccelAgglomerativeLearningGFMM(BaseGFMMClassifier):
         Is there any missing values in continuous features in the training data.
     elapsed_training_time : float
         Training time in seconds.
-
-    .. note::
-
-        This implementation uses the accelerated mechanism presented in
-        [2]_ to accelerate the improved online learning algorithm.
 
     References
     ----------
