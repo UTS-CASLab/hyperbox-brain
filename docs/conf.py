@@ -76,7 +76,7 @@ extensions = [
 
 numpydoc_class_members_toctree = False
 
-source_suffix = ['.rst', '.ipynb']
+source_suffix = ['.rst']
 
 autosummary_generate = True
 # napoleon_google_docstring = False

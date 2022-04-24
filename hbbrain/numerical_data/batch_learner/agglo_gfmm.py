@@ -372,7 +372,7 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
     def predict(self, X, type_boundary_handling=PROBABILITY_MEASURE):
         """
         Predict class labels for samples in `X`.
-        
+
         .. note::
 
             In the case there are many winner hyperboxes representing different
