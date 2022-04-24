@@ -1,26 +1,11 @@
+====
 base
 ====
 
-base.base\_estimator
---------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: hbbrain.base.base_estimator
-   :members:
-
-base.base\_fmnn\_estimator
---------------------------
-
-.. automodule:: hbbrain.base.base_fmnn_estimator
-   :members:
-
-base.base\_gfmm\_estimator
---------------------------
-
-.. automodule:: hbbrain.base.base_gfmm_estimator
-   :members:
-   
-base.base\_ensemble
--------------------
-
-.. automodule:: hbbrain.base.base_ensemble
-   :members:
+   base/base_estimator
+   base/base_gfmm_estimator
+   base/base_fmnn_estimator
+   base/base_ensemble

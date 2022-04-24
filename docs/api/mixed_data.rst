@@ -1,26 +1,10 @@
+===================
 mixed-data learners
 ===================
 
-mixed\_data.eiol\_gfmm
-----------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: hbbrain.mixed_data.eiol_gfmm
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-mixed\_data.freq\_cat\_onln\_gfmm
----------------------------------
-
-.. automodule:: hbbrain.mixed_data.freq_cat_onln_gfmm
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-mixed\_data.onehot\_onln\_gfmm
-------------------------------
-
-.. automodule:: hbbrain.mixed_data.onehot_onln_gfmm
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   mixed_data/eiol_gfmm
+   mixed_data/freq_cat_onln_gfmm
+   mixed_data/onehot_onln_gfmm

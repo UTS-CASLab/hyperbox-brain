@@ -1,67 +1,14 @@
 ensemble learners
 =================
 
-ensemble\_learner.base\_bagging
--------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: hbbrain.numerical_data.ensemble_learner.base_bagging
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-ensemble\_learner.base\_cross\_val\_bagging
--------------------------------------------
-
-.. automodule:: hbbrain.numerical_data.ensemble_learner.base_cross_val_bagging
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-ensemble\_learner.decision\_comb\_bagging
------------------------------------------
-
-.. automodule:: hbbrain.numerical_data.ensemble_learner.decision_comb_bagging
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-ensemble\_learner.decision\_comb\_cross\_val\_bagging
------------------------------------------------------
-
-.. automodule:: hbbrain.numerical_data.ensemble_learner.decision_comb_cross_val_bagging
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-ensemble\_learner.model\_comb\_bagging
---------------------------------------
-
-.. automodule:: hbbrain.numerical_data.ensemble_learner.model_comb_bagging
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-ensemble\_learner.model\_comb\_cross\_val\_bagging
---------------------------------------------------
-
-.. automodule:: hbbrain.numerical_data.ensemble_learner.model_comb_cross_val_bagging
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   
-ensemble\_learner.random\_hyperboxes
-------------------------------------
-
-.. automodule:: hbbrain.numerical_data.ensemble_learner.random_hyperboxes
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-ensemble\_learner.cross\_val\_random\_hyperboxes
-------------------------------------------------
-
-.. automodule:: hbbrain.numerical_data.ensemble_learner.cross_val_random_hyperboxes
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   
+   ensemble_learner/base_bagging
+   ensemble_learner/base_cross_val_bagging
+   ensemble_learner/decision_comb_bagging
+   ensemble_learner/decision_comb_cross_val_bagging
+   ensemble_learner/model_comb_bagging
+   ensemble_learner/model_comb_cross_val_bagging
+   ensemble_learner/random_hyperboxes
+   ensemble_learner/cross_val_random_hyperboxes
