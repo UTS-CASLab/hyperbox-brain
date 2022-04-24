@@ -16,19 +16,21 @@ PYTEST_MIN_VERSION = "5.0.1"
 SKLEARN_MIN_VERSION = "0.24.0"
 PLOTLY_MIN_VERSION = "4.10.0"
 PANDAS_MIN_VERSION = "0.25.0"
+CYTHON_MIN_VERSION = "0.29.24"
 
 # 'build' and 'install' is included to have structured metadata for CI.
 # It will NOT be included in setup's extras_require
 # The values are (version_spec, comma separated tags)
 dependent_packages = {
-    "numpy": (NUMPY_MIN_VERSION, "build, install"),
-    "scipy": (SCIPY_MIN_VERSION, "build, install"),
-    "joblib": (JOBLIB_MIN_VERSION, "install"),
-    "threadpoolctl": (THREADPOOLCTL_MIN_VERSION, "install"),
-    "scikit-learn": (SKLEARN_MIN_VERSION, "build, install, benchmark, docs, examples, tests"),
-    "matplotlib": ("2.2.3", "build, install, benchmark, docs, examples, tests"),
-    "scikit-image": ("0.14.5", "docs, examples, tests"),
-    "pandas": (PANDAS_MIN_VERSION, "benchmark, docs, examples, tests"),
+    "numpy": (NUMPY_MIN_VERSION, "build, install, docs"),
+    "scipy": (SCIPY_MIN_VERSION, "build, install, docs"),
+    "joblib": (JOBLIB_MIN_VERSION, "install, docs"),
+    "threadpoolctl": (THREADPOOLCTL_MIN_VERSION, "install, docs"),
+    "cython": (CYTHON_MIN_VERSION, "build"),
+    "scikit-learn": (SKLEARN_MIN_VERSION, "build, install, docs, examples, tests"),
+    "matplotlib": ("2.2.3", "build, install, docs, examples, tests"),
+    "pandas": (PANDAS_MIN_VERSION, "build, install, docs, examples, tests"),
+    "plotly": (PLOTLY_MIN_VERSION, "build, install, examples, docs"),
     "pytest": (PYTEST_MIN_VERSION, "tests"),
     "pytest-cov": ("2.9.0", "tests"),
     "flake8": ("3.8.2", "tests"),
@@ -41,8 +43,7 @@ dependent_packages = {
     "Pillow": ("7.1.2", "docs"),
     "sphinx-prompt": ("1.3.0", "docs"),
     "sphinxext-opengraph": ("0.4.2", "docs"),
-    "sphinx-autodocgen": ("1.3", "docs"),
-    "plotly": (PLOTLY_MIN_VERSION, "build, install"),
+    "sphinx-autodocgen": ("1.3", "docs")
 }
 
 
