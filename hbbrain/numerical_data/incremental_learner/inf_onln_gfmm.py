@@ -458,15 +458,16 @@ class InfOnlineGFMM(BaseGFMMClassifier):
     def predict(self, X):
         """
         Predict class labels for samples in `X`.
-        
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different class labels
-        but with the same membership value with respect to the input pattern :math:`X_i`, an 
-        additional criterion based on the minimum Manhattan distance between the input patter 
-        :math:`X_i` and the central points of winner hyperboxes are used to find 
-        the final winner hyperbox that its class label is used for predicting the class label 
-        of the input pattern :math:`X_i`.
+
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i`, an additional criterion based on the
+            minimum Manhattan distance between the input patter :math:`X_i` and
+            the central points of winner hyperboxes are used to find the final
+            winner hyperbox that its class label is used for predicting the
+            class label of the input pattern :math:`X_i`.
 
         Parameters
         ----------
@@ -489,16 +490,18 @@ class InfOnlineGFMM(BaseGFMMClassifier):
         Predict class labels for samples in the form of hyperboxes represented 
         by low bounds `Xl` and upper bounds `Xu`.
 
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different class labels
-        but with the same membership value with respect to the input pattern :math:`X_i` in 
-        the form of an hyperbox represented by a lower bound :math:`Xl_i` and an upper 
-        bound :math:`Xu_i`, an additional criterion based on the minimum Manhattan distance
-        between the central point of input hyperbox :math:`X_i - [Xl_i, Xu_i]` and the 
-        central points of winner hyperboxes are used to find the final winner hyperbox that 
-        its class label is used for predicting the class label of the input hyperbox :math:`X_i`.
-        
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i` in the form of an hyperbox represented by
+            a lower bound :math:`Xl_i` and an upper bound :math:`Xu_i`, an
+            additional criterion based on the minimum Manhattan distance
+            between the central point of input hyperbox :math:`X_i = [Xl_i, Xu_i]`
+            and the central points of winner hyperboxes are used to find the
+            final winner hyperbox that its class label is used for predicting
+            the class label of the input hyperbox :math:`X_i`.
+
         Parameters
         ----------
         Xl : array-like of shape (n_samples, n_features)

@@ -35,8 +35,9 @@ def one_hot_encoding_cat_feature(X, categorical_features, encodings=None):
     """
     Encode categorical features by the one-hot encoding method.
 
-    Notes
-    -----
+    Note
+    ----
+
     Each categorical feature is transformed into a list of boolean values, each
     contains only one value of True and the rest elements show False values.
 
@@ -634,18 +635,18 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
         """
         Predict class labels for samples in `X`.
 
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different
-        class labels but with the same membership value with respect to the
-        input pattern :math:`X_i`, an additional criterion based on the minimum
-        Manhattan distance between continous featurers of :math:`X_i` and the
-        central points of continous features of winner hyperboxes are used to
-        find the final winner hyperbox that its class label is used for
-        predicting the class label of the input pattern :math:`X_i`. If there
-        are only categorical features but many winner hyperboxes belongging to
-        different classes, a random selection will be used to choose the final
-        class label.
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i`, an additional criterion based on the
+            minimum Manhattan distance between continous featurers of :math:`X_i`
+            and the central points of continous features of winner hyperboxes
+            are used to find the final winner hyperbox that its class label is
+            used for predicting the class label of the input pattern :math:`X_i`.
+            If there are only categorical features but many winner hyperboxes
+            belonging to different classes, a random selection will be used to
+            choose the final class label.
 
         Parameters
         ----------
@@ -683,24 +684,26 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
         Predict class labels for samples in the form of hyperboxes represented
         by low bounds `Xl` and upper bounds `Xu`.
 
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different
-        class labels but with the same membership value with respect to the
-        input pattern :math:`X_i` in the form of an hyperbox represented by a
-        lower bound :math:`Xl_i` and an upper bound :math:`Xu_i` for continous
-        features and a bound :math:`Xd_i` for categorical features, an
-        additional criterion based on the minimum Manhattan distance
-        between the central point of continous features in the input hyperbox
-        :math:`X_i - [Xl_i, Xu_i]` and the central points of continous features
-        in winner hyperboxes are used to find the final winner hyperbox that
-        its class label is used for predicting the class label of the input
-        hyperbox :math:`X_i`.
+        .. note::
 
-        Another important point to pay attention is that the categorical
-        features storing in `Xd` need to be encoded by using the function
-        :func:`one_hot_encoding_cat_feature` before pushing the values
-        to this method.
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i` in the form of an hyperbox represented by
+            a lower bound :math:`Xl_i` and an upper bound :math:`Xu_i` for
+            continous features and a bound :math:`Xd_i` for categorical features,
+            an additional criterion based on the minimum Manhattan distance
+            between the central point of continous features in the input hyperbox
+            :math:`X_i - [Xl_i, Xu_i]` and the central points of continous
+            features in winner hyperboxes are used to find the final winner
+            hyperbox that its class label is used for predicting the class
+            label of the input hyperbox :math:`X_i`.
+
+        .. warning::
+
+            Another important point to pay attention is that the categorical
+            features storing in `Xd` need to be encoded by using the function
+            :func:`one_hot_encoding_cat_feature` before pushing the values
+            to this method.
 
         Parameters
         ----------
@@ -1019,11 +1022,11 @@ class OneHotOnlineGFMM(BaseHyperboxClassifier):
         result for the input pattern represented by upper and lower bounds for
         continous features together with the bound for categorical feature.
 
-        Notes
-        -----
-        The categorical features storing in `xd` need to be encoded by using
-        the function :func:`one_hot_encoding_cat_feature` before pushing
-        the values to this method.
+        .. note::
+
+            The categorical features storing in `xd` need to be encoded by
+            using the function :func:`one_hot_encoding_cat_feature` before
+            pushing the values to this method.
 
         Parameters
         ----------

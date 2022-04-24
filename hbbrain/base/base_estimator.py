@@ -1,5 +1,5 @@
 """
-Base classes for all hyperbox-based estimators.
+Base class for all hyperbox-based estimators.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
 # License: BSD 3 clause
@@ -22,14 +22,12 @@ class BaseHyperboxClassifier(BaseEstimator, ClassifierMixin):
     """
     Base class for all hyperbox-based estimators in hyperbox-brain.
 
-    Notes
-    -----
-    All estimators should specify all the parameters that can be set
-    at the class level in their ``__init__`` as explicit keyword
-    arguments (no ``*args`` or ``**kwargs``).
+    .. note::
 
-    This class only initialises all common parameters for hyperbox-based
-    estimators.
+        All estimators should specify all the parameters that can be set
+        at the class level in their ``__init__`` as explicit keyword
+        arguments (no ``*args`` or ``**kwargs``). This class only initialises
+        all common parameters for hyperbox-based estimators.
 
     Parameters
     ----------
@@ -149,9 +147,9 @@ class BaseHyperboxClassifier(BaseEstimator, ClassifierMixin):
         """
         Draw the existing hyperboxes and their decision boundaries among classes
 
-        Notes
-        -----
-        This function only works on 2-dimensional datasets
+        .. note::
+
+            This function only works on 2-dimensional datasets
 
         Parameters
         ----------
@@ -196,9 +194,9 @@ class BaseHyperboxClassifier(BaseEstimator, ClassifierMixin):
         Show explanation for predicted results of an input pattern under the
         form of parallel coordinates or hyperboxes in 2D or 3D planes.
 
-        Notes
-        -----
-        This function only works on numerical features.
+        .. note::
+
+            This function only works on numerical features.
 
         Parameters
         ----------

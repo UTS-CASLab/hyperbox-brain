@@ -151,24 +151,26 @@ def predict_freq_cat_feature_manhanttan(V, W, E, F, C, Xl, Xu, X_cat, similarity
     and upper bounds `W` and categorical features matrices for lower bounds `E`
     and upper bounds `F`.
 
-    Notes
-    -----
-    In the case there are many winner hyperboxes representing different
-    class labels but with the same membership value with respect to the
-    input pattern :math:`X_i` in the form of an hyperbox represented by a
-    lower bound :math:`Xl_i` and an upper bound :math:`Xu_i` for continous
-    features and a matrix :math:`Xcat_i` for categorical features, an
-    additional criterion based on the minimum Manhattan distance
-    between the central point of continous features in the input hyperbox
-    :math:`X_i = [Xl_i, Xu_i]` and the central points of continous features
-    in winner hyperboxes are used to find the final winner hyperbox that
-    its class label is used for predicting the class label of the input
-    hyperbox :math:`X_i`.
+    .. note::
 
-    Another important point to pay attention is that the categorical
-    features storing in :math:`X_cat` need to be encoded by using the function
-    :func:`ordinal_encode_categorical_features` before pushing the values
-    to this method.
+        In the case there are many winner hyperboxes representing different
+        class labels but with the same membership value with respect to the
+        input pattern :math:`X_i` in the form of an hyperbox represented by a
+        lower bound :math:`Xl_i` and an upper bound :math:`Xu_i` for continous
+        features and a matrix :math:`Xcat_i` for categorical features, an
+        additional criterion based on the minimum Manhattan distance between
+        the central point of continous features in the input hyperbox
+        :math:`X_i = [Xl_i, Xu_i]` and the central points of continous features
+        in winner hyperboxes are used to find the final winner hyperbox that
+        its class label is used for predicting the class label of the input
+        hyperbox :math:`X_i`.
+
+    .. warning::
+
+        Another important point to pay attention is that the categorical
+        features storing in :math:`X_cat` need to be encoded by using the
+        function :func:`ordinal_encode_categorical_features` before pushing the
+        values to this method.
 
     Parameters
     ----------
@@ -776,18 +778,18 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
         """
         Predict class labels for samples in `X`.
 
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different
-        class labels but with the same membership value with respect to the
-        input pattern :math:`X_i`, an additional criterion based on the minimum
-        Manhattan distance between continous featurers of :math:`X_i` and the
-        central points of continous features of winner hyperboxes are used to
-        find the final winner hyperbox that its class label is used for
-        predicting the class label of the input pattern :math:`X_i`. If there
-        are only categorical features but many winner hyperboxes belongging to
-        different classes, a random selection will be used to choose the final
-        class label.
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i`, an additional criterion based on the
+            minimum Manhattan distance between continous featurers of :math:`X_i`
+            and the central points of continous features of winner hyperboxes
+            are used to find the final winner hyperbox that its class label is
+            used for predicting the class label of the input pattern :math:`X_i`.
+            If there are only categorical features but many winner hyperboxes
+            belonging to different classes, a random selection will be used to
+            choose the final class label.
 
         Parameters
         ----------
@@ -824,24 +826,26 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
         Predict class labels for samples in the form of hyperboxes represented
         by low bounds `Xl` and upper bounds `Xu`.
 
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different
-        class labels but with the same membership value with respect to the
-        input pattern :math:`X_i` in the form of an hyperbox represented by a
-        lower bound :math:`Xl_i` and an upper bound :math:`Xu_i` for continous
-        features and a matrix :math:`Xcat_i` for categorical features, an
-        additional criterion based on the minimum Manhattan distance
-        between the central point of continous features in the input hyperbox
-        :math:`X_i = [Xl_i, Xu_i]` and the central points of continous features
-        in winner hyperboxes are used to find the final winner hyperbox that
-        its class label is used for predicting the class label of the input
-        hyperbox :math:`X_i`.
+        .. note::
 
-        Another important point to pay attention is that the categorical
-        features storing in :math:`X_cat` need to be encoded by using the function
-        :func:`ordinal_encode_categorical_features` before pushing the values
-        to this method.
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i` in the form of an hyperbox represented by
+            a lower bound :math:`Xl_i` and an upper bound :math:`Xu_i` for
+            continous features and a matrix :math:`Xcat_i` for categorical
+            features, an additional criterion based on the minimum Manhattan
+            distance between the central point of continous features in the
+            input hyperbox :math:`X_i = [Xl_i, Xu_i]` and the central points of
+            continous features in the winner hyperboxes are used to find the
+            final winner hyperbox that its class label is used for predicting
+            the class label of the input hyperbox :math:`X_i`.
+
+        .. warning::
+
+            Another important point to pay attention is that the categorical
+            features storing in :math:`X_cat` need to be encoded by using the
+            function :func:`ordinal_encode_categorical_features` before pushing
+            the values to this method.
 
         Parameters
         ----------
@@ -1192,11 +1196,11 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
         continous features together with the lower and upper bounds for
         categorical features.
 
-        Notes
-        -----
-        The categorical features storing in `x_cat` need to be encoded by using
-        the function :func:`ordinal_encode_categorical_features` before pushing
-        the values to this method.
+        .. note::
+
+            The categorical features storing in `x_cat` need to be encoded by
+            using the function :func:`ordinal_encode_categorical_features`
+            before pushing the values to this method.
 
         Parameters
         ----------

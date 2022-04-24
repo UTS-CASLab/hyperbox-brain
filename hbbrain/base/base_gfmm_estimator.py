@@ -1,5 +1,5 @@
 """
-Base classes for all general fuzzy min-max neural network estimators.
+Base class and functions for all general fuzzy min-max neural network estimators.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
 # License: BSD 3 clause
@@ -260,16 +260,14 @@ def is_contain_missing_value(X):
 
 class BaseGFMMClassifier(BaseHyperboxClassifier):
     """
-    Base class for all hyperbox-based estimators in hyperbox-brain.
+    Base class for all hyperbox-based estimators in the hyperbox-brain.
 
-    Notes
-    -----
-    All estimators should specify all the parameters that can be set
-    at the class level in their ``__init__`` as explicit keyword
-    arguments (no ``*args`` or ``**kwargs``).
+    .. note::
 
-    This class only initialises all common parameters for hyperbox-based
-    estimators
+        All estimators should specify all the parameters that can be set
+        at the class level in their ``__init__`` as explicit keyword
+        arguments (no ``*args`` or ``**kwargs``). This class only initialises
+        all common parameters for hyperbox-based estimators.
 
     Parameters
     ----------
@@ -299,19 +297,19 @@ class BaseGFMMClassifier(BaseHyperboxClassifier):
         BaseHyperboxClassifier.__init__(self, theta=theta, is_draw=is_draw, V=V, W=W, C=C)
         self.gamma = gamma
 
-
     def predict(self, X):
         """
         Predict class labels for samples in `X`.
-        
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different class labels
-        but with the same membership value with respect to the input pattern :math:`X_i`, an 
-        additional criterion based on the minimum Manhattan distance between the input patter 
-        :math:`X_i` and the central points of winner hyperboxes are used to find 
-        the final winner hyperbox that its class label is used for predicting the class label 
-        of the input pattern :math:`X_i`.
+
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i`, an additional criterion based on the
+            minimum Manhattan distance between the input patter :math:`X_i` and
+            the central points of winner hyperboxes are used to find the final
+            winner hyperbox that its class label is used for predicting the
+            class label of the input pattern :math:`X_i`.
 
         Parameters
         ----------
@@ -327,24 +325,25 @@ class BaseGFMMClassifier(BaseHyperboxClassifier):
         """
         X = np.array(X)
         y_pred = self._predict(X, X)
-        
-        return y_pred
 
+        return y_pred
 
     def _predict(self, Xl, Xu):
         """
         Predict class labels for samples in the form of hyperboxes represented 
         by low bounds `Xl` and upper bounds `Xu`.
         
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different class labels
-        but with the same membership value with respect to the input pattern :math:`X_i` in 
-        the form of an hyperbox represented by a lower bound :math:`Xl_i` and an upper 
-        bound :math:`Xu_i`, an additional criterion based on the minimum Manhattan distance
-        between the central point of input hyperbox :math:`X_i - [Xl_i, Xu_i]` and the 
-        central points of winner hyperboxes are used to find the final winner hyperbox that 
-        its class label is used for predicting the class label of the input hyperbox :math:`X_i`.
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i` in the form of an hyperbox represented by
+            a lower bound :math:`Xl_i` and an upper bound :math:`Xu_i`, an
+            additional criterion based on the minimum Manhattan distance
+            between the central point of input hyperbox :math:`X_i = [Xl_i, Xu_i]`
+            and the central points of winner hyperboxes are used to find the
+            final winner hyperbox that its class label is used for predicting
+            the class label of the input hyperbox :math:`X_i`.
         
         Parameters
         ----------

@@ -120,15 +120,14 @@ def generate_grid_decision_boundary_2D(min_x=0, max_x=1, min_y=0, max_y=1, step=
         A matrix contains all pairs of points of a 2-D grid.
     XX : array-like of shape (Ny, Nx)
         A coordinate matrix generated from a coordinate vector on the X-axis defined by `min_x`, `max_x`, and `step`.
-        Ny = (max_y - min_y)/step and Nx = (max_x - min_x)/step
+        `Ny = (max_y - min_y)/step` and `Nx = (max_x - min_x)/step`.
     YY : array-like of shape (Ny, Nx)
         A coordinate matrix generated from a coordinate vector on the Y-axis defined by `min_y`, `max_y`, and `step`.
-        Ny = (max_y - min_y)/step and Nx = (max_x - min_x)/step.
-        
-    Notes
-    -----
-    The number of elements `n_points` in the matrix `grid` is computed by 
-    :math:`\cfrac{max_x - min_x}{step} \cdot \cfrac{max_y - min_y}{step}`.
+        `Ny = (max_y - min_y)/step` and `Nx = (max_x - min_x)/step`.
+
+    .. note::
+        The number of elements `n_points` in the matrix `grid` is computed by
+        :math:`\cfrac{max_x - min_x}{step} \cdot \cfrac{max_y - min_y}{step}`.
 
     """
     # define the x and y scale

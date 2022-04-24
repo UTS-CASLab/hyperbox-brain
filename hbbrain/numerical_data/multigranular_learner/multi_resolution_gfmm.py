@@ -1074,14 +1074,16 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
     def predict(self, X, level=-1):
         """
         Predict class labels for samples in `X` at a given granularity level.
-        
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different class labels
-        but with the same membership value with respect to the input pattern :math:`X_i`, an 
-        additional criterion based on the minimum distance between the input samples and
-        centroids of winner hyperboxes is used to find the final winner hyperbox that 
-        its class label is used for predicting the class label of the input pattern :math:`X_i`.
+
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i`, an additional criterion based on the
+            minimum distance between the input samples and the centroids of the
+            winner hyperboxes is used to find the final winner hyperbox that
+            its class label is used for predicting the class label of the input
+            pattern :math:`X_i`.
 
         Parameters
         ----------
@@ -1110,17 +1112,18 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
         """
         Predict class labels for samples in the form of hyperboxes represented 
         by low bounds `Xl` and upper bounds `Xu` at a given granularity level.
-        
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different class labels
-        but with the same membership value with respect to the input pattern :math:`X_i` in 
-        the form of an hyperbox represented by a lower bound :math:`Xl_i` and an upper 
-        bound :math:`Xu_i`, an additional criterion based on the minimum distance between
-        the centroids of winner hyperboxes and the input sample is used to find the final
-        winner hyperbox that its class label is used for predicting the class label
-        of the input hyperbox :math:`X_i`.
-        
+
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i` in the form of an hyperbox represented by
+            a lower bound :math:`Xl_i` and an upper bound :math:`Xu_i`, an
+            additional criterion based on the minimum distance between the
+            centroids of the winner hyperboxes and the input sample is used to
+            find the final winner hyperbox that its class label is used for
+            predicting the class label of the input hyperbox :math:`X_i`.
+
         Parameters
         ----------
         Xl : array-like of shape (n_samples, n_features)
@@ -1174,17 +1177,18 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
         """
         Predict class labels for samples in the form of hyperboxes represented 
         by low bounds `Xl` and upper bounds `Xu` at a given granularity level.
-        
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different class labels
-        but with the same membership value with respect to the input pattern :math:`X_i` in 
-        the form of an hyperbox represented by a lower bound :math:`Xl_i` and an upper 
-        bound :math:`Xu_i`, an additional criterion based on the minimum distance between
-        the centroids of winner hyperboxes and the input sample is used to find the final
-        winner hyperbox that its class label is used for predicting the class label
-        of the input hyperbox :math:`X_i`.
-        
+
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i` in the form of an hyperbox represented by
+            a lower bound :math:`Xl_i` and an upper bound :math:`Xu_i`, an
+            additional criterion based on the minimum distance between the
+            centroids of winner hyperboxes and the input sample is used to find
+            the final winner hyperbox that its class label is used for predicting
+            the class label of the input hyperbox :math:`X_i`.
+
         Parameters
         ----------
         Xl : array-like of shape (n_samples, n_features)
@@ -1293,9 +1297,9 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
         Draw the existing hyperboxes and their decision boundaries among classes
         at a given granularity level.
 
-        Notes
-        -----
-        This function only works on 2-dimensional datasets
+        .. note::
+
+            This method only works on 2-dimensional datasets.
 
         Parameters
         ----------
@@ -1339,9 +1343,9 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
         Draw the existing hyperboxes and their decision boundaries among classes
         in a given partition.
 
-        Notes
-        -----
-        This function only works on 2-dimensional datasets
+        .. note::
+
+            This method only works on 2-dimensional datasets.
 
         Parameters
         ----------

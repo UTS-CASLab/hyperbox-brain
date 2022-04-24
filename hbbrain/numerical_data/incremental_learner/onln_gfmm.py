@@ -69,15 +69,16 @@ class OnlineGFMM(BaseGFMMClassifier):
     n_passes : int
         Number of training loops.
 
-    Notes
-    -----
-    Note that this implementation uses the accelerated mechanism presented in
-    [2]_ to accelerate the improved online learning algorithm. Compared to
-    the original online learning algorithm proposed in [1]_, this implementation
-    uses the similarity measure between two hyperboxes by shortest gap distance
-    presented in [3]_ for overlap test. In addition, we extend the number of
-    hyperbox contraction cases from four in the original algorithm to eight
-    cases aiming to cover more overlapping cases between two hyperboxes.
+    .. note::
+
+        This implementation uses the accelerated mechanism presented in [2]_ to
+        accelerate the improved online learning algorithm. Compared to the
+        original online learning algorithm proposed in [1]_, this implementation
+        uses the similarity measure between two hyperboxes by shortest gap
+        distance presented in [3]_ for overlap test. In addition, we extend the
+        number of hyperbox contraction cases from four in the original algorithm
+        to eight cases aiming to cover more overlapping cases between two
+        hyperboxes.
 
     References
     ----------

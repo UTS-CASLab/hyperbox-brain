@@ -15,13 +15,15 @@ from hbbrain.constants import UNLABELED_CLASS, DEFAULT_CATEGORICAL_VALUE
 def is_overlap_one_many_hyperboxes_num_data_general(V, W, C, id_box):
     """
     Check overlap between the hyperbox at the position `id_box` and remaning hyperboxes in the current list.
-    
-    Notes
-    -----
-    The current input list of hyperboxes contains all existing hyperboxes including the hyperboxes representing 
-    the same class as the hyperbox at the position `id_box`. Therefore, to perform overlap testing, the list of 
-    hyperboxes representing the class labels other than the class label of the `id_box`-th hyperbox should be first 
-    filtered. Finally, the overlap test is only conducted on this filtered list.
+
+    .. note::
+
+        The current input list of hyperboxes contains all existing hyperboxes
+        including the hyperboxes representing the same class as the hyperbox at
+        the position `id_box`. Therefore, to perform overlap testing, the list
+        of hyperboxes representing the class labels other than the class label
+        of the `id_box`-th hyperbox should be first filtered. Finally, the
+        overlap test is only conducted on this filtered list.
 
     Parameters
     ----------
@@ -37,7 +39,8 @@ def is_overlap_one_many_hyperboxes_num_data_general(V, W, C, id_box):
     Returns
     -------
     bool
-        Show if the input hyperbox overlaps with any hyperbox in the list of hyperboxes representing the classes other than its class label.
+        Show if the input hyperbox overlaps with any hyperbox in the list of
+        hyperboxes representing the classes other than its class label.
 
     """
     if (V[id_box] > W[id_box]).any() == True:

@@ -303,12 +303,16 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
         Returns a dynamically generated list of indices identifying
         the samples used for fitting each member of the ensemble, i.e.,
         the in-bag samples.
-        Note: the list is re-created at each call to the property in order
-        to reduce the object memory footprint by not storing the sampling
-        data. Thus fetching the property may be slower than expected.
+        
+        .. note::
+
+            The list is re-created at each call to the property in order to
+            reduce the object memory footprint by not storing the sampling data.
+            Thus fetching the property may be slower than expected.
+
         """
         return [sample_indices for sample_indices, _ in self._get_estimators_indices()]
-    
+
     def fit(self, X, y):
         """
         Build a random hyperbox model from the training set (X, y).

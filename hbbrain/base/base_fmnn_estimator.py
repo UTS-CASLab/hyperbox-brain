@@ -16,15 +16,17 @@ from hbbrain.utils.dist_metrics import manhattan_distance
 def predict_with_manhattan_fmnn(V, W, C, X, g=1):
     """
     Predict class labels for samples in `X`.
-    
-    Notes
-    -----
-    This is a common function to determine the right class labels for X wrt. a trained hyperbox-based 
-    classifier represented by `[V, W, C]`. It uses the winner-takes-all principle to predict 
-    class labels for each sample in X by assigning the class label of the sample to the class 
-    label of the hyperbox with the maximum membership value to that sample. It will use 
-    a Manhattan distance in the case of many hyperboxes with different classes having the 
-    same maximum membership value.
+
+    .. note::
+
+        This is a common function to determine the right class labels for `X`
+        with regard to a trained hyperbox-based classifier represented by
+        `[V, W, C]`. It uses the winner-takes-all principle to predict
+        class labels for each sample in X by assigning the class label of the
+        sample to the class label of the hyperbox with the maximum membership
+        value to that sample. It will use a Manhattan distance in the case of
+        many hyperboxes with different classes having the same maximum
+        membership value.
 
     Parameters
     ----------
@@ -86,14 +88,12 @@ class BaseFMNNClassifier(BaseHyperboxClassifier):
     """
     Base class for all hyperbox-based estimators in hyperbox-brain.
     
-    Notes
-    -----
-    All estimators should specify all the parameters that can be set
-    at the class level in their ``__init__`` as explicit keyword
-    arguments (no ``*args`` or ``**kwargs``).
+    .. note::
 
-    This class only initialises all common parameters for hyperbox-based 
-    estimators
+        All estimators should specify all the parameters that can be set
+        at the class level in their ``__init__`` as explicit keyword
+        arguments (no ``*args`` or ``**kwargs``). This class only initialises
+        all common parameters for hyperbox-based estimators.
 
     Parameters
     ----------
@@ -127,14 +127,15 @@ class BaseFMNNClassifier(BaseHyperboxClassifier):
         """
         Predict class labels for samples in `X`.
 
-        Notes
-        -----
-        In the case there are many winner hyperboxes representing different class labels
-        but with the same membership value with respect to the input pattern :math:`X_i`, an 
-        additional criterion based on the minimum Manhattan distance between the input patter 
-        :math:`X_i` and the central points of winner hyperboxes are used to find 
-        the final winner hyperbox that its class label is used for predicting the class label 
-        of the input pattern :math:`X_i`.
+        .. note::
+
+            In the case there are many winner hyperboxes representing different
+            class labels but with the same membership value with respect to the
+            input pattern :math:`X_i`, an additional criterion based on the
+            minimum Manhattan distance between the input patter :math:`X_i` and
+            the central points of winner hyperboxes are used to find the final
+            winner hyperbox that its class label is used for predicting the
+            class label of the input pattern :math:`X_i`.
 
         Parameters
         ----------

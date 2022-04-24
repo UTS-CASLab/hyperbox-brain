@@ -173,17 +173,18 @@ def membership_function_freq_cat(x_cat, E, F, similarity_of_cat_vals):
 def membership_func_gfmm(xl, xu, V, W, g=1):
     """Compute fuzzy membership values between an input pattern and a list of
     existing hyperboxes of a general fuzzy min-max neural network.
-    
+
     For more details regarding how to calculate fuzzy membership values, please
     refer to the publications [1]_ and [2]_.
 
-    Notes
-    -----
-    This function provides the degrees of membership b of an input pattern `x`
-    (in form of upper bound `xu` and lower bound `xl`) with respect to the
-    existing hyperboxes described by minimal points `V` and maximal points `W`.
-    The sensitivity parameter `g` regulates how fast the membership values
-    decrease when an input pattern is separeted from hyperbox core.
+    .. note::
+
+        This function provides the degrees of membership b of an input pattern
+        `x` (in form of upper bound `xu` and lower bound `xl`) with respect to
+        the existing hyperboxes described by minimal points `V` and maximal
+        points `W`. The sensitivity parameter `g` regulates how fast the
+        membership values decrease when an input pattern is separeted from
+        hyperbox core.
 
     Parameters
     ----------
@@ -385,13 +386,13 @@ def membership_func_fmnn(x, V, W, g=1):
     For more details regarding how to calculate fuzzy membership values, please
     refer to the publication [1]_.
 
-    Notes
-    -----
-    This function provides the degrees of membership b of an input pattern `x`
-    with respect to the existing hyperboxes described by minimal points `V` and
-    maximal points `W`. The sensitivity parameter `g` regulates how fast the
-    membership values decrease when an input pattern is separeted from
-    hyperbox core.
+    .. note::
+
+        This function provides the degrees of membership b of an input pattern
+        `x` with respect to the existing hyperboxes described by minimal points
+        `V` and maximal points `W`. The sensitivity parameter `g` regulates how
+        fast the membership values decrease when an input pattern is separeted
+        from hyperbox core.
 
     Parameters
     ----------
@@ -854,22 +855,22 @@ def membership_func_extended_iol_gfmm(xl, xu, x_cat, V, W, D, g=1, alpha = 0.5):
     existing hyperboxes of a general fuzzy min-max neural network with
     mixed-attribute data.
 
-    Notes
-    -----
-    This function provides the degrees of membership `b` of an input pattern `x`
-    (in form of upper bound `xu` and lower bound `xl` for continuous features
-    and categorical features `x_cat`) with respect to the existing hyperboxes
-    represented by minimal points `V` and maximal points `W` for continuous
-    features and the bound `D` for categorical features. The sensitivity
-    parameter `g` regulates how fast the membership values decrease
-    when an input continuous pattern is separeted from hyperbox core. The 
-    parameter `alpha` is the trade-off factor between impacts of continuous
-    features and categorical features on the output of membership values.
-    Each element :math:`d_{ij} \in D` is a set of symbolic values with their
-    cardinalities for the j-th categorical dimension of the hyperbox :math:`B_i`. For example,
-    :math:`d_{i1} = \{apple : 5, orange : 1\}` means that the first
-    categorical feature of the hyperbox :math:`B_i` contains 5 values of
-    apple and 1 value of orange.
+    .. note::
+
+        This function provides the degrees of membership `b` of an input pattern
+        `x` (in form of upper bound `xu` and lower bound `xl` for continuous
+        features and categorical features `x_cat`) with respect to the existing
+        hyperboxes represented by minimal points `V` and maximal points `W` for
+        continuous features and the bound `D` for categorical features. The
+        sensitivity parameter `g` regulates how fast the membership values
+        decrease when an input continuous pattern is separeted from hyperbox
+        core. The parameter `alpha` is the trade-off factor between impacts of
+        continuous features and categorical features on the output of membership
+        values. Each element :math:`d_{ij} \in D` is a set of symbolic values
+        with their cardinalities for the j-th categorical dimension of the
+        hyperbox :math:`B_i`. For example, :math:`d_{i1} = \{apple : 5, orange : 1\}`
+        means that the first categorical feature of the hyperbox :math:`B_i`
+        contains 5 values of apple and 1 value of orange.
 
     Parameters
     ----------
@@ -1010,13 +1011,14 @@ def membership_func_free_range_gfmm(xl, xu, V, W, g=1):
     existing hyperboxes of a general fuzzy min-max neural network. This membership
     function does not require the coordinates located in the range of [0, 1].
 
-    Notes
-    -----
-    This function provides the degrees of membership b of an input pattern `x`
-    (in form of upper bound `xu` and lower bound `xl`) with respect to the
-    existing hyperboxes described by minimal points `V` and maximal points `W`.
-    The sensitivity parameter `g` regulates how fast the membership values
-    decrease when an input pattern is separeted from hyperbox core.
+    .. note::
+
+        This function provides the degrees of membership b of an input pattern
+        `x` (in form of upper bound `xu` and lower bound `xl`) with respect to
+        the existing hyperboxes described by minimal points `V` and maximal
+        points `W`. The sensitivity parameter `g` regulates how fast the
+        membership values decrease when an input pattern is separeted from
+        hyperbox core.
 
     Parameters
     ----------

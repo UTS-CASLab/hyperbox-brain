@@ -34,11 +34,13 @@ def manhattan_distance(X, Y):
 def manhattan_distance_with_missing_val(X1, X2, Y1, Y2):
     """
     Compute Manhattan distance between the central points of X1, X2 and Y1, Y2.
-    
-    Notes
-    -----
-    X1, X2, Y1, Y2 can contain missing values. In that case, X1j=1+EPSILON_MISSING_VAL > X2j=-EPSILON_MISSING_VAL and Y1j=1+EPSILON_MISSING_VAL > Y2j=-EPSILON_MISSING_VAL.
-    The Manhattan distance is only computed for the dimensions without missing values
+
+    .. note::
+
+        `X1`, `X2`, `Y1`, `Y2` can contain missing values. In that case,
+        `X1j=1+EPSILON_MISSING_VAL > X2j=-EPSILON_MISSING_VAL` and
+        `Y1j=1+EPSILON_MISSING_VAL > Y2j=-EPSILON_MISSING_VAL`. The Manhattan
+        distance is only computed for the dimensions without missing values.
 
     Parameters
     ----------
@@ -143,10 +145,12 @@ def manhattan_distance_with_missing_val_free_range(X1, X2, Y1, Y2, MIN_RANGE, MA
     Compute Manhattan distance between the central points of X1, X2 and Y1, Y2.
     The coordinates are not limited by ranges.
 
-    Notes
-    -----
-    X1, X2, Y1, Y2 can contain missing values. In that case, X1j=MAX_RANGE > X2j=MIN_RANGE and Y1j=MAX_RANGE > Y2j=MIN_RANGE.
-    The Manhattan distance is only computed for the dimensions without missing values
+    .. note::
+
+        `X1`, `X2`, `Y1`, `Y2` can contain missing values. In that case,
+        `X1j=MAX_RANGE > X2j=MIN_RANGE` and `Y1j=MAX_RANGE > Y2j=MIN_RANGE`.
+        The Manhattan distance is only computed for the dimensions without
+        missing values.
 
     Parameters
     ----------
