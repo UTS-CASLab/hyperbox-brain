@@ -101,10 +101,12 @@ class RandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
     max_samples : int or float, default=0.5
         The number of samples to draw from X to train each base estimator (with
         no replacement by default, see `bootstrap` for more details).
+
         - If int, then draw `max_samples` samples.
         - If float, then draw `max_samples * X.shape[0]` samples.
     max_features : {"sqrt", "log2"}, int or float, default="sqrt"
         The maximum number of features to consider when building training data for base learners:
+
         - If int, then consider `max_features` features.
         - If float, then `max_features` is a fraction and
           `round(max_features * n_features)` features are considered.

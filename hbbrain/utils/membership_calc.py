@@ -248,7 +248,7 @@ def asym_similarity_val_one_many_hyperboxes(xl, xu, V, W, g=1, asimil_type='max'
     g : float or ndarray of shape (n_features,), optional, default=1
         A sensitivity parameter describing the speed of decreasing of the
         membership function in each dimension.
-    asimil_type : str, optional, default='max'
+    asimil_type : {'max', 'min'}, optional, default='max'
         Type of handling asymmetric similarity matrix.
 
     Returns
