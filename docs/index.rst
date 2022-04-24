@@ -64,18 +64,12 @@ method, this part of the documentation is for you.
    api/incremental_learner
    api/multigranular_learner
 
+
 .. toctree::
    :titlesonly:
    :caption: Tutorials
 
-   tutorials/batch_learner
-   tutorials/incremental_learner
-   tutorials/multigranular_learner
-   tutorials/ensemble_learner
-   tutorials/mixed_data_learner
-   tutorials/pipline_integration
-   tutorials/hyperparameter_opt
-   tutorials/storage_and_load
+   tutorials/tutorial_index
 
 
 Indices and tables
