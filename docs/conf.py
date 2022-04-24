@@ -70,8 +70,7 @@ extensions = [
     'sphinx.ext.linkcode',
     'IPython.sphinxext.ipython_console_highlighting'
 ]
-#
-# 'sphinx.ext.napoleon',
+
 # 'sphinx.ext.viewcode',
 
 numpydoc_class_members_toctree = False
@@ -79,7 +78,6 @@ numpydoc_class_members_toctree = False
 source_suffix = ['.rst']
 
 autosummary_generate = True
-# napoleon_google_docstring = False
 
 # The master toctree document.
 master_doc = 'index'
@@ -98,7 +96,7 @@ language = 'Python'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**tests**']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**tests**', '.ipynb_checkpoints']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -115,10 +113,6 @@ todo_include_todos = False
 html_title = 'hbbrain'
 htmlhelp_basename = 'hbbraindoc'
 html_theme = 'sphinx_rtd_theme'
-#html_theme_options = {
-#    "rightsidebar": "false",
-#    "relbarbgcolor": "black"
-#}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
