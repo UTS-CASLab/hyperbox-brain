@@ -199,10 +199,10 @@ how to set up your git repository:
        git merge upstream/main
 
 #. Create a feature branch to hold your development changes:
-    
-    .. code:: bash
-        
-        git checkout -b my_feature
+   
+   .. code:: bash
+       
+       git checkout -b my_feature
 
    and start making changes. Always use a feature branch. It's good
    practice to never work on the ``main`` branch!
@@ -210,10 +210,10 @@ how to set up your git repository:
 #. (**Optional**) Install `pre-commit <https://pre-commit.com/#install>`_ to
    run code style checks before each commit:
     
-    .. code:: bash
-        
-        pip install pre-commit
-        pre-commit install
+   .. code:: bash
+       
+       pip install pre-commit
+       pre-commit install
         
    pre-commit checks can be disabled for a particular commit with `git commit -n`.
 
@@ -221,17 +221,17 @@ how to set up your git repository:
    do the version control. When you're done editing, add changed files using
    ``git add`` and then ``git commit``:
 
-    .. code:: bash
-        
-        git add modified_files
-        git commit
+   .. code:: bash
+       
+       git add modified_files
+       git commit
 
    to record your changes in Git, then push the changes to your GitHub
    account with:
 
-    .. code:: bash
-        
-        git push -u origin my_feature
+   .. code:: bash
+       
+       git push -u origin my_feature
 
 #. Follow `these instructions 
    <https://help.github.com/articles/creating-a-pull-request-from-a-fork>`_
@@ -257,3 +257,209 @@ how to set up your git repository:
     http://try.github.io are excellent resources to get started with git,
     and understanding all of the commands shown here.
 
+Pull request checklist
+----------------------
+
+Before a PR can be merged, it needs to be approved by two core developers.
+Please prefix the title of your pull request with ``[MRG]`` if the
+contribution is complete and should be subjected to a detailed review. An
+incomplete contribution -- where you expect to do more work before receiving
+a full review -- should be prefixed ``[WIP]`` (to indicate a work in
+progress) and changed to ``[MRG]`` when it matures. WIPs may be useful to:
+indicate you are working on something to avoid duplicated work, request
+broad review of functionality or API, or seek collaborators. WIPs often
+benefit from the inclusion of a `task list
+<https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments>`_ in
+the PR description.
+
+In order to ease the reviewing process, we recommend that your contribution
+complies with the following rules before marking a PR as ``[MRG]``. The
+**bolded** ones are especially important:
+
+#. **Give your pull request a helpful title** that summarizes what your
+   contribution does. This title will often become the commit message once
+   merged so it should summarize your contribution for posterity. In some
+   cases "Fix <ISSUE TITLE>" is enough. "Fix #<ISSUE NUMBER>" is never a
+   good title.
+
+#. **Make sure your code passes the tests**. The whole test suite can be run
+   with `pytest`, but it is usually not recommended since it takes a long
+   time. It is often enough to only run the test related to your changes:
+   for example, if you changed something in
+   `hbbrain/mixed_data/eiol_gfmm.py`, running the following commands will
+   usually be enough:
+   
+   * `pytest hbbrain/mixed_data/eiol_gfmm.py` to make sure the doctest
+     examples are correct.
+   * `pytest hbbrain/mixed_data/tests/test_eiol_gfmm.py` to run the tests
+     specific to the file.
+   * `pytest hbbrain/mixed_data` to test the whole :mod:`~hhbrain.mixed_data` module
+   * `pytest docs/api/mixed_data.rst` and `pytest docs/tutorials/mixed_data_learner.rst`
+     to make sure the user guide examples are correct.
+   
+   For guidelines on how to use ``pytest`` efficiently, see the `document <https://docs.pytest.org/en/7.1.x/>`_.
+
+#. **Make sure your code is properly commented and documented**, and **make
+   sure the documentation renders properly**. To build the documentation, please
+   refer to our :ref:`contribute_documentation` guidelines.
+   
+#. **Tests are necessary for enhancements to be accepted**. Bug-fixes or new features should be provided with
+   `non-regression tests <https://en.wikipedia.org/wiki/Non-regression_testing>`_. These tests
+   verify the correct behavior of the fix or feature. In this manner, further
+   modifications on the code base are granted to be consistent with the
+   desired behavior. In the case of bug fixes, at the time of the PR, the
+   non-regression tests should fail for the code base in the ``main`` branch
+   and pass for the PR code.
+
+#. Run `black` to auto-format your code.
+
+   .. code:: bash
+       
+       black .
+
+   See black's `editor integration documentation <https://black.readthedocs.io/en/stable/integrations/editors.html>`_
+   to configure your editor to run `black`.
+
+#. **Make sure that your PR does not add PEP8 violations**. To check the
+   code that you changed, you can run the following command:
+   
+   .. code:: bash
+       
+       git diff upstream/main -u -- "*.py" | flake8 --diff
+
+   or `make flake8-diff` which should work on unix-like system.
+
+#. Follow the :ref:`coding-guidelines`.
+
+#. When applicable, use the validation tools and scripts in the
+   ``hbbrain.utils`` submodule. You can add any functions to this 
+   submodule if necessary for your implementation.
+
+#. Often pull requests resolve one or more other issues (or pull requests).
+   If merging your pull request means that some other issues/PRs should
+   be closed, you should `use keywords to create link to them
+   <https://github.com/blog/1506-closing-issues-via-pull-requests/>`_
+   (e.g., ``Fixes #1234``; multiple issues/PRs are allowed as long as each
+   one is preceded by a keyword). Upon merging, those issues/PRs will
+   automatically be closed by GitHub. If your pull request is simply
+   related to some other issues/PRs, create a link to them without using
+   the keywords (e.g., ``See also #1234``).
+
+#. PRs should often substantiate the change, through benchmarks of
+   performance and efficiency or through examples of usage. Examples also
+   illustrate the features and intricacies of the library to users.
+   Have a look at other examples in the `examples
+   <https://github.com/UTS-CASLab/hyperbox-brain/tree/main/examples>`_
+   directory for reference. Examples should demonstrate why the new
+   functionality is useful in practice and, if possible, compare it to other
+   methods available in hyperbox-brain.
+
+#. New features have some maintenance overhead. We expect PR authors to
+   take part in the maintenance for the code they submit, at least
+   initially. New features need to be illustrated with narrative
+   documentation in the user guide, with small code snippets.
+   If relevant, please also add references in the literature, with PDF links
+   when possible.
+
+#. The user guide should also include expected time and space complexity
+   of the algorithm and scalability, e.g. "this algorithm can scale to a
+   large number of samples > 1000000, but does not scale in dimensionality:
+   n_features is expected to be lower than 100".
+
+You can check for common programming errors with the following tools:
+
+#. Code with a good unittest coverage (at least 80%, better 100%), check
+   with:
+   
+   .. code:: bash
+       
+       pip install pytest pytest-cov
+       pytest --cov hbbrain path/to/tests_for_package
+
+#. Run static analysis with `mypy`:
+   
+   .. code:: bash
+       
+       mypy hbbrain
+
+   must not produce new errors in your pull request. Using `# type: ignore`
+   annotation can be a workaround for a few cases that are not supported by
+   mypy, in particular, when importing C or Cython modules on properties with decorators.
+
+.. _coding-guidelines:
+
+Coding guidelines
+-----------------
+
+The following are some guidelines on how new code should be written for inclusion
+in hyperbox-brain, and which may be appropriate to adopt in external projects. 
+Certainly, there are special cases and there will be exceptions to these rules.
+However, following these rules when submitting new code makes the review easier so
+new code can be integrated in less time.
+
+Uniformly formatted code makes it easier to share code ownership. The hyperbox-brain
+project tries to closely follow the official Python guidelines detailed in PEP8 that
+detail how code should be formatted and indented. Please read it and follow it.
+
+In addition, we add the following guidelines:
+
+* Use underscores to separate words in non class names: ``n_samples`` rather than ``nsamples``.
+* Avoid multiple statements on one line. Prefer a line return after a control flow statement (if/for).
+* Unit tests should use absolute imports, exactly as client code would.
+* Please don't use ``import *`` in any case. It is considered harmful by the official Python
+  recommendations. It makes the code harder to read as the origin of symbols is no longer
+  explicitly referenced, but most important, it prevents using a static analysis tool like
+  `pyflakes <https://divmod.readthedocs.io/en/latest/products/pyflakes.html>`_ to automatically
+  find bugs in hyperbox-brain.
+* Use the `numpy docstring <https://numpydoc.readthedocs.io/en/latest/format.html#numpydoc-docstring-guide>`_
+  standard in all your docstrings.
+
+A good example of code that we like can be found `here <https://gist.github.com/nateGeorge/5455d2c57fb33c1ae04706f2dc4fee01>`_.
+
+
+.. _contribute_documentation:
+
+Documentation
+=============
+
+
+Issue Tracker Tags
+==================
+
+All issues and pull requests on the `GitHub issue tracker
+<https://github.com/UTS-CASLab/hyperbox-brain/issues>`_
+should have (at least) one of the following tags:
+
+:Bug / Crash:
+   Something is happening that clearly shouldn't happen.
+   Wrong results as well as unexpected errors from estimators go here.
+
+:Cleanup / Enhancement:
+   Improving performance, usability, consistency.
+
+:Documentation:
+   Missing, incorrect or sub-standard documentations and examples.
+
+:New Feature:
+   Feature requests and pull requests implementing a new feature.
+
+There are four other tags to help new contributors:
+
+:good first issue:
+   This issue is ideal for a first contribution to hyperbox-brain. Ask for help
+   if the formulation is unclear. If you have already contributed to
+   hyperbox-brain, look at Easy issues instead.
+
+:Easy:
+   This issue can be tackled without much prior experience.
+
+:Moderate:
+   Might need some knowledge of machine learning or the package,
+   but is still approachable for someone new to the project.
+
+:help wanted:
+   This tag marks an issue which currently lacks a contributor or a
+   PR that needs another contributor to take over the work. These
+   issues can range in difficulty, and may not be approachable
+   for new contributors. Note that not all issues which need
+   contributors will have this tag.
