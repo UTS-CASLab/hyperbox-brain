@@ -224,7 +224,7 @@ an given input pattern:
 
 .. image:: https://raw.githubusercontent.com/UTS-CASLab/hyperbox-brain/master/images/parallel_coord_explanation.PNG
    :height: 300 px
-   :width: 500 px
+   :width: 600 px
    :align: center
 
 Easy to use
