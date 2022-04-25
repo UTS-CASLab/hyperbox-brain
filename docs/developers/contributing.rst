@@ -183,10 +183,11 @@ how to set up your git repository:
        origin  git@github.com:YourLogin/hyperbox-brain.git (push)
        upstream    git@github.com:UTS-CASLab/hyperbox-brain.git (fetch)
        upstream    git@github.com:UTS-CASLab/hyperbox-brain.git (push)
-       
-    You should now have a working installation of hyperbox-brain, and your git
-    repository properly configured. The next steps now describe the process of
-    modifying code and submitting a PR.
+
+
+   You should now have a working installation of hyperbox-brain, and your git
+   repository properly configured. The next steps now describe the process of
+   modifying code and submitting a PR.
 
 #. Synchronize your ``main`` branch with the ``upstream/main`` branch,
    more details on `GitHub Docs <https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork>`_:
@@ -203,8 +204,8 @@ how to set up your git repository:
         
         git checkout -b my_feature
 
-    and start making changes. Always use a feature branch. It's good
-    practice to never work on the ``main`` branch!
+   and start making changes. Always use a feature branch. It's good
+   practice to never work on the ``main`` branch!
 
 #. (**Optional**) Install `pre-commit <https://pre-commit.com/#install>`_ to
    run code style checks before each commit:
@@ -214,7 +215,7 @@ how to set up your git repository:
         pip install pre-commit
         pre-commit install
         
-    pre-commit checks can be disabled for a particular commit with `git commit -n`.
+   pre-commit checks can be disabled for a particular commit with `git commit -n`.
 
 #. Develop the feature on your feature branch on your computer, using Git to
    do the version control. When you're done editing, add changed files using
@@ -225,8 +226,8 @@ how to set up your git repository:
         git add modified_files
         git commit
 
-    to record your changes in Git, then push the changes to your GitHub
-    account with:
+   to record your changes in Git, then push the changes to your GitHub
+   account with:
 
     .. code:: bash
         
@@ -246,9 +247,9 @@ how to set up your git repository:
        git fetch upstream
        git merge upstream/main
        
-    Subsequently, you might need to solve the conflicts. You can refer to the
-    `Git documentation related to resolving merge conflict using the command
-    line <https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/>`_.
+   Subsequently, you might need to solve the conflicts. You can refer to the
+   `Git documentation related to resolving merge conflict using the command
+   line <https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/>`_.
 
 .. topic:: **Learning git**:
 
