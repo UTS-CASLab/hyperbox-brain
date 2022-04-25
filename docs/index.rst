@@ -43,7 +43,7 @@ If you use hyperbox-brain, please use this BibTeX entry:
    user/features
    user/available_models
    user/quickstart
-   user/contributing
+   developers/contributing
 
 
 API Reference
