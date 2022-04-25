@@ -16,7 +16,7 @@
    <p align="center"><img width="150" height="150" src="/images/logo.png" alt="Hyperbox-Brain logo"/></p>
    <H1 align="center">Hyperbox-Brain</H1>
 
-|Build|_ |PageDeploy|_ |Doc|_
+|Build|_ |PageDeploy|_ |Doc|_ |PythonVersion|_ |PyPi|_
 
 .. |Build| image:: https://github.com/UTS-CASLab/hyperbox-brain/workflows/tests/badge.svg
 .. _Build: https://github.com/UTS-CASLab/hyperbox-brain/workflows/tests/badge.svg
@@ -28,9 +28,10 @@
 .. _Doc: https://hyperbox-brain.readthedocs.io/en/latest/?badge=latest
 
 .. |PythonVersion| image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-blue
+.. _PythonVersion: https://pypi.org/project/hyperbox-brain/
 
 .. |PyPi| image:: https://img.shields.io/pypi/v/hyperbox-brain
-
+.. _PyPi: https://pypi.org/project/hyperbox-brain
 
 **hyperbox-brain** is a Python open source toolbox implementing hyperbox-based machine learning algorithms built on top of
 scikit-learn and is distributed under the 3-Clause BSD license.
