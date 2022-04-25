@@ -44,6 +44,7 @@ If you use hyperbox-brain, please use this BibTeX entry:
    user/available_models
    user/quickstart
    developers/contributing
+   user/about
 
 
 API Reference
