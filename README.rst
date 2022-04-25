@@ -18,13 +18,11 @@
 
 |Build|_ |PageDeploy|_ |Doc|_
 
-.. |Build| image:: https://github.com/UTS-CASLab/hyperbox-brain/blob/main/.github/workflows/tests/badge.svg
-    :alt: Test Status
-    :scale: 100%
+.. |Build| image:: https://github.com/UTS-CASLab/hyperbox-brain/workflows/tests/badge.svg
+.. _Build: https://github.com/UTS-CASLab/hyperbox-brain/workflows/tests/badge.svg
 
 .. |PageDeploy| image:: https://github.com/UTS-CASLab/hyperbox-brain/actions/workflows/pages/pages-build-deployment/badge.svg
-    :alt: Deploy Status
-    :scale: 100%
+.. _PageDeploy: https://uts-caslab.github.io/hyperbox-brain/
 
 .. |Doc| image:: https://readthedocs.org/projects/hyperbox-brain/badge/?version=latest
 .. _Doc: https://hyperbox-brain.readthedocs.io/en/latest/?badge=latest
