@@ -140,16 +140,16 @@ then submit a "pull request" (PR).
 In the first few steps, we explain how to locally install hyperbox-brain, and
 how to set up your git repository:
 
-1. `Create an account <https://github.com/join>`_ on
+#. `Create an account <https://github.com/join>`_ on
    GitHub if you do not already have one.
 
-2. Fork the `project repository
+#. Fork the `project repository
    <https://github.com/UTS-CASLab/hyperbox-brain>`__: click on the 'Fork'
    button near the top of the page. This creates a copy of the code under your
    account on the GitHub user account. For more details on how to fork a
    repository see `this guide <https://help.github.com/articles/fork-a-repo/>`_.
 
-3. Clone your fork of the hyperbox-brain repo from your GitHub account to your
+#. Clone your fork of the hyperbox-brain repo from your GitHub account to your
    local disk:
 
    .. code:: bash
@@ -157,16 +157,16 @@ how to set up your git repository:
        git clone git@github.com:YourLogin/hyperbox-brain.git  # add --depth 1 if your connection is slow
        cd hyperbox-brain
 
-4. Follow steps 2-7 in the `installation from source <https://hyperbox-brain.readthedocs.io/en/latest/user/installation.html#from-source>`_
+#. Follow the steps in the `installation from source <https://hyperbox-brain.readthedocs.io/en/latest/user/installation.html#from-source>`_
    to build hyperbox-brain in development mode and return to this document.
 
-5. Install the development dependencies:
+#. Install the development dependencies:
 
    .. code:: bash
        
        pip install pytest pytest-cov flake8 mypy numpydoc black==22.3.0
 
-6. Add the ``upstream`` remote. This saves a reference to the main
+#. Add the ``upstream`` remote. This saves a reference to the main
    scikit-learn repository, which you can use to keep your repository
    synchronized with the latest changes:
 
@@ -174,21 +174,21 @@ how to set up your git repository:
        
        git remote add upstream git@github.com:UTS-CASLab/hyperbox-brain.git
 
-7. Check that the `upstream` and `origin` remote aliases are configured correctly
+#. Check that the `upstream` and `origin` remote aliases are configured correctly
    by running `git remote -v` which should display:
-
+   
    .. code:: bash
        
        origin  git@github.com:YourLogin/hyperbox-brain.git (fetch)
        origin  git@github.com:YourLogin/hyperbox-brain.git (push)
        upstream    git@github.com:UTS-CASLab/hyperbox-brain.git (fetch)
        upstream    git@github.com:UTS-CASLab/hyperbox-brain.git (push)
-    
+       
     You should now have a working installation of hyperbox-brain, and your git
     repository properly configured. The next steps now describe the process of
-    modifying code and submitting a PR:
+    modifying code and submitting a PR.
 
-8. Synchronize your ``main`` branch with the ``upstream/main`` branch,
+#. Synchronize your ``main`` branch with the ``upstream/main`` branch,
    more details on `GitHub Docs <https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork>`_:
 
    .. code:: bash
@@ -197,17 +197,17 @@ how to set up your git repository:
        git fetch upstream
        git merge upstream/main
 
-9. Create a feature branch to hold your development changes:
+#. Create a feature branch to hold your development changes:
     
     .. code:: bash
         
         git checkout -b my_feature
-        
+
     and start making changes. Always use a feature branch. It's good
     practice to never work on the ``main`` branch!
 
-10. (**Optional**) Install `pre-commit <https://pre-commit.com/#install>`_ to
-    run code style checks before each commit:
+#. (**Optional**) Install `pre-commit <https://pre-commit.com/#install>`_ to
+   run code style checks before each commit:
     
     .. code:: bash
         
@@ -216,9 +216,9 @@ how to set up your git repository:
         
     pre-commit checks can be disabled for a particular commit with `git commit -n`.
 
-11. Develop the feature on your feature branch on your computer, using Git to
-    do the version control. When you're done editing, add changed files using
-    ``git add`` and then ``git commit``:
+#. Develop the feature on your feature branch on your computer, using Git to
+   do the version control. When you're done editing, add changed files using
+   ``git add`` and then ``git commit``:
 
     .. code:: bash
         
@@ -232,25 +232,25 @@ how to set up your git repository:
         
         git push -u origin my_feature
 
-12. Follow `these instructions
-    <https://help.github.com/articles/creating-a-pull-request-from-a-fork>`_
-    to create a pull request from your fork. This will send an
-    email to the committers. You may want to consider sending an email to the
-    mailing list for more visibility.
-    
-    It is often helpful to keep your local feature branch synchronized with the
-    latest changes of the main hyperbox-brain repository:
-    
-    .. code:: bash
-        
-        git fetch upstream
-        git merge upstream/main
-        
+#. Follow `these instructions 
+   <https://help.github.com/articles/creating-a-pull-request-from-a-fork>`_
+   to create a pull request from your fork. This will send an
+   email to the committers. You may want to consider sending an email to the
+   mailing list for more visibility.
+   
+   It is often helpful to keep your local feature branch synchronized with the
+   latest changes of the main hyperbox-brain repository:
+   
+   .. code:: bash
+       
+       git fetch upstream
+       git merge upstream/main
+       
     Subsequently, you might need to solve the conflicts. You can refer to the
     `Git documentation related to resolving merge conflict using the command
     line <https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/>`_.
 
-.. topic:: Learning git:
+.. topic:: **Learning git**:
 
     The `Git documentation <https://git-scm.com/documentation>`_ and
     http://try.github.io are excellent resources to get started with git,
