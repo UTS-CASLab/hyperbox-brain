@@ -16,7 +16,15 @@
    <p align="center"><img width="150" height="150" src="/images/logo.png" alt="Hyperbox-Brain logo"/></p>
    <H1 align="center">Hyperbox-Brain</H1>
 
-|Doc|_ |PythonVersion|_ |PyPi|_ 
+|Build|_ |PageDeploy|_ |Doc|_
+
+.. |Build| image:: https://github.com/UTS-CASLab/hyperbox-brain/blob/main/.github/workflows/tests/badge.svg
+    :alt: Test Status
+    :scale: 100%
+
+.. |PageDeploy| image:: https://github.com/UTS-CASLab/hyperbox-brain/actions/workflows/pages/pages-build-deployment/badge.svg
+    :alt: Deploy Status
+    :scale: 100%
 
 .. |Doc| image:: https://readthedocs.org/projects/hyperbox-brain/badge/?version=latest
 .. _Doc: https://hyperbox-brain.readthedocs.io/en/latest/?badge=latest
