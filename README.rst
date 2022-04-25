@@ -16,10 +16,10 @@
    <p align="center"><img width="150" height="150" src="/images/logo.png" alt="Hyperbox-Brain logo"/></p>
    <H1 align="center">Hyperbox-Brain</H1>
 
-.. image:: https://readthedocs.org/projects/hyperbox-brain/badge/?version=latest
-  :align: center
-  :target: https://hyperbox-brain.readthedocs.io/en/latest/?badge=latest
-  :alt: Documentation Status
+|Doc|_ |PythonVersion|_ |PyPi|_ 
+
+.. |Doc| image:: https://readthedocs.org/projects/hyperbox-brain/badge/?version=latest
+.. _Doc: https://hyperbox-brain.readthedocs.io/en/latest/?badge=latest
 
 .. |PythonVersion| image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-blue
 .. _PythonVersion: https://pypi.org/project/hyperbox-brain/
