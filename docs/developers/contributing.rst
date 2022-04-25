@@ -99,7 +99,7 @@ feedback:
 - If an exception is raised, please **provide the full traceback**.
 
 - Please include your **operating system type and version number**, as well as
-  your **Python, hyperbox-brain, scikit-learn, joblib, numpy, matplotlib, plotly, and pandas versions**. This information
+  your **Python, hyperbox-brain, hyperbox-brain, joblib, numpy, matplotlib, plotly, and pandas versions**. This information
   can be found by running the following code snippet:
 
 .. code:: python
@@ -167,7 +167,7 @@ how to set up your git repository:
        pip install pytest pytest-cov flake8 mypy numpydoc black==22.3.0
 
 #. Add the ``upstream`` remote. This saves a reference to the main
-   scikit-learn repository, which you can use to keep your repository
+   hyperbox-brain repository, which you can use to keep your repository
    synchronized with the latest changes:
 
    .. code:: bash
@@ -421,7 +421,175 @@ A good example of code that we like can be found `here <https://gist.github.com/
 
 Documentation
 =============
+We are happy to accept any sort of documentation: function docstrings,
+reStructuredText documents (like this one), tutorials, etc. reStructuredText
+documents live in the source code repository under the ``docs/`` directory.
 
+You can edit the documentation using any text editor, and then generate the
+HTML output by typing ``make`` from the ``docs/`` directory. Alternatively,
+``make html`` may be used to generate the documentation **with** the example
+gallery (which takes quite some time). The resulting HTML files will be
+placed in ``_build/html`` and are viewable in a web browser.
+
+
+Building the documentation
+--------------------------
+
+First, make sure you have `properly installed <https://hyperbox-brain.readthedocs.io/en/latest/user/installation.html#from-source>`_
+the development version.
+
+Building the documentation requires installing some additional packages:
+
+.. code:: bash
+    
+    pip install sphinx sphinx-rtd-theme readthedocs-sphinx-search numpydoc \
+                sphinx-gallery hyperbox-brain nbsphinx sphinx-autodocgen \
+                pandas IPython
+
+To build the documentation, you need to be in the ``docs`` folder:
+
+.. code:: bash
+    
+    cd docs
+
+In the vast majority of cases, you only need to generate the full web site,
+without the example gallery:
+
+.. code:: bash
+    
+    make
+
+The documentation will be generated in the ``_build/html`` directory.
+To also generate the example gallery you can use:
+
+.. code:: bash
+
+    make html
+
+This will run all the examples, which takes a while. If you only want to
+generate a few examples, you can use:
+
+.. code:: bash
+
+    EXAMPLES_PATTERN=your_regex_goes_here make html
+
+This is particularly useful if you are modifying a few examples.
+
+Set the environment variable `NO_MATHJAX=1` if you intend to view
+the documentation in an offline setting.
+
+To build the PDF manual, run:
+
+.. code:: bash
+    
+    make latexpdf
+
+.. warning:: **Sphinx version**
+    
+    While we do our best to have the documentation build under as many
+    versions of Sphinx as possible, the different versions tend to
+    behave slightly differently.
+
+Guidelines for writing documentation
+------------------------------------
+
+It is essential to keep a good compromise between mathematical and algorithmic
+details, and give intuition to the reader on what the algorithm does.
+
+Basically, to elaborate on the above, it is best to always
+start with a small paragraph with a hand-waving explanation of what the
+method does to the data. Then, it is very helpful to point out why the feature is
+useful and when it should be used - the latter also including "big O"
+(:math:`O\left(g\left(n\right)\right)`) complexities of the algorithm, as opposed
+to just *rules of thumb*, as the latter can be very machine-dependent. If those
+complexities are not available, then rules of thumb may be provided instead.
+
+Secondly, a generated figure from an example should then be included to further provide some intuition.
+
+Next, one or two small code examples to show its use can be added.
+
+Next, any math and equations, followed by references, can be added to further the
+documentation. Not starting the documentation with the maths makes it more friendly towards
+users that are just interested in what the feature will do, as opposed to how
+it works "under the hood".
+
+Finally, follow the formatting rules below to make it consistently good:
+
+* Add "See Also" in docstrings for related classes/functions.
+
+* "See Also" in docstrings should be one line per reference,
+  with a colon and an explanation, for example::
+
+    See Also
+    --------
+    SelectKBest : Select features based on the k highest scores.
+    SelectNSamples : Select samples based on a false negative rate test.
+
+* When documenting the parameters and attributes, here is a list of some
+  well-formatted examples::
+
+    n_hyperboxes : int, default=10
+        The number of hyperboxes generated by the algorithm.
+
+    some_param : {'hello', 'goodbye'}, bool or int, default=True
+        The parameter description goes here, which can be either a string
+        literal (either `hello` or `goodbye`), a bool, or an int. The default
+        value is True.
+
+    array_parameter : {array-like, sparse matrix} of shape (n_samples, n_features) or (n_samples,)
+        This parameter accepts data in either of the mentioned forms, with one
+        of the mentioned shapes. The default value is
+        `np.ones(shape=(n_samples,))`.
+
+    list_param : list of int
+    
+    typed_ndarray : ndarray of shape (n_samples,), dtype=np.int32
+
+    sample_weight : array-like of shape (n_samples,), default=None
+
+    multioutput_array : ndarray of shape (n_samples, n_classes) or list of such arrays
+    
+  In general have the following in mind:
+
+        #. Use Python basic types.
+        #. Use parenthesis for defining shapes: ``array-like of shape (n_samples,)``
+           or ``array-like of shape (n_samples, n_features)``
+        #. For strings with multiple options, use brackets: ``input: {'log', 'squared', 'multinomial'}``
+        #. 1D or 2D data can be a subset of ``{array-like, ndarray, sparse matrix, dataframe}``.
+           Note that ``array-like`` can also be a ``list``, while ``ndarray`` is explicitly
+           only a ``numpy.ndarray``.
+        #. Specify ``dataframe`` when "frame-like" features are being used, such
+           as the column names.
+        #. When specifying the data type of a list, use ``of`` as a delimiter:
+           ``list of int``. When the parameter supports arrays giving details
+           about the shape and/or data type and a list of such arrays, you can
+           use one of ``array-like of shape (n_samples,) or list of such arrays``.
+        #. When specifying the dtype of an ndarray, use e.g. ``dtype=np.int32``
+           after defining the shape: ``ndarray of shape (n_samples,), dtype=np.int32``.
+           You can specify multiple dtype as a set: ``array-like of shape (n_samples,), dtype={np.float64, np.float32}``.
+           If one wants to mention arbitrary precision, use `integral` and
+           `floating` rather than the Python dtype `int` and `float`. When both
+           `int` and `floating` are supported, there is no need to specify the
+           dtype.
+        #. When the default is ``None``, ``None`` only needs to be specified at the
+           end with ``default=None``. Be sure to include in the docstring, what it
+           means for the parameter or attribute to be ``None``.
+
+* For unwritten formatting rules, try to follow existing good works:
+
+    * When bibliographic references are available with `arxiv <https://arxiv.org/>`_
+      or `Digital Object Identifier <https://www.doi.org/>`_ identification numbers,
+      use the sphinx directives `:arxiv:` or `:doi:`.
+    * For "References" in docstrings, see `this document <https://numpydoc.readthedocs.io/en/latest/format.html#references>`_.
+
+* When editing reStructuredText (``.rst``) files, try to keep line length under
+  80 characters when possible (exceptions include links and tables).
+
+* Do not modify sphinx labels as this would break existing cross references and
+  external links pointing to specific sections in the hyperbox-brain documentation.
+
+* Before submitting your pull request check if your modifications have
+  introduced new sphinx warnings and try to fix them.
 
 Issue Tracker Tags
 ==================
@@ -463,3 +631,105 @@ There are four other tags to help new contributors:
    issues can range in difficulty, and may not be approachable
    for new contributors. Note that not all issues which need
    contributors will have this tag.
+
+.. _code_review:
+
+Code Review Guidelines
+======================
+
+Reviewing code contributed to the project as PRs is a crucial component of
+hyperbox-brain development. We encourage anyone to start reviewing code of other
+developers. The code review process is often highly educational for everybody
+involved. This is particularly appropriate if it is a feature you would like to
+use, and so can respond critically about whether the PR meets your needs. While
+each pull request needs to be signed off by two core developers, you can speed
+up this process by providing your feedback.
+
+.. note::
+    
+    The difference between an objective improvement and a subjective one isn't
+    always clear. Reviewers should recall that code review is primarily about
+    reducing risk in the project. When reviewing code, one should aim at
+    preventing situations which may require a bug fix, a deprecation, or a
+    retraction. Regarding docs: typos, grammar issues and disambiguations are
+    better addressed immediately.
+
+Here are a few important aspects that need to be covered in any code review,
+from high-level questions to a more detailed check-list.
+
+* Do we want this in the library? Is it likely to be used? Do you, as
+  a hyperbox-brain user, like the change and intend to use it? Is it in
+  the scope of hyperbox-brain? Will the cost of maintaining a new
+  feature be worth its benefits?
+  
+* Is the code consistent with the API of hyperbox-brain? Are public
+  functions/classes/parameters well named and intuitively designed?
+  
+* Are all public functions/classes and their parameters, return types, and
+  stored attributes named according to hyperbox-brain conventions and documented clearly?
+
+* Is any new functionality described in the user-guide and illustrated with examples?
+
+* Is every public function/class tested? Are a reasonable set of
+  parameters, their values, value types, and combinations tested? Do
+  the tests validate that the code is correct, i.e. doing what the
+  documentation says it does? If the change is a bug-fix, is a
+  non-regression test included? Look at `this document
+  <https://jeffknupp.com/blog/2013/12/09/improve-your-python-understanding-unit-testing>`__
+  to get started with testing in Python.
+
+* Do the tests pass in the continuous integration build? If
+  appropriate, help the contributor understand why tests failed.
+
+* Do the tests cover every line of code (see the coverage report in the build
+  log)? If not, are the lines missing coverage good exceptions?
+
+* Is the code easy to read and low on redundancy? Should variable names be
+  improved for clarity or consistency? Should comments be added? Should comments
+  be removed as unhelpful or extraneous?
+
+* Could the code easily be rewritten to run much more efficiently for
+  relevant settings?
+
+* Is the code backwards compatible with previous versions? (or is a
+  deprecation cycle necessary?)
+
+* Will the new code add any dependencies on other libraries? (this is
+  unlikely to be accepted)
+
+* Does the documentation render properly (see the
+  :ref:`contribute_documentation` section for more details), and are the plots
+  instructive?
+
+Communication Guidelines
+------------------------
+
+Reviewing open pull requests (PRs) helps move the project forward. It is a
+great way to get familiar with the codebase and should motivate the
+contributor to keep involved in the project. [1]_
+
+* Every PR, good or bad, is an act of generosity. Opening with a positive
+  comment will help the author feel rewarded, and your subsequent remarks may
+  be heard more clearly. You may feel good also.
+* Begin if possible with the large issues, so the author knows they've been
+  understood. Resist the temptation to immediately go line by line, or to open
+  with small pervasive issues.
+* Do not let perfect be the enemy of the good. If you find yourself making
+  many small suggestions that don't fall into the :ref:`code_review`, consider
+  the following approaches:
+  
+  - refrain from submitting these;
+  - prefix them as "Nit" so that the contributor knows it's OK not to address;
+  - follow up in a subsequent PR, out of courtesy, you may want to let the
+    original contributor know.
+
+* Do not rush, take the time to make your comments clear and justify your
+  suggestions.
+* You are the face of the project. Bad days occur to everyone, in that
+  occasion you deserve a break: try to take your time and stay offline.
+
+.. [1] Adapted from the numpy `communication guidelines
+       <https://numpy.org/devdocs/dev/reviewer_guidelines.html#communication-guidelines>`_.
+
+.. important:: 
+    This guide line is adapted from `scikit-learn guidelines <https://scikit-learn.org/stable/developers/contributing.html>`_ under the MIT licence.
