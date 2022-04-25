@@ -11,17 +11,13 @@
 .. |PlotlyMinVersion| replace:: 4.10.0
 .. |PytestMinVersion| replace:: 5.0.1
 
-.. image:: https://github.com/UTS-CASLab/hyperbox-brain/blob/main/images/logo.png
+|Build|_ |PageDeploy|_ |Doc|_ |PythonVersion|_ |PyPi|_
+
+.. image:: https://raw.githubusercontent.com/UTS-CASLab/hyperbox-brain/master/images/logo.png
    :height: 150px
    :width: 150px
    :align: center
    :target: https://uts-caslab.github.io/hyperbox-brain/
-
-.. raw:: html
-
-   <H1 align="center">Hyperbox-Brain</H1>
-
-|Build|_ |PageDeploy|_ |Doc|_ |PythonVersion|_ |PyPi|_
 
 .. |Build| image:: https://github.com/UTS-CASLab/hyperbox-brain/workflows/tests/badge.svg
 .. _Build: https://github.com/UTS-CASLab/hyperbox-brain/workflows/tests/badge.svg
@@ -203,12 +199,12 @@ In addition, the hyperbox-brain toolbox can be used within hyperparameter optimi
 scikit-learn such as `hyperopt <http://hyperopt.github.io/hyperopt/>`_.
 
 Explainability of predicted results
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The hyperbox-brain library can provide the explanation of predicted results via visualisation. 
 This toolbox provides the visualisation of existing hyperboxes and the decision boundaries of 
 a trained hyperbox-based model if input features are two-dimensional features:
 
-.. image:: https://github.com/UTS-CASLab/hyperbox-brain/blob/main/images/hyperboxes_and_boundaries.png
+.. image:: https://raw.githubusercontent.com/UTS-CASLab/hyperbox-brain/master/images/hyperboxes_and_boundaries.png
    :height: 300 px
    :width: 350 px
    :align: center
@@ -217,7 +213,7 @@ For two-dimensional data, the toolbox also provides the reason behind the class 
 by showing representative hyperboxes for each class which join the prediction process of the trained model for 
 an given input pattern:
 
-.. image:: https://github.com/UTS-CASLab/hyperbox-brain/blob/main/images/hyperboxes_explanation.png
+.. image:: https://raw.githubusercontent.com/UTS-CASLab/hyperbox-brain/master/images/hyperboxes_explanation.png
    :height: 300 px
    :width: 350 px
    :align: center
@@ -226,7 +222,7 @@ For input patterns with two or more dimensions, the hyperbox-brain toolbox uses 
 representative hyperboxes for each class which join the prediction process of the trained model for 
 an given input pattern:
 
-.. image:: https://github.com/UTS-CASLab/hyperbox-brain/blob/main/images/parallel_coord_explanation.PNG
+.. image:: https://raw.githubusercontent.com/UTS-CASLab/hyperbox-brain/master/images/parallel_coord_explanation.PNG
    :height: 300 px
    :width: 500 px
    :align: center
@@ -278,126 +274,126 @@ The following table summarises the supported hyperbox-based learning algorithms 
      - Single 
      - Instance-incremental 
      - `ExtendedImprovedOnlineGFMM </hbbrain/mixed_data/eiol_gfmm.py>`_
-     - `Notebook </examples/mixed_data/eiol_gfmm_general_use.ipynb>`_
+     - `Notebook 1 </examples/mixed_data/eiol_gfmm_general_use.ipynb>`_
      - [1]_
    * - Freq-Cat-Onln-GFMM 
      - Mixed 
      - Single 
      - Batch-incremental 
      - `FreqCatOnlineGFMM </hbbrain/mixed_data/freq_cat_onln_gfmm.py>`_
-     - `Notebook </examples/mixed_data/freq_cat_onln_gfmm_general_use.ipynb>`_
+     - `Notebook 2 </examples/mixed_data/freq_cat_onln_gfmm_general_use.ipynb>`_
      - [2]_
    * - OneHot-Onln-GFMM 
      - Mixed 
      - Single 
      - Batch-incremental 
      - `OneHotOnlineGFMM </hbbrain/mixed_data/onehot_onln_gfmm.py>`_
-     - `Notebook </examples/mixed_data/onehot_onln_gfmm_general_use.ipynb>`_
+     - `Notebook 3 </examples/mixed_data/onehot_onln_gfmm_general_use.ipynb>`_
      - [2]_
    * - Onln-GFMM 
      - Continuous 
      - Single 
      - Instance-incremental 
      - `OnlineGFMM </hbbrain/numerical_data/incremental_learner/onln_gfmm.py>`_
-     - `Notebook </examples/numerical_data/incremental_learner/onln_gfmm_general_use.ipynb>`_
+     - `Notebook 4 </examples/numerical_data/incremental_learner/onln_gfmm_general_use.ipynb>`_
      - [3]_, [4]_
    * - IOL-GFMM 
      - Continuous 
      - Single 
      - Instance-incremental 
      - `ImprovedOnlineGFMM </hbbrain/numerical_data/incremental_learner/iol_gfmm.py>`_
-     - `Notebook </examples/numerical_data/incremental_learner/iol_gfmm_general_use.ipynb>`_
+     - `Notebook 5 </examples/numerical_data/incremental_learner/iol_gfmm_general_use.ipynb>`_
      - [5]_, [4]_
    * - FMNN 
      - Continuous 
      - Single 
      - Instance-incremental 
      - `FMNNClassifier </hbbrain/numerical_data/incremental_learner/fmnn.py>`_
-     - `Notebook </examples/numerical_data/incremental_learner/fmnn_general_use.ipynb>`_
+     - `Notebook 6 </examples/numerical_data/incremental_learner/fmnn_general_use.ipynb>`_
      - [6]_
    * - EFMNN 
      - Continuous 
      - Single 
      - Instance-incremental 
      - `EFMNNClassifier </hbbrain/numerical_data/incremental_learner/efmnn.py>`_
-     - `Notebook </examples/numerical_data/incremental_learner/efmnn_general_use.ipynb>`_
+     - `Notebook 7 </examples/numerical_data/incremental_learner/efmnn_general_use.ipynb>`_
      - [7]_ 
    * - KNEFMNN 
      - Continuous 
      - Single 
      - Instance-incremental 
      - `KNEFMNNClassifier </hbbrain/numerical_data/incremental_learner/knefmnn.py>`_
-     - `Notebook </examples/numerical_data/incremental_learner/knefmnn_general_use.ipynb>`_
+     - `Notebook 8 </examples/numerical_data/incremental_learner/knefmnn_general_use.ipynb>`_
      - [8]_ 
    * - RFMNN 
      - Continuous 
      - Single 
      - Instance-incremental 
      - `RFMNNClassifier </hbbrain/numerical_data/incremental_learner/rfmnn.py>`_
-     - `Notebook </examples/numerical_data/incremental_learner/rfmnn_general_use.ipynb>`_
+     - `Notebook 9 </examples/numerical_data/incremental_learner/rfmnn_general_use.ipynb>`_
      - [9]_ 
    * - AGGLO-SM 
      - Continuous 
      - Single 
      - Batch 
      - `AgglomerativeLearningGFMM </hbbrain/numerical_data/batch_learner/agglo_gfmm.py>`_
-     - `Notebook </examples/numerical_data/batch_learner/agglo_gfmm_general_use.ipynb>`_
+     - `Notebook 10 </examples/numerical_data/batch_learner/agglo_gfmm_general_use.ipynb>`_
      - [10]_, [4]_
    * - AGGLO-2
      - Continuous 
      - Single 
      - Batch
      - `AccelAgglomerativeLearningGFMM </hbbrain/numerical_data/batch_learner/accel_agglo_gfmm.py>`_
-     - `Notebook </examples/numerical_data/batch_learner/accel_agglo_gfmm_general_use.ipynb>`_
+     - `Notebook 11 </examples/numerical_data/batch_learner/accel_agglo_gfmm_general_use.ipynb>`_
      - [10]_, [4]_
    * - MRHGRC
      - Continuous 
      - Granularity 
      - Multi-Granular learning 
      - `MultiGranularGFMM </hbbrain/numerical_data/multigranular_learner/multi_resolution_gfmm.py>`_
-     - `Notebook </examples/numerical_data/multigranular_learner/multi_resolution_gfmm_general_use.ipynb>`_
+     - `Notebook 12 </examples/numerical_data/multigranular_learner/multi_resolution_gfmm_general_use.ipynb>`_
      - [11]_ 
    * - Decision-level Bagging of hyperbox-based learners
      - Continuous 
      - Combination 
      - Ensemble 
      - `DecisionCombinationBagging </hbbrain/numerical_data/ensemble_learner/decision_comb_bagging.py>`_
-     - `Notebook </examples/numerical_data/ensemble_learner/decision_comb_bagging_general_use.ipynb>`_
+     - `Notebook 13 </examples/numerical_data/ensemble_learner/decision_comb_bagging_general_use.ipynb>`_
      - [12]_
    * - Decision-level Bagging of hyperbox-based learners with hyper-parameter optimisation
      - Continuous
      - Combination 
      - Ensemble 
      - `DecisionCombinationCrossValBagging </hbbrain/numerical_data/ensemble_learner/decision_comb_cross_val_bagging.py>`_
-     - `Notebook </examples/numerical_data/ensemble_learner/decision_comb_cross_val_bagging_general_use.ipynb>`_
+     - `Notebook 14 </examples/numerical_data/ensemble_learner/decision_comb_cross_val_bagging_general_use.ipynb>`_
      -  
    * - Model-level Bagging of hyperbox-based learners
      - Continuous 
      - Combination 
      - Ensemble 
      - `ModelCombinationBagging </hbbrain/numerical_data/ensemble_learner/model_comb_bagging.py>`_
-     - `Notebook </examples/numerical_data/ensemble_learner/model_comb_bagging_general_use.ipynb>`_
+     - `Notebook 15 </examples/numerical_data/ensemble_learner/model_comb_bagging_general_use.ipynb>`_
      - [12]_
    * - Model-level Bagging of hyperbox-based learners with hyper-parameter optimisation 
      - Continuous 
      - Combination 
      - Ensemble 
      - `ModelCombinationCrossValBagging </hbbrain/numerical_data/ensemble_learner/model_comb_cross_val_bagging.py>`_
-     - `Notebook </examples/numerical_data/ensemble_learner/model_comb_cross_val_bagging_general_use.ipynb>`_
+     - `Notebook 16 </examples/numerical_data/ensemble_learner/model_comb_cross_val_bagging_general_use.ipynb>`_
      -   
    * - Random hyperboxes 
      - Continuous 
      - Combination 
      - Ensemble 
      - `RandomHyperboxesClassifier </hbbrain/numerical_data/ensemble_learner/random_hyperboxes.py>`_
-     - `Notebook </examples/numerical_data/ensemble_learner/random_hyperboxes_general_use.ipynb>`_
+     - `Notebook 17 </examples/numerical_data/ensemble_learner/random_hyperboxes_general_use.ipynb>`_
      - [13]_
    * - Random hyperboxes with hyper-parameter optimisation for base learners 
      - Continuous 
      - Combination 
      - Ensemble 
      - `CrossValRandomHyperboxesClassifier </hbbrain/numerical_data/ensemble_learner/cross_val_random_hyperboxes.py>`_
-     - `Notebook </examples/numerical_data/ensemble_learner/cross_val_random_hyperboxes_general_use.ipynb>`_
+     - `Notebook 18 </examples/numerical_data/ensemble_learner/cross_val_random_hyperboxes_general_use.ipynb>`_
      -  
 
 ========
