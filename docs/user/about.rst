@@ -27,7 +27,7 @@ Ecosystem
 ``hyperbox-brain`` is part of the hyperbox-based machine learning ecosystem. In
 Python, this library can be used together with pipeline and hyper-parameter optimisers
 in the `scikit-learn <https://scikit-learn.org/>`_ library. This library can be also
-compatible with other optimiser in Python such as `hyperopt <http://hyperopt.github.io/hyperopt/>`_
+compatible with other optimisers in Python such as `hyperopt <http://hyperopt.github.io/hyperopt/>`_
 and `Optuna <https://optuna.org/>`_.
 
 Development team 
