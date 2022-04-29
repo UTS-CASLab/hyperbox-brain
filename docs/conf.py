@@ -47,7 +47,7 @@ copyright = '2022, Thanh Tung Khuat and Bogdan Gabrys'
 author = 'Thanh Tung Khuat and Bogdan Gabrys'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+release = '0.1.1'
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
