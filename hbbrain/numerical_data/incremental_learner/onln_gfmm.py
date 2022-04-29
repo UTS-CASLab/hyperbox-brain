@@ -656,7 +656,7 @@ if __name__ == '__main__':
     
     # sample_need_explain = 10
     # y_pred_input_0, mem_val_classes, min_points_classes, max_points_classes = onln_gfmm_clf.get_sample_explanation(Xtest[sample_need_explain], Xtest[sample_need_explain])
-    # onln_gfmm_clf.show_sample_explanation(Xtest[sample_need_explain], Xtest[sample_need_explain], min_points_classes, max_points_classes, y_pred_input_0, "2D")
+    # onln_gfmm_clf.show_sample_explanation(Xtest[sample_need_explain], Xtest[sample_need_explain], min_points_classes, max_points_classes, y_pred_input_0, "par_cord")
     
     # print("Do pruning")
     # val_file = "/hyperbox-brain/dataset/syn_num_val.csv"

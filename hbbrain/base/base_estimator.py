@@ -189,7 +189,7 @@ class BaseHyperboxClassifier(BaseEstimator, ClassifierMixin):
         # Draw decision boundary
         draw_decision_boundary_2D(drawing_canvas, xx, yy, yhat)
 
-    def show_sample_explanation(self, xl, xu, dict_min_point_classes, dict_max_point_classes, y_pred, type_plot="par_cord", plot_width=800, plot_height=480, min_range=0, max_range=1):
+    def show_sample_explanation(self, xl, xu, dict_min_point_classes, dict_max_point_classes, y_pred, type_plot="par_cord", plot_width=800, plot_height=480, min_range=0, max_range=1, file_path="par_cord.html"):
         """
         Show explanation for predicted results of an input pattern under the
         form of parallel coordinates or hyperboxes in 2D or 3D planes.
@@ -230,6 +230,9 @@ class BaseHyperboxClassifier(BaseEstimator, ClassifierMixin):
             Minimum value in the axes to show hyperboxes in 2D or 3D planes.
         max_range : float, optional, default=1
             Maximum value in the axes to show hyperboxes in 2D or 3D planes.
+        file_path : str, optional, default="par_cord.html"
+            Path including a file name to the location storing the parallel
+            coordinates graph.
 
         Returns
         -------
@@ -258,7 +261,7 @@ class BaseHyperboxClassifier(BaseEstimator, ClassifierMixin):
             index += 1
             hyperboxes[index] = xu
             box_color.append(UNLABELED_CLASS)
-            draw_box_parallel_coordinate(hyperboxes, box_color, y_pred, plot_width, plot_height)
+            draw_box_parallel_coordinate(hyperboxes, box_color, y_pred, plot_width, plot_height, file_path)
         else:
             color_map = get_cmap(n_classes)
             # build a dictionary with the class label being key and color being value

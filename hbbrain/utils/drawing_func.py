@@ -171,7 +171,7 @@ def draw_decision_boundary_2D(drawing_canvas, XX, YY, yhat):
     drawing_canvas.contour(XX, YY, ZZ, cmap=mpl.cm.Blues)
 
 
-def draw_box_parallel_coordinate(X, y, y_pred, plot_width=800, plot_height=480):
+def draw_box_parallel_coordinate(X, y, y_pred, plot_width=800, plot_height=480, file_path="par_coor.html"):
     """
     Draw input samples in the form of parallel coordinates.
 
@@ -187,6 +187,9 @@ def draw_box_parallel_coordinate(X, y, y_pred, plot_width=800, plot_height=480):
         Width of the window to show graphs.
     plot_height : int, optional, default=480
         Height of the window to show graphs.
+    file_path : str, optional, default="par_cord.html"
+        Path including a file name to the location storing the parallel
+        coordinates graph.
 
     Returns
     -------
@@ -245,4 +248,6 @@ def draw_box_parallel_coordinate(X, y, y_pred, plot_width=800, plot_height=480):
     )
     
     fig = go.Figure(data=go.Parcoords(line = dict(color=y, colorscale = color_scale), dimensions=dim_list), layout=layout, layout_title_text="Hyperboxes joining the class prediction of an input sample")
-    fig.show(renderer="iframe")
+    #fig.show(renderer="iframe")
+    fig.write_html(file_path, full_html=False, include_plotlyjs='cdn')
+    

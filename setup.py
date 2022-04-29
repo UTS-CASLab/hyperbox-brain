@@ -39,11 +39,11 @@ with open("README.rst", encoding="utf-8") as f:
 MAINTAINER = "Thanh Tung KHUAT"
 MAINTAINER_EMAIL = "thanhtung09t2@gmail.com"
 URL = "https://uts-caslab.github.io/hyperbox-brain/"
-DOWNLOAD_URL = "https://github.com/UTS-CASLab/hyperbox-brain/archive/refs/tags/v0.1.0.tar.gz"
+DOWNLOAD_URL = "https://pypi.org/project/hyperbox-brain/#files"
 LICENSE = "new BSD"
 PROJECT_URLS = {
     "Bug Tracker": "https://github.com/UTS-CASLab/hyperbox-brain/issues",
-    "Documentation": "https://hyperbox-brain.readthedocs.io/en/latest/",
+    "Documentation": "https://hyperbox-brain.readthedocs.io/en/stable/",
     "Source Code": "https://github.com/UTS-CASLab/hyperbox-brain",
 }
 
