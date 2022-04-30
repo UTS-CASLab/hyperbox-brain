@@ -59,4 +59,4 @@ an academic publication, please use the following paper::
 
 Logo 
 ----
-The ``hyperbox-brain`` logo is design by Thanh Tung Khuat.
+The ``hyperbox-brain`` logo is designed by Thanh Tung Khuat.
