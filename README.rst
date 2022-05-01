@@ -35,7 +35,7 @@
 .. _PyPi: https://pypi.org/project/hyperbox-brain
 
 **hyperbox-brain** is a Python open source toolbox implementing hyperbox-based machine learning algorithms built on top of
-scikit-learn and is distributed under the 3-Clause BSD license.
+scikit-learn and is distributed under the GPL-3 license.
 
 The project was started in 2018 by Prof. `Bogdan Gabrys <https://profiles.uts.edu.au/Bogdan.Gabrys>`_ and Dr. `Thanh Tung Khuat <https://thanhtung09t2.wixsite.com/home>`_ at the Complex Adaptive Systems Lab - The
 University of Technology Sydney. This project is a core module aiming to the formulation of explainable life-long learning 
