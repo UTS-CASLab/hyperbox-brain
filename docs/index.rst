@@ -11,7 +11,7 @@ hyperbox-brain documentation
 
    <H1 align="center">Hyperbox-Brain</H1>
 
-A scikit-learn compatible hyperbox-base machine learning library in Python.
+A scikit-learn compatible hyperbox-based machine learning library in Python.
 
 Introduction
 ------------
