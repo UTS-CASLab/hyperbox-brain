@@ -3,7 +3,8 @@ The :mod:`hbbrain.numerical_data.ensemble_learner` module implements a variety o
 ensemble learning algorithms using hyperbox representations.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
+
 from hbbrain.numerical_data.ensemble_learner.cross_val_random_hyperboxes import (
     CrossValRandomHyperboxesClassifier
 )

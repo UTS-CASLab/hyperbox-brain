@@ -1,4 +1,7 @@
-import pytest
+# @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
+# License: GPL-3.0
+
+
 import numpy as np
 
 from hbbrain.utils.membership_calc import (

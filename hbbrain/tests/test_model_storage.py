@@ -1,7 +1,15 @@
+# @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
+# License: GPL-3.0
+
+
 import numpy as np
 from sklearn.datasets import make_classification
-from hbbrain.numerical_data.incremental_learner.iol_gfmm import ImprovedOnlineGFMM
-from hbbrain.numerical_data.ensemble_learner.random_hyperboxes import RandomHyperboxesClassifier
+from hbbrain.numerical_data.incremental_learner.iol_gfmm import (
+    ImprovedOnlineGFMM
+)
+from hbbrain.numerical_data.ensemble_learner.random_hyperboxes import (
+    RandomHyperboxesClassifier
+)
 from hbbrain.utils.model_storage import (
     store_model,
     load_model

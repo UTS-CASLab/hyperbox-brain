@@ -2,7 +2,7 @@
 Base functions and classes for ensemble models using hyperbox-based models.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 from hbbrain.constants import UNLABELED_CLASS
 from sklearn.utils.random import sample_without_replacement

@@ -3,7 +3,7 @@ Implement functions supporting for loading datasets contained in the dataset
 folder.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import pandas as pd
 import os

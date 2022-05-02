@@ -17,25 +17,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../'))
 
-"""
-sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../hbbrain")
-))
-
-sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../hbbrain/base")
-))
-sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../hbbrain/mixed_data")
-))
-sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../hbbrain/numerical_data")
-))
-sys.path.append(os.path.abspath(
-    os.path.join(__file__, "../hbbrain/utils")
-))
-"""
-
 #  on_rtd is whether we are on readthedocs.org, this line of code grabbed
 #  from docs.readthedocs.org
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
@@ -157,11 +138,7 @@ def linkcode_resolve(domain, info):
     except Exception:
         filename = info['module'].replace('.', '/') + '.py'
     import subprocess
-    # tag = subprocess.Popen(['git', 'rev-parse', 'HEAD'],
-    #                        stdout=subprocess.PIPE,
-    #                        universal_newlines=True).communicate()[0][:-1]
-    # https://github.com/runawayhorse001/statspy/blob/master/statspy/basics.py
-    # https://github.com/runawayhorse001/SphinxGithub/blob/master/statspy/basics.py
+
     return "https://github.com/UTS-CASLab/hyperbox-brain/blob/main/%s" % (filename)
 
 # The following is used by sphinx.ext.linkcode to provide links to github

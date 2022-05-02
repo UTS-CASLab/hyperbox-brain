@@ -1,8 +1,11 @@
+# @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
+# License: GPL-3.0
+
 # Basic unittests to test functioning of module's top-level
 
 
 __author__ = "Thanh Tung Khuat"
-__license__ = "BSD"
+__license__ = "GPL-3.0"
 
 
 try:

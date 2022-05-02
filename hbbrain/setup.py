@@ -1,3 +1,6 @@
+# @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
+# License: GPL-3.0
+
 import os
 
 

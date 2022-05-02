@@ -3,7 +3,7 @@ The :mod:`hbbrain.utils.model_storage` submodule implements various functions
 to store a trained model to the local file and load it from the file.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import pickle
 

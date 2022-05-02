@@ -6,7 +6,8 @@ values are computed using their frequency of occurence with respect to all
 class labels in a training set.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
+
 import numpy as np
 import pandas as pd
 import time

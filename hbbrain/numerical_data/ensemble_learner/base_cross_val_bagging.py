@@ -2,7 +2,7 @@
 Base functions and classes for k-fold cross validation bagging models using hyperbox-based models.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import itertools
 import numpy as np

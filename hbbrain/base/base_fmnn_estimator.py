@@ -2,7 +2,7 @@
 Base classes for all fuzzy min-max neural network estimators and their improved versions.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import numpy as np
 import matplotlib

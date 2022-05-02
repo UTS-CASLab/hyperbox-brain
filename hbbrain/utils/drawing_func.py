@@ -3,7 +3,7 @@ The :mod:`hbbrain.utils.drawing_func` submodule implements various functions
 to support for drawing the hyperboxes.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import numpy as np
 import matplotlib as mpl

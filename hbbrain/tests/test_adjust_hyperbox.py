@@ -1,3 +1,6 @@
+# @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
+# License: GPL-3.0
+
 import numpy as np
 from hbbrain.utils.adjust_hyperbox import (
     is_overlap_one_many_hyperboxes_num_data_general,

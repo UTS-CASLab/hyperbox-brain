@@ -1,6 +1,9 @@
 """
 Define constant variables for all classes in the hbbrain library
 """
+# @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
+# License: GPL-3.0
+
 # define constant values used in various classes
 UNLABELED_CLASS = -1
 CAT_MISSING_FEATURE = -1

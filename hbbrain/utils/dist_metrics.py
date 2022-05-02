@@ -3,7 +3,7 @@ The :mod:`hbbrain.utils.dist_metrics` submodule implements various functions
 to compute distance-based metrics.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import numpy as np
 from hbbrain.constants import EPSILON_MISSING_VAL

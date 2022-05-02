@@ -1,9 +1,10 @@
 """
-The :mod:`hbbrain.utils.matrix_transformation` submodule implements various functions for 
-matrix transformation measures.
+The :mod:`hbbrain.utils.matrix_transformation` submodule implements various
+functions for matrix transformation measures.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
+
 import numpy as np
 
 
@@ -20,8 +21,9 @@ def split_matrix(A, asimil_type='max', is_sort=True):
     A : ndarray of shape (n_samples, n_features)
         Input matrix needs to be split.
     asimil_type : str, optional, default='max'
-        Use the minimum or maximum values of :math:`a_{ij}` or :math:`a_{ij}` for the 
-        third column if the matrix `A` is assymetric. Get a value of 'max' or 'min'.
+        Use the minimum or maximum values of :math:`a_{ij}` or :math:`a_{ij}`
+        for the third column if the matrix `A` is assymetric. Get a value of
+        'max' or 'min'.
     is_sort : boolean, optional, default=True
         Sort the values of the third column in a descending order or not.
 
@@ -31,9 +33,11 @@ def split_matrix(A, asimil_type='max', is_sort=True):
         The outcome of the input matrix `A` after transformation.
 
     """
-    # get min/max memberships from triu and tril of the memberhsip matrix which might not be symmetric
+    # get min/max memberships from triu and tril of the memberhsip matrix which
+    # might not be symmetric
     if asimil_type == 'min':
-        trans_A = np.minimum(np.flipud(np.rot90(np.tril(A, -1))), np.triu(A, 1))  # rotate tril to align it with triu for min (max) operation
+        # rotate tril to align it with triu for min (max) operation
+        trans_A = np.minimum(np.flipud(np.rot90(np.tril(A, -1))), np.triu(A, 1))
     else:
         trans_A = np.maximum(np.flipud(np.rot90(np.tril(A, -1))), np.triu(A, 1))
 

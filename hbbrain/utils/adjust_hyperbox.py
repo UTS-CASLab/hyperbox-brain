@@ -3,7 +3,7 @@ The :mod:`hbbrain.utils.adjust_hyperbox` submodule implements various functions 
 hyperbox adjustment, e.g., hyperbox overlap test, overlap resolving, and hyperbox contraction.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import numpy as np
 from copy import deepcopy

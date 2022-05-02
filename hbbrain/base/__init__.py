@@ -3,7 +3,7 @@ The :mod:`hbbrain.base` module implements a variety of base classes and
 functions for hyperbox-based classifiers.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 from hbbrain.base.base_estimator import BaseHyperboxClassifier
 from hbbrain.base.base_gfmm_estimator import (

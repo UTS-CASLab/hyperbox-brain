@@ -1,4 +1,7 @@
-"""All minimum dependencies for scikit-learn."""
+"""All minimum dependencies for hyperbox-brain"""
+# @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
+# License: GPL-3.0
+
 import platform
 import argparse
 

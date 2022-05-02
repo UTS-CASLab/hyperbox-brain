@@ -3,7 +3,7 @@ A bagging of many base hyperbox-based models trained on the full set of features
 The predicted class is computed based on the voting mechanism of decisions of base models.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import time
 import numpy as np

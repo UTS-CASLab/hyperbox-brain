@@ -3,7 +3,8 @@ General fuzzy min-max neural network trained by the incremental learning
 algorithm with hyperbox overlap resolving and no bounded ranges for input patterns.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
+
 import numpy as np
 import time
 import itertools

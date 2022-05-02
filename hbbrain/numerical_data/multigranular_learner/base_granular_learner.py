@@ -5,7 +5,7 @@ This class is constructed as a generic structure containing a set of items with
 the names defined by users as a dictionary.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 
 class BaseGranular(object):

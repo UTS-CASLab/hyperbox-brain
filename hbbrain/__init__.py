@@ -6,12 +6,17 @@ hbbrain is a Python module integrating hyperbox-based machine
 learning algorithms in the tightly-knit world of scientific Python
 packages (numpy, scipy, matplotlib, sklearn).
 
-This library aims to supplement simple and efficient solutions to machine learning 
-problems that are accessible to everybody and reusable in various contexts:
-machine-learning as a flexible tool for science and engineering.
+This library aims to supplement simple and efficient solutions to machine
+learning problems that are accessible to everybody and reusable in various
+contexts: machine-learning as a flexible tool for science and engineering.
 
-See ... for complete documentation.
+See https://hyperbox-brain.readthedocs.io/en/latest/index.html for complete
+documentation.
 """
+# @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
+# License: GPL-3.0
+
+
 import sys
 import logging
 import os

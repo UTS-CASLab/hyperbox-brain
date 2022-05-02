@@ -4,7 +4,7 @@ After formulation of base learners models, their hyperboxes are combined into a 
 The predicted class is computed based on the final single model.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import time
 import numpy as np

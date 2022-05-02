@@ -1,8 +1,9 @@
 """
-Contain all functions supporting for computing fuzzy membership values in various ways
+Contain all functions supporting for computing fuzzy membership values in
+various ways.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 import numpy as np
 from copy import deepcopy
@@ -54,8 +55,9 @@ def n_cat_features_containing_bit_one(v):
 
 
 def bitwise_membership(x_cat, D):
-    """Compute membership values between categorical features in the input pattern
-    `X_cat` and all categorical features of existing hyperboxes stored in `D`.
+    """Compute membership values between categorical features in the input
+    pattern `X_cat` and all categorical features of existing hyperboxes stored
+    in `D`.
 
     Parameters
     ----------

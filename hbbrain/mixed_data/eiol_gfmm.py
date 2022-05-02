@@ -3,7 +3,8 @@ General fuzzy min-max neural network trained by the extended improved
 incremental learning algorithm for mixed attribute data.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
+
 import numpy as np
 import pandas as pd
 import copy

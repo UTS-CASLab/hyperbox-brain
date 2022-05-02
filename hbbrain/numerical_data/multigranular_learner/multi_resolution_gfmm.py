@@ -3,7 +3,8 @@ A multi-resolution hierarchical granular representation based classifier using
 general fuzzy min-max neural network.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
+
 import numpy as np
 import time
 import json

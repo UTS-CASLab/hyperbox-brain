@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 #
 # Copyright (C) 2021 Thanh Tung KHUAT <thanhtung09t2@gmai.com>
-# License: 3-clause BSD
+# License: GPL-3.0
 
 import sys
 import os

@@ -3,7 +3,7 @@ The :mod:`hbbrain.mixed_data` module implements a variety of learning
 algorithms using hyperbox representations for mixed-attribute data.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
 
 from hbbrain.mixed_data.onehot_onln_gfmm import (
     one_hot_encoding_cat_feature,

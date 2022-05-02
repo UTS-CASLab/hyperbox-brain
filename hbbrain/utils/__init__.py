@@ -3,7 +3,9 @@ The :mod:`hbbrain.utils` module implements a variety of utility functions for
 hyperbox-based classifiers.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
+
+
 from hbbrain.utils.membership_calc import (
     membership_func_gfmm,
     asym_similarity_val_one_many_hyperboxes,

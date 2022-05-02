@@ -4,7 +4,8 @@ learning algorithm for mixed attribute data, in which categorical features are
 encoded using one-hot encoding.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
-# License: BSD 3 clause
+# License: GPL-3.0
+
 import numpy as np
 import pandas as pd
 import time
