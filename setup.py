@@ -40,7 +40,7 @@ MAINTAINER = "Thanh Tung KHUAT"
 MAINTAINER_EMAIL = "thanhtung09t2@gmail.com"
 URL = "https://uts-caslab.github.io/hyperbox-brain/"
 DOWNLOAD_URL = "https://pypi.org/project/hyperbox-brain/#files"
-LICENSE = "new BSD"
+LICENSE = "GPL-3.0"
 PROJECT_URLS = {
     "Bug Tracker": "https://github.com/UTS-CASLab/hyperbox-brain/issues",
     "Documentation": "https://hyperbox-brain.readthedocs.io/en/stable/",
