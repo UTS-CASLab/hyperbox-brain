@@ -11,7 +11,7 @@
 .. |PlotlyMinVersion| replace:: 4.10.0
 .. |PytestMinVersion| replace:: 5.0.1
 
-|Build|_ |PageDeploy|_ |Doc|_ |PythonVersion|_ |PyPi|_
+|Build|_ |PageDeploy|_ |Doc|_ |PythonVersion|_ |PyPi|_ |Download|_
 
 .. image:: https://raw.githubusercontent.com/UTS-CASLab/hyperbox-brain/master/images/logo.png
    :height: 150px
@@ -33,6 +33,9 @@
 
 .. |PyPi| image:: https://img.shields.io/pypi/v/hyperbox-brain
 .. _PyPi: https://pypi.org/project/hyperbox-brain
+
+.. |Download| image:: https://static.pepy.tech/personalized-badge/hyperbox-brain?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads
+.. _Download: https://pepy.tech/project/hyperbox-brain
 
 **hyperbox-brain** is a Python open source toolbox implementing hyperbox-based machine learning algorithms built on top of
 scikit-learn and is distributed under the GPL-3 license.
