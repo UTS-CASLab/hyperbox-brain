@@ -40,7 +40,7 @@ MAINTAINER = "Thanh Tung KHUAT"
 MAINTAINER_EMAIL = "thanhtung09t2@gmail.com"
 URL = "https://uts-caslab.github.io/hyperbox-brain/"
 DOWNLOAD_URL = "https://pypi.org/project/hyperbox-brain/#files"
-LICENSE = "GPL-3.0"
+LICENSE = "GPLv3"
 PROJECT_URLS = {
     "Bug Tracker": "https://github.com/UTS-CASLab/hyperbox-brain/issues",
     "Documentation": "https://hyperbox-brain.readthedocs.io/en/stable/",
@@ -212,7 +212,7 @@ def setup_package():
         classifiers=[
             "Intended Audience :: Science/Research",
             "Intended Audience :: Developers",
-            "License :: OSI Approved",
+            "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
             "Programming Language :: Python",
             "Topic :: Software Development",
             "Topic :: Scientific/Engineering",
