@@ -32,9 +32,13 @@ builtins.__HBBRAIN_SETUP__ = True
 
 
 DISTNAME = "hyperbox-brain"
-DESCRIPTION = "A set of python modules for hyperbox-based machine learning algorithms"
-with open("README.rst", encoding="utf-8") as f:
-    LONG_DESCRIPTION = f.read()
+DESCRIPTION = "A scikit-learn compatible hyperbox-based machine learning library in Python"
+
+here = os.path.abspath(os.path.dirname(__file__))
+try:
+    LONG_DESCRIPTION = open(os.path.join(here, 'README.rst'), encoding="utf-8").read()
+except IOError:
+    LONG_DESCRIPTION = ''
 
 MAINTAINER = "Thanh Tung KHUAT"
 MAINTAINER_EMAIL = "thanhtung09t2@gmail.com"
