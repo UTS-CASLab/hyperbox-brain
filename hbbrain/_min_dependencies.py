@@ -20,6 +20,7 @@ SKLEARN_MIN_VERSION = "0.24.0"
 PLOTLY_MIN_VERSION = "4.10.0"
 PANDAS_MIN_VERSION = "0.25.0"
 CYTHON_MIN_VERSION = "0.29.24"
+MATPLOTLIB_MIN_VERSION = "2.2.3"
 
 # 'build' and 'install' is included to have structured metadata for CI.
 # It will NOT be included in setup's extras_require
@@ -31,7 +32,7 @@ dependent_packages = {
     "threadpoolctl": (THREADPOOLCTL_MIN_VERSION, "install, docs"),
     "cython": (CYTHON_MIN_VERSION, "build"),
     "scikit-learn": (SKLEARN_MIN_VERSION, "build, install, docs, examples, tests"),
-    "matplotlib": ("2.2.3", "build, install, docs, examples, tests"),
+    "matplotlib": (MATPLOTLIB_MIN_VERSION, "build, install, docs, examples, tests"),
     "pandas": (PANDAS_MIN_VERSION, "build, install, docs, examples, tests"),
     "plotly": (PLOTLY_MIN_VERSION, "build, install, examples, docs"),
     "pytest": (PYTEST_MIN_VERSION, "tests"),

@@ -181,7 +181,7 @@ def check_package_status(package, min_version):
     instructions = (
         "Installation instructions are available on the "
         "hyperbox-brain website: "
-        "http://hyperbox-brain.org/stable/install.html\n"
+        "https://hyperbox-brain.readthedocs.io/en/latest/user/installation.html\n"
     )
 
     if package_status["up_to_date"] is False:
@@ -267,7 +267,7 @@ def setup_package():
 
         check_package_status("joblib", min_deps.JOBLIB_MIN_VERSION)
 
-        check_package_status("matplotlib", "2.2.3")
+        check_package_status("matplotlib", min_deps.MATPLOTLIB_MIN_VERSION)
 
         # These commands require the setup from numpy.distutils because they
         # may use numpy.distutils compiler classes.
