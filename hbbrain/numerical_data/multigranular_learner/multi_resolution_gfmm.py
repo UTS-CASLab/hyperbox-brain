@@ -1014,6 +1014,9 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
             Xl, Xu, y = convert_format_missing_input_zero_one(Xl, Xu, y)
         else:
             self.is_exist_missing_value = False
+            
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
 
         time_start = time.perf_counter()
         self.granular_learning_phase_1(Xl, Xu, y, learning_type, X_val, y_val, acc_threshold, keep_empty_boxes)

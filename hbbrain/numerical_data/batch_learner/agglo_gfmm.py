@@ -202,6 +202,9 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
         else:
             self.is_exist_missing_value = False
 
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+
         self.V = Xl.copy()
         self.W = Xu.copy()
         self.C = y.copy()

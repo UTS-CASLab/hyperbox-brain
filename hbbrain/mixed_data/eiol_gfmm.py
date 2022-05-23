@@ -580,6 +580,9 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
             if (is_contain_missing_value(Xl) == True) or (is_contain_missing_value(Xu) == True):
                 self.is_exist_continuous_missing_value = True
                 Xl, Xu, y = convert_format_missing_input_zero_one(Xl, Xu, y)
+        
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
 
         time_start = time.perf_counter()
 

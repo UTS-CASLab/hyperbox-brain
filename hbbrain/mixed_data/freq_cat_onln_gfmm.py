@@ -598,6 +598,9 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
                 self.is_exist_continuous_missing_value = True
                 Xl, Xu, y = convert_format_missing_input_zero_one(Xl, Xu, y)
                 
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+                
         if is_compute_similarity_cat_vals == True and X_cat is not None:
             self.similarity_of_cat_vals = compute_similarity_among_categorical_values(X_cat, y)
 

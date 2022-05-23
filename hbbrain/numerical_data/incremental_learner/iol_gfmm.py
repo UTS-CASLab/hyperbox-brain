@@ -178,6 +178,9 @@ class ImprovedOnlineGFMM(BaseGFMMClassifier):
         else:
             self.is_exist_missing_value = False
             
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+            
         n_samples, n_features = Xl.shape
         class_ids = np.unique(y)  # list of class labels of input patterns
         if len(self.C) > 0:
