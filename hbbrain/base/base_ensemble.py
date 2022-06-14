@@ -110,6 +110,43 @@ def _stratified_subsample(y, random_state, n_sampling_samples):
     return subsample
 
 
+def _parallel_predict(estimators, X, classes):
+    """Private function used to compute predictions within a job."""
+    n_samples = X.shape[0]
+    n_classes = len(classes)
+    classes = np.sort(classes)
+    proba = np.zeros((n_samples, n_classes))
+    
+    mapping_class_index = {}
+    for i, val in enumerate(classes):
+        mapping_class_index[val] = i
+    
+    for estimator in estimators:
+        # Voting
+        predictions = estimator.predict(X)
+        
+        for i in range(n_samples):
+            proba[i, mapping_class_index[predictions[i]]] += 1
+
+    return proba
+
+
+def _accumulate_prediction(predict, X, out, lock):
+    """
+    This is a utility function for joblib's Parallel.
+    
+    It can't go locally in hyperbox-based ensemble models, because joblib
+    complains that it cannot pickle it when placed there.
+    """
+    prediction = predict(X)
+    with lock:
+        if len(out) == 1:
+            out[0] += prediction
+        else:
+            for i in range(len(out)):
+                out[i] += prediction[i]
+
+
 class BaseEnsemble(MetaEstimatorMixin, BaseEstimator, metaclass=ABCMeta):
     """Base class for all ensemble classes.
     Warning: This class should not be used directly. Use derived classes

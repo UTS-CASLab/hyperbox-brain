@@ -8,12 +8,20 @@ import itertools
 import numpy as np
 import math
 import time
+import threading
 from sklearn.base import ClassifierMixin
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.utils import check_random_state
 from sklearn.ensemble._base import _partition_estimators
 from joblib import Parallel, delayed
-from hbbrain.base.base_ensemble import _generate_indices, _balanced_subsample, _covert_empty_class, _stratified_subsample, BaseEnsemble
+from hbbrain.base.base_ensemble import (
+    _generate_indices,
+    _balanced_subsample,
+    _covert_empty_class,
+    _stratified_subsample,
+    _accumulate_prediction,
+    BaseEnsemble
+)
 from hbbrain.base.base_gfmm_estimator import BaseGFMMClassifier
 from hbbrain.numerical_data.incremental_learner.onln_gfmm import OnlineGFMM
 
@@ -442,7 +450,96 @@ class CrossValRandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
         predicted_probabilitiy = sum(all_proba) / self.n_estimators
 
         return self.classes_.take((np.argmax(predicted_probabilitiy, axis=1)), axis=0)
-    
+
+    def predict_with_membership(self, X):
+        """
+        Predict class memberships for X.
+
+        The predicted class memberships of an input sample are computed as
+        the mean predicted class memberships of the hyperbox-based learners in
+        the ensemble model. The class membership of a single hyperbox-based
+        learner is the membership from the input X to the representative
+        hyperbox of that class to join the prediction procedure.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples for prediction.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class memberships of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+        """
+        # Assign chunk of hyperbox-based learners to jobs
+        n_jobs, _, _ = _partition_estimators(self.n_estimators, self.n_jobs)
+
+        # avoid storing the output of every estimator by summing them here
+        mem_vals = [
+            np.zeros((X.shape[0], j), dtype=np.float64)
+            for j in np.atleast_1d(self.n_classes_)
+        ]
+
+        lock = threading.Lock()
+        Parallel(n_jobs=n_jobs, require="sharedmem")(
+            delayed(_accumulate_prediction)(e.predict_with_membership, X[:, f], mem_vals, lock)
+            for e, f in zip(self.estimators_, self.estimators_features_)
+        )
+
+        for mem in mem_vals:
+            mem /= len(self.estimators_)
+
+        if len(mem_vals) == 1:
+            return mem_vals[0]
+        else:
+            return mem_vals
+
+    def predict_proba(self, X):
+        """
+        Predict class probabilities for X.
+
+        The predicted class probabilities of an input sample are computed as
+        the mean predicted class probabilities of the hyperbox-based learners
+        in the ensemble model. The class probability of a single hyperbox-based
+        learner is the fraction of the membership value of the representative
+        hyperbox of that class and the sum of all membership values of all
+        representative hyperboxes of all classes.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples for prediction.
+
+        Returns
+        -------
+        all_probas : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+        """
+        # Assign chunk of hyperbox-based learners to jobs
+        n_jobs, _, _ = _partition_estimators(self.n_estimators, self.n_jobs)
+
+        # avoid storing the output of every estimator by summing them here
+        all_probas = [
+            np.zeros((X.shape[0], j), dtype=np.float64)
+            for j in np.atleast_1d(self.n_classes_)
+        ]
+
+        lock = threading.Lock()
+        Parallel(n_jobs=n_jobs, require="sharedmem")(
+            delayed(_accumulate_prediction)(e.predict_proba, X[:, f], all_probas, lock)
+            for e, f in zip(self.estimators_, self.estimators_features_)
+        )
+
+        for proba in all_probas:
+            proba /= len(self.estimators_)
+
+        if len(all_probas) == 1:
+            return all_probas[0]
+        else:
+            return all_probas    
+
     def simple_pruning_base_estimators(self, X_val, y_val, acc_threshold=0.5, keep_empty_boxes=False):
         """
         Simply prune low qualitied hyperboxes based on a pre-defined accuracy threshold for each hyperbox. This operation 

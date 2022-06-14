@@ -93,6 +93,9 @@ def predict_with_manhattan_mixed_data(V, W, D, C, Xl, Xu, X_cat, g=1, alpha=0.5)
     if (Xl is not None) and ((is_contain_missing_value(Xl) == True) or (is_contain_missing_value(Xu) == True)):
         Xl, Xu, _ = convert_format_missing_input_zero_one(Xl, Xu)
 
+    if X_cat is not None:
+        X_cat = impute_missing_categorical_features(X_cat)
+
     if Xl is not None:
         n_samples = Xl.shape[0]
     else:
@@ -108,7 +111,10 @@ def predict_with_manhattan_mixed_data(V, W, D, C, Xl, Xu, X_cat, g=1, alpha=0.5)
     for i in range(n_samples):
         sample_id += 1
         if Xl is not None and X_cat is not None:
-            mem_val = membership_func_extended_iol_gfmm(Xl[i], Xu[i], X_cat[i], V, W, D, g, alpha)
+            if is_exist_missing_continous_value == False:
+                mem_val = membership_func_extended_iol_gfmm(Xl[i], Xu[i], X_cat[i], V, W, D, g, alpha)
+            else:
+                mem_val = membership_func_extended_iol_gfmm(Xl[i], Xu[i], X_cat[i], np.minimum(V, W), np.maximum(W, V), D, g, alpha)
         else:
             if Xl is not None:
                 if is_exist_missing_continous_value == False:
@@ -214,6 +220,9 @@ def predict_with_probability_mixed_data(V, W, D, C, N_samples, Xl, Xu, X_cat, g=
     if X_cat is not None and X_cat.ndim == 1:
         X_cat = X_cat.reshape(1, -1)
 
+    if X_cat is not None:
+        X_cat = impute_missing_categorical_features(X_cat)
+
     if Xl is not None:
         n_samples = Xl.shape[0]
     else:
@@ -230,7 +239,10 @@ def predict_with_probability_mixed_data(V, W, D, C, N_samples, Xl, Xu, X_cat, g=
     for i in range(n_samples):
         sample_id += 1
         if Xl is not None and X_cat is not None:
-            mem_val = membership_func_extended_iol_gfmm(Xl[i], Xu[i], X_cat[i], V, W, D, g, alpha)
+            if is_exist_missing_continous_value == False:
+                mem_val = membership_func_extended_iol_gfmm(Xl[i], Xu[i], X_cat[i], V, W, D, g, alpha)
+            else:
+                mem_val = membership_func_extended_iol_gfmm(Xl[i], Xu[i], X_cat[i], np.minimum(V, W), np.maximum(W, V), D, g, alpha)
         else:
             if Xl is not None:
                 if is_exist_missing_continous_value == False:
@@ -928,7 +940,7 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
             The data matrix contains the upper bounds of input patterns
             for which we want to predict the targets.
         X_cat : array-like of shape (n_samples, n_cat_features)
-            The data matrix contains  the bounds for categorical features
+            The data matrix contains the bounds for categorical features
             of input patterns for which we want to predict the targets.
         type_boundary_handling : int, optional, default=PROBABILITY_MEASURE (aka 1)
             The way of handling many winner hyperboxes, i.e., PROBABILITY_MEASURE or MANHATTAN_DIS
@@ -945,7 +957,148 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
         else:
             y_pred = predict_with_manhattan_mixed_data(self.V, self.W, self.D, self.C, Xl, Xu, X_cat, self.gamma, self.delta)
         return y_pred
+
+    def predict_with_membership(self, X):
+        """
+        Predict class membership values of the input samples X including
+        both categorical and continuous features.
+
+        The predicted class membership value is the membership value
+        of the representative hyperbox of that class.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class membership values of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        X = np.array(X)
+
+        if X.ndim == 1:
+            X = X.reshape(1, -1)
+
+        if self.categorical_features_ is not None:
+            if (self.continuous_features_ is not None) and (len(self.continuous_features_) > 0):
+                X_con = X[:, self.continuous_features_].astype(float)
+            else:
+                X_con = None
+            X_cat = X[:, self.categorical_features_]
+            X_cat = impute_missing_categorical_features(X_cat)
+            mem_vals = self._predict_with_membership(X_con, X_con, X_cat)
+        else:
+            mem_vals = self._predict_with_membership(X, X, None)
+
+        return mem_vals
+
+    def _predict_with_membership(self, Xl, Xu, X_cat):
+        """
+        Predict class membership values of the input hyperboxes represented by
+        lower bounds Xl and upper bounds Xu for continuous features and
+        categorical bounds X_cat for categorical features.
+
+        The predicted class membership value is the membership value
+        of the representative hyperbox of that class.
+
+        Parameters
+        ----------
+        Xl : array-like of shape (n_samples, n_continuous_features)
+            The lower bounds for continous features of input hyperboxes.
+        Xu : array-like of shape (n_samples, n_continuous_features)
+            The upper bounds for continous features of input hyperboxes.
+        X_cat : array-like of shape (n_samples, n_cat_features)
+            The bounds for categorical features of input hyperboxes.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class membership values of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        if Xl is not None:
+            if Xl.ndim == 1:
+                Xl = Xl.reshape(1, -1)
+                Xu = Xu.reshape(1, -1)
+
+            if (is_contain_missing_value(Xl) == True) or (is_contain_missing_value(Xu) == True):
+                Xl, Xu, _ = convert_format_missing_input_zero_one(Xl, Xu)
+
+        if X_cat is not None:
+            if X_cat.ndim == 1:
+                X_cat = X_cat.reshape(1, -1)
+            X_cat = impute_missing_categorical_features(X_cat)
+
+        mem_vals, _ = get_membership_extended_iol_gfmm_all_classes(Xl, Xu, X_cat, self.V, self.W, self.D, self.C, self.gamma, self.alpha)
+
+        return mem_vals
+
+    def predict_proba(self, X):
+        """
+        Predict class probabilities of the input samples X including both
+        continuous and categorical features.
+        
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class and the sum of all
+        membership values of all representative hyperboxes of all classes.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self.predict_with_membership(X)
+        normalizer = mem_vals.sum(axis=1)[:, np.newaxis]
+        normalizer[normalizer == 0.0] = 1.0
+        proba = mem_vals / normalizer
+
+        return proba
     
+    def _predict_proba(self, Xl, Xu, X_cat):
+        """
+        Predict class probabilities of the input hyperboxes represented by
+        lower bounds Xl and upper bounds Xu for continuous features and
+        categorical bounds X_cat for categorical features.
+        
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class and the sum of all
+        membership values of all representative hyperboxes of all classes.
+
+        Parameters
+        ----------
+        Xl : array-like of shape (n_samples, n_continuous_features)
+            The lower bounds for continous features of input hyperboxes.
+        Xu : array-like of shape (n_samples, n_continuous_features)
+            The upper bounds for continous features of input hyperboxes.
+        X_cat : array-like of shape (n_samples, n_cat_features)
+            The bounds for categorical features of input hyperboxes.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self._predict_with_membership(Xl, Xu, X_cat)
+        normalizer = mem_vals.sum(axis=1)[:, np.newaxis]
+        normalizer[normalizer == 0.0] = 1.0
+        proba = mem_vals / normalizer
+
+        return proba
+
     def get_n_hyperboxes(self):
         """
         Get number of hyperboxes in the trained hyperbox-based model

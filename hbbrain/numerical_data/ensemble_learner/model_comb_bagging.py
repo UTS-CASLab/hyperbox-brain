@@ -8,16 +8,25 @@ The predicted class is computed based on the final single model.
 
 import time
 import numpy as np
+import threading
 from sklearn.base import ClassifierMixin
 from joblib import Parallel, delayed
 from sklearn.ensemble._base import _partition_estimators
-from hbbrain.numerical_data.ensemble_learner.base_bagging import BaseBagging, _parallel_predict
+from hbbrain.numerical_data.ensemble_learner.base_bagging import BaseBagging
 from hbbrain.numerical_data.incremental_learner.onln_gfmm import OnlineGFMM
 from hbbrain.numerical_data.batch_learner.accel_agglo_gfmm import AccelAgglomerativeLearningGFMM
 from hbbrain.numerical_data.batch_learner.agglo_gfmm import AgglomerativeLearningGFMM
 from hbbrain.numerical_data.incremental_learner.iol_gfmm import ImprovedOnlineGFMM
 from hbbrain.base.base_gfmm_estimator import BaseGFMMClassifier
-from hbbrain.base.base_ensemble import _covert_empty_class
+from hbbrain.base.base_ensemble import (
+    _covert_empty_class,
+    _parallel_predict,
+    _accumulate_prediction
+)
+from hbbrain.utils.membership_calc import (
+    get_membership_gfmm_all_classes,
+    get_membership_fmnn_all_classes
+)
 
 
 class ModelCombinationBagging(ClassifierMixin, BaseBagging):
@@ -259,6 +268,61 @@ class ModelCombinationBagging(ClassifierMixin, BaseBagging):
             y_pred = self.model_level_estimator_.predict(X)
             
         return y_pred
+    
+    def predict_with_membership(self, X):
+        """
+        Predict class membership values of the input samples X.
+        
+        The predicted class membership value is the membership value
+        of the representative hyperbox of that class in the prediction
+        procedure using the final combined model.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class membership values of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        if isinstance(self.model_level_estimator_, (AccelAgglomerativeLearningGFMM, AgglomerativeLearningGFMM, ImprovedOnlineGFMM, OnlineGFMM)) == True:
+            mem_vals, _ = get_membership_gfmm_all_classes(X, X, self.model_level_estimator_.V, self.model_level_estimator_.W, self.model_level_estimator_.C, self.gamma)
+        else:
+            mem_vals, _ = get_membership_fmnn_all_classes(X, self.model_level_estimator_.V, self.model_level_estimator_.W, self.model_level_estimator_.C, self.gamma)
+
+        return mem_vals
+
+    def predict_proba(self, X):
+        """
+        Predict class probabilities of the input samples X.
+        
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class and the sum of all
+        membership values of all representative hyperboxes of all classes
+        in the prediction procedure using the final combined model.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self.predict_with_membership(X)
+        normalizer = mem_vals.sum(axis=1)[:, np.newaxis]
+        normalizer[normalizer == 0.0] = 1.0
+        proba = mem_vals / normalizer
+
+        return proba
 
     def predict_voting(self, X):
         """Predict class for X.
@@ -297,6 +361,95 @@ class ModelCombinationBagging(ClassifierMixin, BaseBagging):
         predicted_probabilitiy = sum(all_proba) / self.n_estimators
 
         return self.classes_.take((np.argmax(predicted_probabilitiy, axis=1)), axis=0)
+
+    def predict_with_membership_all_base_learners(self, X):
+        """
+        Predict mean class memberships for X from all base learners.
+
+        The predicted class memberships of an input sample are computed as
+        the mean predicted class memberships of the hyperbox-based learners in
+        the ensemble model. The class membership of a single hyperbox-based
+        learner is the membership from the input X to the representative
+        hyperbox of that class to join the prediction procedure.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples for prediction.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class memberships of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+        """
+        # Assign chunk of hyperbox-based learners to jobs
+        n_jobs, _, _ = _partition_estimators(self.n_estimators, self.n_jobs)
+
+        # avoid storing the output of every estimator by summing them here
+        mem_vals = [
+            np.zeros((X.shape[0], j), dtype=np.float64)
+            for j in np.atleast_1d(self.n_classes_)
+        ]
+
+        lock = threading.Lock()
+        Parallel(n_jobs=n_jobs, require="sharedmem")(
+            delayed(_accumulate_prediction)(e.predict_with_membership, X, mem_vals, lock)
+            for e in self.estimators_
+        )
+
+        for mem in mem_vals:
+            mem /= len(self.estimators_)
+
+        if len(mem_vals) == 1:
+            return mem_vals[0]
+        else:
+            return mem_vals
+
+    def predict_proba_all_base_learners(self, X):
+        """
+        Predict mean class probabilities for X from all base learners.
+
+        The predicted class probabilities of an input sample are computed as
+        the mean predicted class probabilities of all hyperbox-based learners
+        in the ensemble model. The class probability of a single hyperbox-based
+        learner is the fraction of the membership value of the representative
+        hyperbox of that class and the sum of all membership values of all
+        representative hyperboxes of all classes.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples for prediction.
+
+        Returns
+        -------
+        all_probas : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+        """
+        # Assign chunk of hyperbox-based learners to jobs
+        n_jobs, _, _ = _partition_estimators(self.n_estimators, self.n_jobs)
+
+        # avoid storing the output of every estimator by summing them here
+        all_probas = [
+            np.zeros((X.shape[0], j), dtype=np.float64)
+            for j in np.atleast_1d(self.n_classes_)
+        ]
+
+        lock = threading.Lock()
+        Parallel(n_jobs=n_jobs, require="sharedmem")(
+            delayed(_accumulate_prediction)(e.predict_proba, X, all_probas, lock)
+            for e in self.estimators_
+        )
+
+        for proba in all_probas:
+            proba /= len(self.estimators_)
+
+        if len(all_probas) == 1:
+            return all_probas[0]
+        else:
+            return all_probas
 
     def simple_pruning(self, X_val, y_val, acc_threshold=0.5, keep_empty_boxes=False):
         """

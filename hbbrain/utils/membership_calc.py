@@ -328,9 +328,14 @@ def get_membership_gfmm_all_classes(Xl, Xu, V, W, C, g=1):
     mem_vals_matrix = np.zeros((n_samples, n_classes), dtype=float)
     hyperbox_ids_matrix = np.zeros((n_samples, n_classes), dtype=int)
     # Get membership values for each sample
+    is_exist_missing_value = (V > W).any()
     for i in range(n_samples):
         # calculate memberships for all hyperboxes
-        mem_vals = membership_func_gfmm(Xl[i, :], Xu[i, :], V, W, g)
+        if is_exist_missing_value == False:
+            mem_vals = membership_func_gfmm(Xl[i, :], Xu[i, :], V, W, g)
+        else:
+            mem_vals = membership_func_gfmm(Xl[i, :], Xu[i, :], np.minimum(V, W), np.maximum(W, V), g)
+
         class_c_mem = np.zeros(n_classes)
         class_c_hyperbox_id = np.zeros(n_classes)
         for _id, c in enumerate(class_vals):
@@ -607,6 +612,11 @@ def get_membership_onehot_gfmm_all_classes(Xl, Xu, Xd, V, W, D, C, g=1):
     else:
         n_samples = Xd.shape[0]
 
+    if V is not None:
+        is_exist_missing_value = (V > W).any()
+    else:
+        is_exist_missing_value = False
+
     class_vals = np.unique(C)
     n_classes = len(class_vals)
     mem_vals_matrix = np.zeros((n_samples, n_classes), dtype=float)
@@ -615,9 +625,15 @@ def get_membership_onehot_gfmm_all_classes(Xl, Xu, Xd, V, W, D, C, g=1):
     for i in range(n_samples):
         # calculate memberships for all hyperboxes
         if Xl is not None and Xd is not None:
-            mem_vals = membership_func_onehot_gfmm(Xl[i], Xu[i], Xd[i], V, W, D, g)
+            if is_exist_missing_value == False:
+                mem_vals = membership_func_onehot_gfmm(Xl[i], Xu[i], Xd[i], V, W, D, g)
+            else:
+                mem_vals = membership_func_onehot_gfmm(Xl[i], Xu[i], Xd[i], np.minimum(V, W), np.maximum(W, V), D, g)
         elif Xl is not None:
-            mem_vals = membership_func_onehot_gfmm(Xl[i], Xu[i], None, V, W, D, g)
+            if is_exist_missing_value == False:
+                mem_vals = membership_func_onehot_gfmm(Xl[i], Xu[i], None, V, W, D, g)
+            else:
+                mem_vals = membership_func_onehot_gfmm(Xl[i], Xu[i], None, np.minimum(V, W), np.maximum(W, V), D, g)
         else:
             mem_vals = membership_func_onehot_gfmm(None, None, Xd[i], V, W, D, g)
 
@@ -782,13 +798,25 @@ def get_membership_freq_cat_gfmm_all_classes(Xl, Xu, X_cat, V, W, E, F, C, simil
     n_classes = len(class_vals)
     mem_vals_matrix = np.zeros((n_samples, n_classes), dtype=float)
     hyperbox_ids_matrix = np.zeros((n_samples, n_classes), dtype=int)
+
+    if V is not None:
+        is_exist_missing_continous_value = (V > W).any()
+    else:
+        is_exist_missing_continous_value = False
+
     # Get membership values for each sample
     for i in range(n_samples):
         # calculate memberships for all hyperboxes
         if Xl is not None and X_cat is not None:
-            mem_vals = membership_func_freq_cat_gfmm(Xl[i], Xu[i], X_cat[i], V, W, E, F, similarity_of_cat_vals, g)
+            if not is_exist_missing_continous_value:
+                mem_vals = membership_func_freq_cat_gfmm(Xl[i], Xu[i], X_cat[i], V, W, E, F, similarity_of_cat_vals, g)
+            else:
+                mem_vals = membership_func_freq_cat_gfmm(Xl[i], Xu[i], X_cat[i], np.minimum(V, W), np.maximum(W, V), E, F, similarity_of_cat_vals, g)
         elif Xl is not None:
-            mem_vals = membership_func_freq_cat_gfmm(Xl[i], Xu[i], None, V, W, E, F, similarity_of_cat_vals, g)
+            if not is_exist_missing_continous_value:
+                mem_vals = membership_func_freq_cat_gfmm(Xl[i], Xu[i], None, V, W, E, F, similarity_of_cat_vals, g)
+            else:
+                mem_vals = membership_func_freq_cat_gfmm(Xl[i], Xu[i], None, np.minimum(V, W), np.maximum(W, V), E, F, similarity_of_cat_vals, g)
         else:
             mem_vals = membership_func_freq_cat_gfmm(None, None, X_cat[i], V, W, E, F, similarity_of_cat_vals, g)
         class_c_mem = np.zeros(n_classes)
@@ -978,6 +1006,11 @@ def get_membership_extended_iol_gfmm_all_classes(Xl, Xu, X_cat, V, W, D, C, g=1,
     else:
         n_samples = X_cat.shape[0]
 
+    if V is not None:
+        is_exist_missing_continous_value = (V > W).any()
+    else:
+        is_exist_missing_continous_value = False
+
     class_vals = np.unique(C)
     n_classes = len(class_vals)
     mem_vals_matrix = np.zeros((n_samples, n_classes), dtype=float)
@@ -986,9 +1019,15 @@ def get_membership_extended_iol_gfmm_all_classes(Xl, Xu, X_cat, V, W, D, C, g=1,
     for i in range(n_samples):
         # calculate memberships for all hyperboxes
         if Xl is not None and X_cat is not None:
-            mem_vals = membership_func_extended_iol_gfmm(Xl[i], Xu[i], X_cat[i], V, W, D, g, alpha)
+            if is_exist_missing_continous_value == False:
+                mem_vals = membership_func_extended_iol_gfmm(Xl[i], Xu[i], X_cat[i], V, W, D, g, alpha)
+            else:
+                mem_vals = membership_func_extended_iol_gfmm(Xl[i], Xu[i], X_cat[i], np.minimum(V, W), np.maximum(W, V), D, g, alpha)
         elif Xl is not None:
-            mem_vals = membership_func_extended_iol_gfmm(Xl[i], Xu[i], None, V, W, D, g, alpha)
+            if is_exist_missing_continous_value == False:
+                mem_vals = membership_func_extended_iol_gfmm(Xl[i], Xu[i], None, V, W, D, g, alpha)
+            else:
+                mem_vals = membership_func_extended_iol_gfmm(Xl[i], Xu[i], None, np.minimum(V, W), np.maximum(W, V), D, g, alpha)
         else:
             mem_vals = membership_func_extended_iol_gfmm(None, None, X_cat[i], V, W, D, g, alpha)
         class_c_mem = np.zeros(n_classes)

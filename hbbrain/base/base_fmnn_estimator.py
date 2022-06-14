@@ -154,6 +154,56 @@ class BaseFMNNClassifier(BaseHyperboxClassifier):
 
         return y_pred
     
+    def predict_proba(self, X):
+        """
+        Predict class probabilities of the input samples X.
+        
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class and the sum of all
+        membership values of all representative hyperboxes of all classes.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self.predict_with_membership(X)
+        normalizer = mem_vals.sum(axis=1)[:, np.newaxis]
+        normalizer[normalizer == 0.0] = 1.0
+        proba = mem_vals / normalizer
+        
+        return proba
+
+    def predict_with_membership(self, X):
+        """
+        Predict class membership values of the input samples X.
+        
+        The predicted class membership value is the membership value
+        of the representative hyperbox of that class.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class membership values of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals, _ = get_membership_fmnn_all_classes(X, self.V, self.W, self.C, self.gamma)
+        
+        return mem_vals   
+    
     def simple_pruning(self, X_val, y_val, acc_threshold=0.5, keep_empty_boxes=False):
         """
         Simply prune low qualitied hyperboxes based on a pre-defined accuracy threshold for each hyperbox

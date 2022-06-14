@@ -7,7 +7,7 @@ Base class and functions for all general fuzzy min-max neural network estimators
 import numpy as np
 import random
 from hbbrain.base.base_estimator import BaseHyperboxClassifier
-from hbbrain.utils.membership_calc import membership_func_gfmm
+from hbbrain.utils.membership_calc import membership_func_gfmm, get_membership_gfmm_all_classes
 from hbbrain.utils.dist_metrics import manhattan_distance, manhattan_distance_with_missing_val
 from hbbrain.constants import UNLABELED_CLASS, EPSILON_MISSING_VAL
 
@@ -364,3 +364,112 @@ class BaseGFMMClassifier(BaseHyperboxClassifier):
         y_pred = predict_with_manhattan(self.V, self.W, self.C, Xl, Xu, self.gamma)
 
         return y_pred
+    
+    def predict_proba(self, X):
+        """
+        Predict class probabilities of the input samples X.
+        
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class and the sum of all
+        membership values of all representative hyperboxes of all classes.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self.predict_with_membership(X)
+        normalizer = mem_vals.sum(axis=1)[:, np.newaxis]
+        normalizer[normalizer == 0.0] = 1.0
+        proba = mem_vals / normalizer
+        
+        return proba
+    
+    def _predict_proba(self, Xl, Xu):
+        """
+        Predict class probabilities of the input hyperboxes represented by
+        lower bounds Xl and upper bounds Xu.
+        
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class and the sum of all
+        membership values of all representative hyperboxes of all classes.
+
+        Parameters
+        ----------
+        Xl : array-like of shape (n_samples, n_features)
+            The lower bounds of input hyperboxes.
+        Xu : array-like of shape (n_samples, n_features)
+            The upper bounds of input hyperboxes.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self._predict_with_membership(Xl, Xu)
+        normalizer = mem_vals.sum(axis=1)[:, np.newaxis]
+        normalizer[normalizer == 0.0] = 1.0
+        proba = mem_vals / normalizer
+        
+        return proba
+
+    def predict_with_membership(self, X):
+        """
+        Predict class membership values of the input samples X.
+        
+        The predicted class membership value is the membership value
+        of the representative hyperbox of that class.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class membership values of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self._predict_with_membership(X, X)
+        
+        return mem_vals
+    
+    def _predict_with_membership(self, Xl, Xu):
+        """
+        Predict class membership values of the input hyperboxes represented by
+        lower bounds Xl and upper bounds Xu.
+        
+        The predicted class membership value is the membership value
+        of the representative hyperbox of that class.
+
+        Parameters
+        ----------
+        Xl : array-like of shape (n_samples, n_features)
+            The lower bounds of input hyperboxes.
+        Xu : array-like of shape (n_samples, n_features)
+            The upper bounds of input hyperboxes.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class membership values of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        if (is_contain_missing_value(Xl) == True) or (is_contain_missing_value(Xu) == True):
+            Xl, Xu, _ = convert_format_missing_input_zero_one(Xl, Xu)
+        
+        mem_vals, _ = get_membership_gfmm_all_classes(Xl, Xu, self.V, self.W, self.C, self.gamma)
+        
+        return mem_vals

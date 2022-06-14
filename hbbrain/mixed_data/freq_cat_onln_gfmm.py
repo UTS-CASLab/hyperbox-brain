@@ -873,7 +873,147 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
         y_pred = predict_freq_cat_feature_manhanttan(self.V, self.W, self.E, self.F, self.C, Xl, Xu, X_cat, self.similarity_of_cat_vals, self.gamma)
 
         return y_pred
+
+    def predict_with_membership(self, X):
+        """
+        Predict class membership values of the input samples X including
+        both categorical and continuous features.
+
+        The predicted class membership value is the membership value
+        of the representative hyperbox of that class.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class membership values of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        X = np.array(X)
+
+        if X.ndim == 1:
+            X = X.reshape(1, -1)
+
+        if self.categorical_features_ is not None:
+            X, _ = ordinal_encode_categorical_features(X, self.categorical_features_, self.encoder_)
+            if (self.continuous_features_ is not None) and (len(self.continuous_features_) > 0):
+                X_con = X[:, self.continuous_features_].astype(float)
+            else:
+                X_con = None
+            X_cat = X[:, self.categorical_features_]
+            mem_vals = self._predict_with_membership(X_con, X_con, X_cat)
+        else:
+            mem_vals = self._predict_with_membership(X, X, None)
+
+        return mem_vals
+
+    def _predict_with_membership(self, Xl, Xu, X_cat):
+        """
+        Predict class membership values of the input hyperboxes represented by
+        lower bounds Xl and upper bounds Xu for continuous features and
+        categorical bounds X_cat for categorical features.
+
+        The predicted class membership value is the membership value
+        of the representative hyperbox of that class.
+
+        Parameters
+        ----------
+        Xl : array-like of shape (n_samples, n_continuous_features)
+            The lower bounds for continous features of input hyperboxes.
+        Xu : array-like of shape (n_samples, n_continuous_features)
+            The upper bounds for continous features of input hyperboxes.
+        X_cat : array-like of shape (n_samples, n_cat_features)
+            The bounds for categorical features of input hyperboxes.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class membership values of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        if Xl is not None:
+            if Xl.ndim == 1:
+                Xl = Xl.reshape(1, -1)
+            if Xu.ndim == 1:
+                Xu = Xu.reshape(1, -1)
+            if is_contain_missing_value(Xl) == True or is_contain_missing_value(Xu) == True:
+                Xl, Xu, _ = convert_format_missing_input_zero_one(Xl, Xu)
+
+        if X_cat is not None:
+            if X_cat.ndim == 1:
+                X_cat = X_cat.reshape(1, -1)
+
+        mem_vals, _ = get_membership_freq_cat_gfmm_all_classes(Xl, Xu, X_cat, self.V, self.W, self.E, self.F, self.C, self.similarity_of_cat_vals, self.gamma)
+
+        return mem_vals
+
+    def predict_proba(self, X):
+        """
+        Predict class probabilities of the input samples X including both
+        continuous and categorical features.
+        
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class and the sum of all
+        membership values of all representative hyperboxes of all classes.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self.predict_with_membership(X)
+        normalizer = mem_vals.sum(axis=1)[:, np.newaxis]
+        normalizer[normalizer == 0.0] = 1.0
+        proba = mem_vals / normalizer
+
+        return proba
     
+    def _predict_proba(self, Xl, Xu, X_cat):
+        """
+        Predict class probabilities of the input hyperboxes represented by
+        lower bounds Xl and upper bounds Xu for continuous features and
+        categorical bounds X_cat for categorical features.
+        
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class and the sum of all
+        membership values of all representative hyperboxes of all classes.
+
+        Parameters
+        ----------
+        Xl : array-like of shape (n_samples, n_continuous_features)
+            The lower bounds for continous features of input hyperboxes.
+        Xu : array-like of shape (n_samples, n_continuous_features)
+            The upper bounds for continous features of input hyperboxes.
+        X_cat : array-like of shape (n_samples, n_cat_features)
+            The bounds for categorical features of input hyperboxes.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self._predict_with_membership(Xl, Xu, X_cat)
+        normalizer = mem_vals.sum(axis=1)[:, np.newaxis]
+        normalizer[normalizer == 0.0] = 1.0
+        proba = mem_vals / normalizer
+
+        return proba
+
     def simple_pruning(self, X_val, y_val, acc_threshold=0.5, keep_empty_boxes=False):
         """
         Simply prune low qualitied hyperboxes based on a pre-defined accuracy

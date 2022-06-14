@@ -273,6 +273,52 @@ def predict_with_centroids(V, W, C, N_samples, Centroids, Xl, Xu, g=1):
     return y_pred
 
 
+def predict_with_membership(V, W, C, Xl, Xu, g=1):
+    """
+    Return class membership values for samples in `X` represented in the form
+    of invervals `[Xl, Xu]`. This is a common function to determine the
+    membership values from an input X to a trained hyperbox-based classifier
+    represented by `[V, W, C]`.
+
+    Parameters
+    ----------
+    V : array-like of shape (n_hyperboxes, n_features)
+        A matrix stores all minimal points for numerical features of all
+        existing hyperboxes, in which each row is a minimal point of a hyperbox.
+    W : array-like of shape (n_hyperboxes, n_features)
+        A matrix stores all maximal points for numerical features of all
+        existing hyperboxes, in which each row is a minimal point of a hyperbox.
+    C : array-like of shape (n_hyperboxes,)
+        A vector stores all class labels correponding to existing hyperboxes.
+    Xl : array-like of shape (n_samples, n_features)
+        The data matrix contains lower bounds of input patterns for which we
+        want to predict the targets.
+    Xu : array-like of shape (n_samples, n_features)
+        The data matrix contains upper bounds of input patterns for which we
+        want to predict the targets.
+    g : float or array-like of shape (n_features,), optional, default=1
+        A sensitivity parameter describing the speed of decreasing of the
+        membership function in each dimension.
+
+    Returns
+    -------
+    mem_vals : ndarray of shape (n_samples, n_classes)
+        A vector contains the membership values for all classes for each input
+        sample which needs to get the membership values.
+
+    """
+    if Xl.ndim == 1:
+        Xl = Xl.reshape(1, -1)
+        Xu = Xu.reshape(1, -1)
+
+    if (is_contain_missing_value(Xl) == True) or (is_contain_missing_value(Xu) == True):
+        Xl, Xu, _ = convert_format_missing_input_zero_one(Xl, Xu)
+
+    mem_vals, _ = get_membership_gfmm_all_classes(Xl, Xu, V, W, C, g)
+    
+    return mem_vals
+
+
 class MultiGranularGFMM(BaseHyperboxClassifier):
     """
     A multi-resolution hierarchical granular representation based classifier
@@ -1220,6 +1266,163 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
                                         Xl, Xu, self.gamma)
 
         return y_pred
+    
+    def predict_proba(self, X, level=-1):
+        """
+        Predict class probabilities of the input samples X at a given
+        granularity level.
+
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class at a given granularity
+        level and the sum of all membership values of all representative
+        hyperboxes of all classes joining the prediction procedure.
+
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+            
+        level : int, optional, default=-1
+            The granularity level is used to generate predicted classes for
+            the input testing samples. If this variable gets the values of -1,
+            then the predicted class probability for each sample is the average
+            of all class probabilities of all granularity levels.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        X = np.array(X)
+        proba = self._predict_proba(X, X, level)
+
+        return proba
+
+    def _predict_proba(self, Xl, Xu, level=-1):
+        """
+        Predict class probabilities of the input hyperboxes represented
+        by low bounds `Xl` and upper bounds `Xu` at a given granularity level.
+
+        The predicted class probability is the fraction of the membership value
+        of the representative hyperbox of that class at a given granularity
+        level and the sum of all membership values of all representative
+        hyperboxes of all classes joining the prediction procedure.
+
+        Parameters
+        ----------
+        Xl : array-like of shape (n_samples, n_features)
+            The data matrix containing the lower bounds of input patterns
+            for which we want to predict the class probability.
+        Xu : array-like of shape (n_samples, n_features)
+            The data matrix containing the upper bounds of input patterns 
+            for which we want to predict the class probability.
+        level : int, optional, default=-1
+            The granularity level is used to generate predicted classes for
+            the input testing samples. If this variable gets the values of -1,
+            then the predicted class for each sample is the class getting the
+            most votes from all available granularity levels.
+
+        Returns
+        -------
+        proba : ndarray of shape (n_samples, n_classes)
+            The class probabilities of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        mem_vals = self._predict_with_membership(Xl, Xu, level)
+        normalizer = mem_vals.sum(axis=1)[:, np.newaxis]
+        normalizer[normalizer == 0.0] = 1.0
+        proba = mem_vals / normalizer
+
+        return proba
+
+    def predict_with_membership(self, X, level=-1):
+        """
+        Predict class memberships of the input samples X at a given
+        granularity level.
+
+        The predicted class memberships are the membership values of the
+        representative hyperbox of that class at a given granularity level.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input samples.
+
+        level : int, optional, default=-1
+            The granularity level is used to generate predicted classes for
+            the input testing samples. If this variable gets the values of -1,
+            then the predicted class probability for each sample is the average
+            of all class probabilities of all granularity levels.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class memberships of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        X = np.array(X)
+        mem_vals = self._predict_with_membership(X, X, level)
+
+        return mem_vals
+    
+    def _predict_with_membership(self, Xl, Xu, level=-1):
+        """
+        Predict class memberships of the input hyperboxes represented 
+        by low bounds `Xl` and upper bounds `Xu` at a given granularity level.
+
+        The predicted class memberships are the membership values
+        of the representative hyperbox of that class at a given granularity
+        level.
+
+        Parameters
+        ----------
+        Xl : array-like of shape (n_samples, n_features)
+            The data matrix containing the lower bounds of input patterns
+            for which we want to predict the class probability.
+        Xu : array-like of shape (n_samples, n_features)
+            The data matrix containing the upper bounds of input patterns 
+            for which we want to predict the class probability.
+        level : int, optional, default=-1
+            The granularity level is used to generate predicted classes for
+            the input testing samples. If this variable gets the values of -1,
+            then the predicted class for each sample is the class getting the
+            most votes from all available granularity levels.
+
+        Returns
+        -------
+        mem_vals : ndarray of shape (n_samples, n_classes)
+            The class memberships of the input samples. The order of the
+            classes corresponds to that in ascending integers of class labels.
+
+        """
+        if level == -1:
+            n_levels = len(self.higher_level_theta) + 1
+            if Xl.ndim == 1:
+                n_samples = 1
+            else:
+                n_samples = Xl.shape[0]
+
+            n_classes = len(np.unique(self.granular_classifiers_[0].C))
+
+            prob_accumulation = np.full((n_samples, n_classes), 0)
+            for i in range(n_levels):
+                prob_accumulation = prob_accumulation + predict_with_membership(self.granular_classifiers_[i].V,
+                                                                                self.granular_classifiers_[i].W,
+                                                                                self.granular_classifiers_[i].C,
+                                                                                Xl, Xu, self.gamma)
+            mem_vals = prob_accumulation / n_levels
+        else:
+            mem_vals = predict_with_membership(self.granular_classifiers_[level].V,
+                                               self.granular_classifiers_[level].W,
+                                               self.granular_classifiers_[level].C,
+                                               Xl, Xu, self.gamma)
+
+        return mem_vals
 
     def get_n_hyperboxes(self, level=-1):
         """

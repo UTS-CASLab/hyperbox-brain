@@ -51,27 +51,6 @@ def _parallel_build_cross_val_bagging_estimators(n_estimators, ensemble, X, y, s
     return estimators
 
 
-def _parallel_predict(estimators, X, classes):
-    """Private function used to compute predictions within a job."""
-    n_samples = np.shape(X)[0]
-    n_classes = len(classes)
-    classes = np.sort(classes)
-    proba = np.zeros((n_samples, n_classes))
-    
-    mapping_class_index = {}
-    for i, val in enumerate(classes):
-        mapping_class_index[val] = i
-    
-    for estimator in estimators:
-        # Voting
-        predictions = estimator.predict(X)
-        
-        for i in range(n_samples):
-            proba[i, mapping_class_index[predictions[i]]] += 1
-
-    return proba
-
-
 class BaseCrossValBagging(BaseEnsemble, metaclass=ABCMeta):
     """Base class for cross validation Bagging meta-estimator, in which base estimators are 
     built using k-fold cross-validation and random search for parameter tuning.

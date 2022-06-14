@@ -6,11 +6,17 @@ Base functions and classes for bagging models using hyperbox-based models.
 
 import itertools
 import numpy as np
+import threading
 from sklearn.utils import check_random_state
 from sklearn.ensemble._base import _partition_estimators
 from abc import ABCMeta, abstractmethod
 from joblib import Parallel, delayed
-from hbbrain.base.base_ensemble import _generate_indices, _balanced_subsample, BaseEnsemble, _covert_empty_class
+from hbbrain.base.base_ensemble import (
+    _generate_indices,
+    _balanced_subsample,
+    BaseEnsemble,
+    _covert_empty_class
+)
 from hbbrain.base.base_gfmm_estimator import BaseGFMMClassifier
 
 MAX_INT = np.iinfo(np.int32).max
@@ -42,27 +48,6 @@ def _parallel_build_bagging_estimators(n_estimators, ensemble, X, y, seeds):
         estimators.append(estimator)
         
     return estimators
-
-
-def _parallel_predict(estimators, X, classes):
-    """Private function used to compute predictions within a job."""
-    n_samples = X.shape[0]
-    n_classes = len(classes)
-    classes = np.sort(classes)
-    proba = np.zeros((n_samples, n_classes))
-    
-    mapping_class_index = {}
-    for i, val in enumerate(classes):
-        mapping_class_index[val] = i
-    
-    for estimator in estimators:
-        # Voting
-        predictions = estimator.predict(X)
-        
-        for i in range(n_samples):
-            proba[i, mapping_class_index[predictions[i]]] += 1
-
-    return proba
 
 
 class BaseBagging(BaseEnsemble, metaclass=ABCMeta):
@@ -184,7 +169,7 @@ class BaseBagging(BaseEnsemble, metaclass=ABCMeta):
         )
 
         return self
-    
+
     def simple_pruning_base_estimators(self, X_val, y_val, acc_threshold=0.5, keep_empty_boxes=False):
         """
         Simply prune low qualitied hyperboxes based on a pre-defined accuracy threshold for each hyperbox. This operation 
