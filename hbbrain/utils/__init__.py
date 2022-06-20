@@ -30,6 +30,11 @@ from hbbrain.utils.model_storage import (
     load_model,
     store_model,
 )
+from hbbrain.utils.data_editing import (
+    data_editing_leave_one_out,
+    data_editing_two_fold_cv,
+    data_editing_two_fold_cv_with_probability,
+)
 from hbbrain.utils.adjust_hyperbox import (
     is_overlap_one_many_hyperboxes_num_data_general,
     is_overlap_one_many_diff_label_hyperboxes_num_data_general,
@@ -80,5 +85,8 @@ __all__ = [
     "hyperbox_contraction_freq_cat_gfmm",
     "is_overlap_one_many_diff_label_hyperboxes_mixed_data_general",
     "is_two_hyperboxes_overlap_num_data_free_range_general",
-    "overlap_resolving_num_data_free_range"
+    "overlap_resolving_num_data_free_range",
+    "data_editing_leave_one_out",
+    "data_editing_two_fold_cv",
+    "data_editing_two_fold_cv_with_probability"
 ]

@@ -175,7 +175,7 @@ def overlap_resolving_num_data(Vi, Wi, ci, Vk, Wk, ck, alpha=0.00001):
         Maximum coordinate of the hyperbox `Bk`.
     ck : int
         Class label of the hyperbox `Bk`.
-    alpha : float
+    alpha : float, optional, default=0.00001
         A very small value is used to avoid the overlap between two hyperboxes
         after contraction.
 
@@ -395,7 +395,7 @@ def hyperbox_contraction_fmnn(V, W, case_contraction, id_extended_box, id_tested
         id_extended_boxex of the extended hyperbox which needs to test for overlap.
     id_tested_box : int
         id_extended_boxex of the hyperbox to test for overlap with the extended hyperbox.
-    alpha : float
+    alpha : float, optional, default=0.00001
         A very small value is used to avoid the overlap between two hyperboxes
         after contraction.
 
