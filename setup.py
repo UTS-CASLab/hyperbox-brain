@@ -257,17 +257,17 @@ def setup_package():
                 % (platform.python_version(), sys.executable)
             )
 
-        check_package_status("numpy", min_deps.NUMPY_MIN_VERSION)
+        # check_package_status("numpy", min_deps.NUMPY_MIN_VERSION)
 
-        check_package_status("scipy", min_deps.SCIPY_MIN_VERSION)
+        # check_package_status("scipy", min_deps.SCIPY_MIN_VERSION)
 
-        check_package_status("sklearn", min_deps.SKLEARN_MIN_VERSION)
+        # check_package_status("sklearn", min_deps.SKLEARN_MIN_VERSION)
 
-        check_package_status("pandas", min_deps.PANDAS_MIN_VERSION)
+        # check_package_status("pandas", min_deps.PANDAS_MIN_VERSION)
 
-        check_package_status("joblib", min_deps.JOBLIB_MIN_VERSION)
+        # check_package_status("joblib", min_deps.JOBLIB_MIN_VERSION)
 
-        check_package_status("matplotlib", min_deps.MATPLOTLIB_MIN_VERSION)
+        # check_package_status("matplotlib", min_deps.MATPLOTLIB_MIN_VERSION)
 
         # These commands require the setup from numpy.distutils because they
         # may use numpy.distutils compiler classes.
