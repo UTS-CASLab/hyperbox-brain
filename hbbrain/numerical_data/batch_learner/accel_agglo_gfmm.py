@@ -196,17 +196,28 @@ class AccelAgglomerativeLearningGFMM(BaseGFMMClassifier):
  
         if is_contain_missing_value(y) == True:
             y = np.where(np.isnan(y), UNLABELED_CLASS, y)
-            
-        self.V = Xl.copy()
-        self.W = Xu.copy()
-        self.C = y.copy()
-        
+
+        if self.V.size == 0:
+            self.V = Xl.copy()
+            self.W = Xu.copy()
+            self.C = y.copy()
+        else:
+            self.V = np.concatenate((self.V, Xl))
+            self.W = np.concatenate((self.W, Xu))
+            self.C = np.concatenate((self.C, y))
+
         n_samples, n_features = Xl.shape
 		
         if pre_incl_sample is not None:
-            self.N_samples = pre_incl_sample.copy()
+            if self.N_samples.size == 0:
+                self.N_samples = pre_incl_sample.copy()
+            else:
+                self.N_samples = np.concatenate((self.N_samples, pre_incl_sample))
         else:
-            self.N_samples = np.ones(n_samples)
+            if self.N_samples.size == 0:
+                self.N_samples = np.ones(n_samples)
+            else:
+                self.N_samples = np.concatenate((self.N_samples, np.ones(n_samples)))
             
         class_ids = np.unique(y)  # list of class labels of input patterns
         n_classes = len(class_ids)
