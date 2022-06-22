@@ -7,9 +7,9 @@ refer to the publication [1]_.
 
 References
 ----------
-.. [1] Gabrys, B. (2000). Data editing for neuro-fuzzy classifiers. In
+.. [1] Gabrys, B. (2001). Data editing for neuro-fuzzy classifiers. In
        Proceedings of the Fourth International ICSC Symposia on Soft Computing
-       and Intelligent Systems for Industry, 2001.
+       and Intelligent Systems for Industry.
 """
 # @Author: Thanh Tung KHUAT <thanhtung09t2@gmail.com>
 # License: GPL-3.0
