@@ -310,12 +310,12 @@ class RandomHyperboxesClassifier(ClassifierMixin, BaseEnsemble):
         """
         if X.ndim == 1:
             X = np.reshape(X, (1, -1))
-        
+
         time_start = time.perf_counter()
-        
+
         # Check parameters
         self._validate_estimator()
-        
+
         y = _covert_empty_class(y)
         self._y = y
         self.classes_= np.unique(y)

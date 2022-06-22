@@ -146,6 +146,9 @@ class OnlineGFMM(BaseGFMMClassifier):
             Fitted general fuzzy min-max neural network.
 
         """
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+
         y = y.astype('int')
         n_samples = len(y)
         if X.shape[0] > n_samples:
@@ -272,8 +275,11 @@ class OnlineGFMM(BaseGFMMClassifier):
                         list_drawn_hyperboxes.append(hyperbox[0])
                         self.delay()
                 else:
-                    id_same_input_label_group = (self.C == y[i]) | (
-                        self.C == UNLABELED_CLASS)
+                    if y[i] == UNLABELED_CLASS:
+                        id_same_input_label_group = np.ones(len(self.C), dtype=bool)
+                    else:
+                        id_same_input_label_group = (self.C == y[i]) | (
+                            self.C == UNLABELED_CLASS)
 
                     if id_same_input_label_group.any() == True:
                         # if we have small number of hyperboxes with low dimension, this operation takes more time compared to computing membership value with all hyperboxes and ignore

@@ -149,6 +149,9 @@ class AccelAgglomerativeLearningGFMM(BaseGFMMClassifier):
             Fitted hyperbox-based model.
 
         """
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+
         y = y.astype('int')
         n_samples = len(y)
         if X.shape[0] > n_samples:

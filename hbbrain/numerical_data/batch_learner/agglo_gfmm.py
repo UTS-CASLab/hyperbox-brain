@@ -160,6 +160,9 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
             Fitted hyperbox-based model.
 
         """
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+
         y = y.astype('int')
         n_samples = len(y)
         if X.shape[0] > n_samples:
@@ -217,6 +220,7 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
             self.N_samples = np.ones(n_samples)
 
         class_ids = np.unique(y)  # list of class labels of input patterns
+
         n_classes = len(class_ids)
 
         time_start = time.perf_counter()
@@ -327,7 +331,7 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
                     1, -1), self.W[row1 + 1:row2, :], self.W[row2 + 1:, :]), axis=0)
                 newC = np.concatenate((self.C[0:row2], self.C[row2 + 1:]))
                 if (newC[row1] == UNLABELED_CLASS):
-                    newC[row1] = newC[row2]
+                    newC[row1] = self.C[row2]
 
                 # adjust the hyperbox if no overlap and maximum hyperbox size is not violated
                 if ((((newW[int(cur_split_mem_vals[0])] - newV[int(cur_split_mem_vals[0])]) <= self.theta).all() == True) and (not is_overlap_one_many_hyperboxes_num_data_general(newV, newW, newC, int(cur_split_mem_vals[0])))):

@@ -502,6 +502,10 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
         self.categorical_features_ = categorical_features
         if X.ndim == 1:
             X = X.reshape(shape=(1, -1))
+
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+
         y = y.astype('int')
 
         if categorical_features is not None:
@@ -623,7 +627,10 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
                 else:
                     self.N_samples = np.array([N_incl_samples[i]])
             else:
-                id_same_input_label_group = np.nonzero(((self.C == y[i]) | (self.C == UNLABELED_CLASS)))[0]
+                if y[i] == UNLABELED_CLASS:
+                    id_same_input_label_group = np.arange(len(self.C))
+                else:
+                    id_same_input_label_group = np.nonzero(((self.C == y[i]) | (self.C == UNLABELED_CLASS)))[0]
 
                 if len(id_same_input_label_group) > 0: 
                     if n_continuous_features > 0:
@@ -655,54 +662,12 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
 
                     index = np.argsort(b)[::-1]
                     
-                    if b[index[0]] != 1 or (y[i] != lb_sameX[index[0]] and y[i] != UNLABELED_CLASS):
+                    if b[index[0]] != 1:
                         adjust = False
+                        is_refind_diff_hyperbox = True
+                        if y[i] != UNLABELED_CLASS:
+                            id_lb_diff = ((self.C != y[i]) | (self.C == UNLABELED_CLASS))
 
-                        id_lb_diff = ((self.C != y[i]) | (self.C == UNLABELED_CLASS))
-                        no_check_overlap = False
-                        
-                        if len(id_lb_diff) == 0:
-                            # No hyperbox belongs to other class
-                            no_check_overlap = True
-
-                        if n_cat_features > 0 and no_check_overlap == False:
-                            D_diff = self.D[id_lb_diff]
-                            if y[i] == UNLABELED_CLASS:
-                                D_diff_save = copy.deepcopy(D_diff)
-                        else:
-                            D_diff = None
-                        
-                        if no_check_overlap == False:
-                            N_sample_diff = self.N_samples[id_lb_diff]
-                            if y[i] == UNLABELED_CLASS:
-                                N_sample_diff_save = copy.deepcopy(N_sample_diff)
-
-                        if n_continuous_features > 0 and no_check_overlap == False:
-                            V_diff = self.V[id_lb_diff]
-                            W_diff = self.W[id_lb_diff]
-                            
-                            # examine only hyperboxes w/o missing dimensions,
-                            # meaning that in each dimension upper bound is
-                            # larger than lower bounds
-                            indcomp = np.nonzero((W_diff >= V_diff).all(axis = 1))[0]
-                            if len(indcomp) == 0:
-                                no_check_overlap = True
-                            else:
-                                V_diff = V_diff[indcomp]
-                                W_diff = W_diff[indcomp]
-                                N_sample_diff = N_sample_diff[indcomp]
-                                if n_cat_features > 0:
-                                    D_diff = D_diff[indcomp]
-
-                                if y[i] == UNLABELED_CLASS:
-                                    V_diff_save = copy.deepcopy(V_diff[indcomp])
-                                    W_diff_save = copy.deepcopy(W_diff[indcomp]) 
-                                    N_sample_diff_save = copy.deepcopy(N_sample_diff[indcomp])
-                                    if n_cat_features > 0:
-                                        D_diff_save = copy.deepcopy(D_diff[indcomp])
-                        else:
-                            V_diff, W_diff = None, None
-                            
                         for j in id_same_input_label_group[index]:
                             is_meet_continous_cond = True
                             is_meet_categorical_cond = True
@@ -712,6 +677,46 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
                                 is_meet_continous_cond = ((maxW_new - minV_new) <= self.theta).all()
                             else:
                                 minV_new, maxW_new = None, None
+                            
+                            if y[i] == UNLABELED_CLASS:
+                                id_lb_diff = ((self.C != self.C[j]) | (self.C == UNLABELED_CLASS))
+
+                            if is_refind_diff_hyperbox == True:
+                                if y[i] != UNLABELED_CLASS:
+                                    is_refind_diff_hyperbox = False
+
+                                no_check_overlap = False
+                                
+                                if len(id_lb_diff) == 0:
+                                    # No hyperbox belongs to other class
+                                    no_check_overlap = True
+    
+                                if n_cat_features > 0 and no_check_overlap == False:
+                                    D_diff = self.D[id_lb_diff]
+                                else:
+                                    D_diff = None
+                                
+                                if no_check_overlap == False:
+                                    N_sample_diff = self.N_samples[id_lb_diff]
+
+                                if n_continuous_features > 0 and no_check_overlap == False:
+                                    V_diff = self.V[id_lb_diff]
+                                    W_diff = self.W[id_lb_diff]
+                                    
+                                    # examine only hyperboxes w/o missing dimensions,
+                                    # meaning that in each dimension upper bound is
+                                    # larger than lower bounds
+                                    indcomp = np.nonzero((W_diff >= V_diff).all(axis = 1))[0]
+                                    if len(indcomp) == 0:
+                                        no_check_overlap = True
+                                    else:
+                                        V_diff = V_diff[indcomp]
+                                        W_diff = W_diff[indcomp]
+                                        N_sample_diff = N_sample_diff[indcomp]
+                                        if n_cat_features > 0:
+                                            D_diff = D_diff[indcomp]
+                                else:
+                                    V_diff, W_diff = None, None
 
                             if (n_cat_features > 0) and (is_meet_continous_cond == True):
                                 D_new = np.empty(n_cat_features, dtype=object)
@@ -777,14 +782,6 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
 
                                     adjust = True
                                     break
-                                else:
-                                    if no_check_overlap == False and y[i] == UNLABELED_CLASS and self.C[j] == UNLABELED_CLASS:                                   
-                                        N_sample_diff = N_sample_diff_save
-                                        if n_continuous_features > 0:
-                                            V_diff = V_diff_save
-                                            W_diff = W_diff_save
-                                        if n_cat_features > 0:
-                                            D_diff = D_diff_save
 
                         # if i-th sample did not fit into any existing box, create a new one
                         if not adjust:
@@ -814,9 +811,12 @@ class ExtendedImprovedOnlineGFMM(BaseGFMMClassifier):
                     else:
                         t = 0
                         # Find the first winner hyperbox with the same class with the input pattern
-                        while (t + 1 < len(index)) and (b[index[t]] == 1) and (self.C[id_same_input_label_group[index[t]]] != y[i]):
+                        while (t + 1 < len(index)) and (b[index[t]] == 1) and (self.C[id_same_input_label_group[index[t]]] != y[i]) and (self.C[id_same_input_label_group[index[t]]] != UNLABELED_CLASS):
                             t = t + 1
                         if b[index[t]] == 1 and self.C[id_same_input_label_group[index[t]]] == y[i]:
+                            # Update class label for the unlabelled hyperbox
+                            if y[i] != UNLABELED_CLASS and self.C[id_same_input_label_group[index[t]]] == UNLABELED_CLASS:
+                                self.C[id_same_input_label_group[index[t]]] = y[i]
                             # Update categorical values
                             for fi in range(n_cat_features):
                                 if X_cat[i, fi] in self.D[id_same_input_label_group[index[t]], fi]:

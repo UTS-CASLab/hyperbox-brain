@@ -507,6 +507,10 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
         self.categorical_features_ = categorical_features
         if X.ndim == 1:
             X = X.reshape(shape=(1, -1))
+
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+
         y = y.astype('int')
         if categorical_features is not None:
             X, self.encoder_ = ordinal_encode_categorical_features(X, categorical_features)
@@ -597,7 +601,7 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
             if (is_contain_missing_value(Xl) == True) or (is_contain_missing_value(Xu) == True):
                 self.is_exist_continuous_missing_value = True
                 Xl, Xu, y = convert_format_missing_input_zero_one(Xl, Xu, y)
-                
+
         if is_contain_missing_value(y) == True:
             y = np.where(np.isnan(y), UNLABELED_CLASS, y)
                 
@@ -624,8 +628,11 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
 
                     self.C = np.array([y[i]])
                 else:
-                    id_same_input_label_group = (self.C == y[i]) | (self.C == UNLABELED_CLASS)
-                    
+                    if y[i] == UNLABELED_CLASS:
+                        id_same_input_label_group = np.ones(len(self.C), dtype=bool)
+                    else:
+                        id_same_input_label_group = (self.C == y[i]) | (self.C == UNLABELED_CLASS)
+
                     if id_same_input_label_group.any() == True: 
                         if n_continuous_features > 0:
                             V_sameX = self.V[id_same_input_label_group]

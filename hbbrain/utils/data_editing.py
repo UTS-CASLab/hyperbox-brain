@@ -76,7 +76,6 @@ def data_editing_leave_one_out(X, y, gfmm_estimator=None, k_neighbors=5, n_iters
     last_iters = 0
 
     for t in range(n_iters):
-        print("iter = ", t)
         # Randomly shuffle the input data set
         n_samples = X_out.shape[0]
         index = np.arange(n_samples)
@@ -175,7 +174,6 @@ def data_editing_two_fold_cv(X, y, gfmm_estimator=None, n_iters=100, n_last_iter
     last_iters = 0
 
     for t in range(n_iters):
-        print("iter = ", t)
         # Randomly shuffle the input data set
         index = np.arange(n_samples)
         random_state.shuffle(index)
@@ -268,7 +266,6 @@ def data_editing_two_fold_cv_with_probability(X, y, gfmm_estimator=None, n_iters
     n_times_kept = np.zeros(n_samples)
 
     for t in range(n_iters):
-        print("iter = ", t)
         # Randomly shuffle the input data set
         index = np.arange(n_samples)
         random_state.shuffle(index)

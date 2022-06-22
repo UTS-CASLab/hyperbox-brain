@@ -453,7 +453,11 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
         C = np.array([])
         N_samples = np.array([])
         Centroids = np.array([])
-        class_labels = np.unique(y)
+        class_labels = np.unique(y[y != UNLABELED_CLASS])
+        # for unlabelled samples, they need to be handled at the last iteration
+        if (y == UNLABELED_CLASS).any():
+            class_labels = np.concatenate((class_labels, [UNLABELED_CLASS]))
+
         threshold_mem_val = 1 - np.max(self.gamma) * self.smallest_theta
         for c in class_labels:
             Xl_ho = Xl[y == c]
@@ -468,7 +472,10 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
                     N_samples = np.array([1])
                     Centroids = np.array([(Xl_ho[i] + Xu_ho[i])/2])
                 else:
-                    id_same_input_label_group = (C == y_ho[i]) | (C == UNLABELED_CLASS)
+                    if y_ho[i] == UNLABELED_CLASS:
+                        id_same_input_label_group = np.arange(len(C))
+                    else:
+                        id_same_input_label_group = (C == y_ho[i]) | (C == UNLABELED_CLASS)
 
                     if id_same_input_label_group.any() == True:
                         V_sameX = V[id_same_input_label_group]
@@ -574,7 +581,10 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
                 N_samples = np.array([1])
                 Centroids = np.array([(Xl[i] + Xu[i])/2])
             else:
-                id_same_input_label_group = (C == y[i]) | (C == UNLABELED_CLASS)
+                if y[i] == UNLABELED_CLASS:
+                    id_same_input_label_group = np.ones(len(C), dtype=bool)
+                else:
+                    id_same_input_label_group = (C == y[i]) | (C == UNLABELED_CLASS)
 
                 if id_same_input_label_group.any() == True:
                     V_sameX = V[id_same_input_label_group]
@@ -927,7 +937,10 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
                     Centroids = np.array([self.granular_classifiers_[level].Centroids[i]])
                 else:
                     class_input_sample = self.granular_classifiers_[level].C[i]
-                    id_same_input_label_group = (C == class_input_sample) | (C == UNLABELED_CLASS)
+                    if class_input_sample == UNLABELED_CLASS:
+                        id_same_input_label_group = np.ones(len(C), dtype=bool)
+                    else:
+                        id_same_input_label_group = (C == class_input_sample) | (C == UNLABELED_CLASS)
 
                     is_create_new_hyperbox = False
                     if id_same_input_label_group.any() == True: 
@@ -1110,6 +1123,9 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
             Fitted multigranular general fuzzy min-max neural network.
 
         """
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+
         y = y.astype('int')
         n_samples = len(y)
         if X.shape[0] > n_samples:

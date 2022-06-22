@@ -136,6 +136,9 @@ class ImprovedOnlineGFMM(BaseGFMMClassifier):
             Fitted general fuzzy min-max neural network.
 
         """
+        if is_contain_missing_value(y) == True:
+            y = np.where(np.isnan(y), UNLABELED_CLASS, y)
+
         y = y.astype('int')
         n_samples = len(y)
         if X.shape[0] > n_samples:
@@ -262,7 +265,10 @@ class ImprovedOnlineGFMM(BaseGFMMClassifier):
                     list_drawn_hyperboxes.append(hyperbox[0])
                     self.delay()
             else:
-                id_same_input_label_group = np.nonzero((self.C == y[i]) | (self.C == UNLABELED_CLASS))[0]
+                if y[i] == UNLABELED_CLASS:
+                    id_same_input_label_group = np.arange(len(self.C))
+                else:
+                    id_same_input_label_group = np.nonzero((self.C == y[i]) | (self.C == UNLABELED_CLASS))[0]
                 V_sameX = self.V[id_same_input_label_group]                
                 
                 if len(V_sameX) > 0: 
@@ -283,27 +289,34 @@ class ImprovedOnlineGFMM(BaseGFMMClassifier):
                     consider_hypeboxes_id = index[b[index] >= threshold]
 
                     if len(consider_hypeboxes_id) > 0:
-                        if b[index[0]] != 1 or (classOfX != lb_sameX[consider_hypeboxes_id[0]] and classOfX != UNLABELED_CLASS):
+                        if b[index[0]] != 1:
                             adjust = False
+                            is_refind_diff_hyperbox = True
+                            if classOfX != UNLABELED_CLASS:
+                                id_lb_diff = ((self.C != classOfX) | (self.C == UNLABELED_CLASS))
 
-                            id_lb_diff = ((self.C != classOfX) | (self.C == UNLABELED_CLASS))
-                            V_diff = self.V[id_lb_diff]
-                            W_diff = self.W[id_lb_diff]
-                            
-                            indcomp = np.nonzero((W_diff >= V_diff).all(axis = 1))[0] 	# examine only hyperboxes w/o missing dimensions, meaning that in each dimension upper bound is larger than lowerbound
-                            no_check_overlap = False
-                            if len(indcomp) == 0 or len(V_diff) == 0:
-                                no_check_overlap = True
-                            else:
-                                V_diff = V_diff[indcomp].copy()
-                                V_diff_save = V_diff[indcomp].copy()
-                                W_diff = W_diff[indcomp].copy()
-                                W_diff_save = W_diff[indcomp].copy()
-                                    
                             for j in id_same_input_label_group[consider_hypeboxes_id]:
                                 minV_new = np.minimum(self.V[j], Xl[i])
                                 maxW_new = np.maximum(self.W[j], Xu[i])
-                                
+
+                                if classOfX == UNLABELED_CLASS:
+                                    id_lb_diff = ((self.C != self.C[j]) | (self.C == UNLABELED_CLASS))
+
+                                if is_refind_diff_hyperbox == True:
+                                    if classOfX != UNLABELED_CLASS:
+                                        is_refind_diff_hyperbox = False
+
+                                    V_diff = self.V[id_lb_diff]
+                                    W_diff = self.W[id_lb_diff]
+                                    
+                                    indcomp = np.nonzero((W_diff >= V_diff).all(axis = 1))[0] 	# examine only hyperboxes w/o missing dimensions, meaning that in each dimension upper bound is larger than lowerbound
+                                    no_check_overlap = False
+                                    if len(indcomp) == 0 or len(V_diff) == 0:
+                                        no_check_overlap = True
+                                    else:
+                                        V_diff = V_diff[indcomp].copy()
+                                        W_diff = W_diff[indcomp].copy()
+
                                 # test violation of max hyperbox size and class labels
                                 if ((maxW_new - minV_new) <= self.theta).all() == True:
                                     if no_check_overlap == False and classOfX == UNLABELED_CLASS and self.C[j] == UNLABELED_CLASS:
@@ -339,10 +352,6 @@ class ImprovedOnlineGFMM(BaseGFMMClassifier):
                                         
                                         adjust = True
                                         break
-                                    else:
-                                        if no_check_overlap == False and classOfX == UNLABELED_CLASS and self.C[j] == UNLABELED_CLASS:                                   
-                                            V_diff = V_diff_save.copy()
-                                            W_diff = W_diff_save.copy()
                                        
                             # if i-th sample did not fit into any existing box, create a new one
                             if not adjust:
@@ -363,13 +372,17 @@ class ImprovedOnlineGFMM(BaseGFMMClassifier):
                                    self.delay()
                         else:
                             t = 0
-                            while (t + 1 < len(index)) and (b[index[t]] == 1) and (self.C[id_same_input_label_group[index[t]]] != classOfX):
+                            while (t + 1 < len(index)) and (b[index[t]] == 1) and (self.C[id_same_input_label_group[index[t]]] != classOfX) and (self.C[id_same_input_label_group[index[t]]] != UNLABELED_CLASS):
                                 t = t + 1
-                            if b[index[t]] == 1 and self.C[id_same_input_label_group[index[t]]] == classOfX:
+                            if b[index[t]] == 1 and (self.C[id_same_input_label_group[index[t]]] == classOfX or self.C[id_same_input_label_group[index[t]]] == UNLABELED_CLASS):
+                                if classOfX != UNLABELED_CLASS and self.C[id_same_input_label_group[index[t]]] == UNLABELED_CLASS:
+                                    self.C[id_same_input_label_group[index[t]]] = classOfX
+
                                 if N_incl_samples is None:
                                     self.N_samples[id_same_input_label_group[index[t]]] = self.N_samples[id_same_input_label_group[index[t]]] + 1
                                 else:
                                     self.N_samples[id_same_input_label_group[index[t]]] = self.N_samples[id_same_input_label_group[index[t]]] + N_incl_samples[i]
+                            
                     else:
                         # If no hyperbox can expand to cover input pattern => Add new hyperbox
                         self.V = np.concatenate((self.V, Xl[i].reshape(1, -1)), axis = 0)
