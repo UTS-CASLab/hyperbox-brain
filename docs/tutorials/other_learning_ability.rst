@@ -7,4 +7,5 @@ Other learning abilities of GFMM models
    
    learning_from_labelled_unlabelled_data
    continuous_learning_for_existing_model
+   learning_from_missing_data
    data_editing
