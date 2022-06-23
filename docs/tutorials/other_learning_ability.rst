@@ -1,6 +1,6 @@
-=====================================
-Other learning ability of GFMM models
-=====================================
+=======================================
+Other learning abilities of GFMM models
+=======================================
 
 .. toctree::
    :maxdepth: 1
