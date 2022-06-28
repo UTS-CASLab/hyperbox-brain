@@ -1288,10 +1288,11 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
         Predict class probabilities of the input samples X at a given
         granularity level.
 
-        The predicted class probability is the fraction of the membership value
-        of the representative hyperbox of that class at a given granularity
-        level and the sum of all membership values of all representative
-        hyperboxes of all classes joining the prediction procedure.
+        The predicted class probability at a given granularity level is the
+        fraction of the membership value of the representative hyperbox of
+        that class at the given granularity level and the sum of all membership
+        values of all representative hyperboxes of all classes joining the
+        prediction procedure.
 
 
         Parameters
@@ -1300,10 +1301,11 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
             The input samples.
             
         level : int, optional, default=-1
-            The granularity level is used to generate predicted classes for
-            the input testing samples. If this variable gets the values of -1,
-            then the predicted class probability for each sample is the average
-            of all class probabilities of all granularity levels.
+            The granularity level is used to generate predicted class
+            probabilities for the input testing samples. If this variable gets
+            the values of -1, then the predicted class probability value for
+            each sample is the average of probability values at all
+            available granularity levels.
 
         Returns
         -------
@@ -1336,10 +1338,11 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
             The data matrix containing the upper bounds of input patterns 
             for which we want to predict the class probability.
         level : int, optional, default=-1
-            The granularity level is used to generate predicted classes for
-            the input testing samples. If this variable gets the values of -1,
-            then the predicted class for each sample is the class getting the
-            most votes from all available granularity levels.
+            The granularity level is used to generate predicted class
+            probabilities for the input testing samples. If this variable gets
+            the values of -1, then the predicted class probability value for
+            each sample is the average of probability values at all
+            available granularity levels.
 
         Returns
         -------
@@ -1371,8 +1374,8 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
         level : int, optional, default=-1
             The granularity level is used to generate predicted classes for
             the input testing samples. If this variable gets the values of -1,
-            then the predicted class probability for each sample is the average
-            of all class probabilities of all granularity levels.
+            then the predicted class memberhip value for each sample is the
+            average of all class memberships of all granularity levels.
 
         Returns
         -------
@@ -1406,8 +1409,8 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
         level : int, optional, default=-1
             The granularity level is used to generate predicted classes for
             the input testing samples. If this variable gets the values of -1,
-            then the predicted class for each sample is the class getting the
-            most votes from all available granularity levels.
+            then the predicted class membership for each sample is the average
+            value of class memberships over all available granularity levels.
 
         Returns
         -------
