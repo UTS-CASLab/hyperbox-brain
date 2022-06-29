@@ -54,8 +54,8 @@ Ability to directly process missing data
 Learning algorithms for the general fuzzy min-max neural network supported by the library may classify inputs with missing
 data directly without the need for replacing or imputing missing values as in other classifiers.
 
-Continual learning of new classes in an incremental manner
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Continual learning ability of new classes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Incremental learning algorithms of hyperbox-based models in the **hyperbox-brain** library can grow and accommodate new
 classes of data without retraining the whole classifier. Incremental learning algorithms themselves can generate new hyperboxes
 to represent clusters of new data with potentially new class labels both in the middle of normal training procedure and in the
