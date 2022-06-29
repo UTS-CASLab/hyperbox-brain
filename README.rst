@@ -183,8 +183,9 @@ training samples or a subset of both training samples and features. Training sub
 can be formed by stratified random subsampling, resampling, or class-balanced random subsampling. 
 The final predicted results of an ensemble model are an aggregation of predictions from all base learners 
 based on a majority voting mechanism. An intersting characteristic of hyperbox-based models is resulting 
-hyperboxes from all base learners can be merged to formulate a single model. This contributes to increasing 
-the explainability of the estimator while still taking advantage of strong points of ensemble models.
+hyperboxes from all base learners or decision trees can be merged to formulate a single model. This
+contributes to increasing the explainability of the estimator while still taking advantage of strong points
+of ensemble models.
 
 Multigranularity learning
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -193,6 +194,32 @@ using hyperbox fuzzy sets. This algorithm forms a series of granular inferences 
 abstraction. An attractive characteristic of these classifiers is that they can maintain a high accuracy in comparison 
 to other fuzzy min-max models at a low degree of granularity based on reusing the knowledge learned from lower levels 
 of abstraction.
+
+Learning from both labelled and unlabelled data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+One of the exciting features of learning algorithms for the general fuzzy min-max neural network is the capability of 
+creating classification boundaries among known classes and clustering data and representing them as hyperboxes in the case that
+labels are not available. Unlabelled hyperboxes is then possible to be labelled on the basis of the evidence of next incoming
+input samples. As a result, the GFMMNN models have the ability to learn from the mixed labelled and unlabelled datasets in
+a native way.
+
+Ability to directly process missing data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Learning algorithms for the general fuzzy min-max neural network supported by the library may classify inputs with missing
+data directly without the need for replacing or imputing missing values as in other classifiers.
+
+Continual learning of new classes in an incremental manner
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Incremental learning algorithms of hyperbox-based models in the **hyperbox-brain** library can grow and accommodate new
+classes of data without retraining the whole classifier. Incremental learning algorithms themselves can generate new hyperboxes
+to represent clusters of new data with potentially new class labels both in the middle of normal training procedure and in the
+operating time where training has been finished. This property is a key feature for smart life-long learning systems.
+
+Data editing and pruning approaches
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+By combining the repeated cross-validation methods provided by scikit-learn and hyperbox-based learning algorithms, evidence from
+training multiple models can be deployed for identifying which data points from the original training set or the hyperboxes from
+the generated multiple models should be retained and those that should be edited out or pruned before further processing.
 
 Scikit-learn compatible estimators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
