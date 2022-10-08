@@ -543,10 +543,8 @@ citations to the following paper::
   title   = {Hyperbox-brain: A Python Toolbox for Hyperbox-based Machine Learning Algorithms},
   journal = {ArXiv},
   year    = {2022},
-  volume  = {},
-  number  = {0},
-  pages   = {1-7},
-  url     = {}
+  pages   = {1-11},
+  url     = {https://arxiv.org/abs/2210.02704}
   }
 
 ============

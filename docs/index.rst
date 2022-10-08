@@ -30,9 +30,9 @@ If you use hyperbox-brain, please use this BibTeX entry:
      author       = {Thanh Tung Khuat and Bogdan Gabrys},
      title        = {Hyperbox-brain: A Python Toolbox for Hyperbox-based Machine Learning Algorithms},
      journal      = {ArXiv},
-     pages        = {1-7},
+     pages        = {1-11},
      year         = 2022,
-     url          = {https://hyperbox-brain.readthedocs.io/en/latest/}
+     url          = {https://arxiv.org/abs/2210.02704}
    }
 
 .. toctree::
