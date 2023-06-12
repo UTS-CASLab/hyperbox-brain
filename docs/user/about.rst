@@ -46,15 +46,15 @@ Citing
 ------
 If ``hyperbox-brain`` has been useful for your research and you would like to cite it in
 an academic publication, please use the following paper::
-    @article{khgb22,
-        author  = {Thanh Tung Khuat and Bogdan Gabrys},
-        title   = {Hyperbox-brain: A Python Toolbox for Hyperbox-based Machine Learning Algorithms},
-        journal = {ArXiv},
-        year    = {2022},
-        volume  = {},
-        number  = {0},
-        pages   = {1-7},
-        url     = {}
+    @article{khga23,
+        title={hyperbox-brain: A Python toolbox for hyperbox-based machine learning algorithms},
+        author={Khuat, Thanh Tung and Gabrys, Bogdan},
+        journal={SoftwareX},
+        volume={23},
+        pages={101425},
+        year={2023},
+        url={https://doi.org/10.1016/j.softx.2023.101425},
+        publisher={Elsevier}
     }
 
 Logo 

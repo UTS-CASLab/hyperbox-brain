@@ -538,13 +538,15 @@ Citation
 If you use hyperbox-brain in a scientific publication, we would appreciate
 citations to the following paper::
 
-  @article{khuat2022,
-  author  = {Thanh Tung Khuat and Bogdan Gabrys},
-  title   = {Hyperbox-brain: A Python Toolbox for Hyperbox-based Machine Learning Algorithms},
-  journal = {ArXiv},
-  year    = {2022},
-  pages   = {1-11},
-  url     = {https://arxiv.org/abs/2210.02704}
+  @article{khga23,
+  title={hyperbox-brain: A Python toolbox for hyperbox-based machine learning algorithms},
+  author={Khuat, Thanh Tung and Gabrys, Bogdan},
+  journal={SoftwareX},
+  volume={23},
+  pages={101425},
+  year={2023},
+  url={https://doi.org/10.1016/j.softx.2023.101425},
+  publisher={Elsevier}
   }
 
 ============
