@@ -34,7 +34,7 @@
 .. |PyPi| image:: https://img.shields.io/pypi/v/hyperbox-brain
 .. _PyPi: https://pypi.org/project/hyperbox-brain
 
-.. |Conda| image:: https://anaconda.org/conda-forge/hyperbox-brain/badges/installer/conda.svg
+.. |Conda| image:: https://anaconda.org/conda-forge/hyperbox-brain/badges/version.svg
 .. _Conda: https://anaconda.org/conda-forge/hyperbox-brain
 
 .. |Download| image:: https://static.pepy.tech/personalized-badge/hyperbox-brain?period=total&units=none&left_color=grey&right_color=orange&left_text=pypi%20downloads
