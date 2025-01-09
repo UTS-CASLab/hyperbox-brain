@@ -14,7 +14,7 @@ sim_matrix = np.array([[1, 0.3, 0.4, 0.6, 0.1],
                        [0.2, 1, 0.3, 0.4, 0.6],
                        [0.5, 0.1, 1, 0.6, 0.1],
                        [0.6, 0.2, 0.3, 1, 0.7],
-                       [0.2, 0.8, 0.4, 0.4, 1]])
+                       [0.2, 0.8, 0.4, 0.4, 1]], dtype=float)
 
 
 def test_split_matrix_non_sort_min():
@@ -28,7 +28,7 @@ def test_split_matrix_non_sort_min():
                              [1, 4, 0.6],
                              [2, 3, 0.3],
                              [2, 4, 0.1],
-                             [3, 4, 0.4]])
+                             [3, 4, 0.4]], dtype=float)
     assert (split_max == expected_res).all()
 
 
@@ -43,7 +43,7 @@ def test_split_matrix_non_sort_max():
                              [1, 4, 0.8],
                              [2, 3, 0.6],
                              [2, 4, 0.4],
-                             [3, 4, 0.7]])
+                             [3, 4, 0.7]], dtype=float)
     assert (split_max == expected_res).all()
 
 
@@ -58,7 +58,7 @@ def test_split_matrix_sorted_min():
                              [0, 1, 0.2],
                              [2, 4, 0.1],
                              [1, 2, 0.1],
-                             [0, 4, 0.1]])
+                             [0, 4, 0.1]], dtype=float)
     assert (split_max == expected_res).all()
 
 
@@ -73,7 +73,7 @@ def test_split_matrix_sorted_max():
                              [1, 3, 0.4],
                              [1, 2, 0.3],
                              [0, 1, 0.3],
-                             [0, 4, 0.2]])
+                             [0, 4, 0.2]], dtype=float)
     assert (split_max == expected_res).all()
 
 
