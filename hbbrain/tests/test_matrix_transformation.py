@@ -49,31 +49,13 @@ def test_split_matrix_non_sort_max():
 
 def test_split_matrix_sorted_min():
     split_max = split_matrix(sim_matrix, asimil_type='min', is_sort=True)
-    expected_res = np.array([[1, 4, 0.6],
-                             [0, 3, 0.6],
-                             [3, 4, 0.4],
-                             [0, 2, 0.4],
-                             [2, 3, 0.3],
-                             [1, 3, 0.2],
-                             [0, 1, 0.2],
-                             [2, 4, 0.1],
-                             [1, 2, 0.1],
-                             [0, 4, 0.1]])
+    expected_res = np.array([[1. , 4. , 0.6], [0. , 3. , 0.6], [3. , 4. , 0.4], [0. , 2. , 0.4], [2. , 3. , 0.3], [1. , 3. , 0.2], [0. , 1. , 0.2], [2. , 4. , 0.1], [1. , 2. , 0.1], [0. , 4. , 0.1]])
     np.testing.assert_array_equal(split_max, expected_res)
 
 
 def test_split_matrix_sorted_max():
     split_max = split_matrix(sim_matrix, asimil_type='max', is_sort=True)
-    expected_res = np.array([[1, 4, 0.8],
-                             [3, 4, 0.7],
-                             [2, 3, 0.6],
-                             [0, 3, 0.6],
-                             [0, 2, 0.5],
-                             [2, 4, 0.4],
-                             [1, 3, 0.4],
-                             [1, 2, 0.3],
-                             [0, 1, 0.3],
-                             [0, 4, 0.2]])
+    expected_res = np.array([[1. , 4. , 0.8], [3. , 4. , 0.7], [2. , 3. , 0.6], [0. , 3. , 0.6], [0. , 2. , 0.5], [2. , 4. , 0.4], [1. , 3. , 0.4], [1. , 2. , 0.3], [0. , 1. , 0.3], [0. , 4. , 0.2]])
     np.testing.assert_array_equal(split_max, expected_res)
 
 
