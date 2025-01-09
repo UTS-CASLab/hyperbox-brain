@@ -1189,8 +1189,8 @@ class FreqCatOnlineGFMM(BaseHyperboxClassifier):
                     
         # pruning handling based on the validation results
         n_hyperboxes = hyperboxes_performance.shape[0]
-        id_remained_excl_empty_boxes = np.zeros(n_hyperboxes).astype(np.bool)
-        id_remained_incl_empty_boxes = np.zeros(n_hyperboxes).astype(np.bool)
+        id_remained_excl_empty_boxes = np.zeros(n_hyperboxes).astype(bool)
+        id_remained_incl_empty_boxes = np.zeros(n_hyperboxes).astype(bool)
         for i in range(n_hyperboxes):
             if (hyperboxes_performance[i, 0] + hyperboxes_performance[i, 1] != 0) and (hyperboxes_performance[i, 0] / (hyperboxes_performance[i, 0] + hyperboxes_performance[i, 1]) >= acc_threshold):
                 id_remained_excl_empty_boxes[i] = True

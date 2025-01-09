@@ -269,7 +269,7 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
             n_current_hyperboxes = self.V.shape[0]
             label_list = np.unique(self.C[self.C != UNLABELED_CLASS])[::-1]
             label_mask = np.zeros(
-                shape=(n_current_hyperboxes, len(label_list)), dtype=np.bool)
+                shape=(n_current_hyperboxes, len(label_list)), dtype=bool)
             for i in range(len(label_list)):
                 label_mask[:, i] = (self.C == label_list[i]) | (
                     self.C == UNLABELED_CLASS)
@@ -643,8 +643,8 @@ class AgglomerativeLearningGFMM(BaseGFMMClassifier):
 
         # pruning handling based on the validation results
         n_hyperboxes = hyperboxes_performance.shape[0]
-        id_remained_excl_empty_boxes = np.zeros(n_hyperboxes).astype(np.bool)
-        id_remained_incl_empty_boxes = np.zeros(n_hyperboxes).astype(np.bool)
+        id_remained_excl_empty_boxes = np.zeros(n_hyperboxes).astype(bool)
+        id_remained_incl_empty_boxes = np.zeros(n_hyperboxes).astype(bool)
         for i in range(n_hyperboxes):
             if (hyperboxes_performance[i, 0] + hyperboxes_performance[i, 1] != 0) and (hyperboxes_performance[i, 0] / (hyperboxes_performance[i, 0] + hyperboxes_performance[i, 1]) >= acc_threshold):
                 id_remained_excl_empty_boxes[i] = True

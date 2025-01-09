@@ -111,7 +111,7 @@ def remove_contained_hyperboxes(V, W, C, N_samples, Centroids):
     """
     n_hyperboxes = len(C)
     # an array of indices showing the position of all hyperboxes kept
-    ids_kept_boxes = np.ones(n_hyperboxes, dtype=np.bool)
+    ids_kept_boxes = np.ones(n_hyperboxes, dtype=bool)
     n_removed_hyperboxes = 0
     for i in range(n_hyperboxes):
         # Filter hypeboxes with the sample label as hyperbox i
@@ -750,8 +750,8 @@ class MultiGranularGFMM(BaseHyperboxClassifier):
 
         # pruning handling based on the validation results
         n_hyperboxes = hyperboxes_performance.shape[0]
-        id_remained_excl_empty_boxes = np.zeros(n_hyperboxes).astype(np.bool)
-        id_remained_incl_empty_boxes = np.zeros(n_hyperboxes).astype(np.bool)
+        id_remained_excl_empty_boxes = np.zeros(n_hyperboxes).astype(bool)
+        id_remained_incl_empty_boxes = np.zeros(n_hyperboxes).astype(bool)
         for i in range(n_hyperboxes):
             if (hyperboxes_performance[i, 0] + hyperboxes_performance[i, 1] != 0) and (hyperboxes_performance[i, 0] / (hyperboxes_performance[i, 0] + hyperboxes_performance[i, 1]) >= acc_threshold):
                 id_remained_excl_empty_boxes[i] = True
