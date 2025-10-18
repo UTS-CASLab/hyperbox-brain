@@ -1,8 +1,6 @@
 # Import Necessary Libraries
 import pandas as pd
 import numpy as np
-
-# Some utils
 def impute_missing_val_x (x):
     return impute_missing_val_x(x,x)
 
@@ -79,26 +77,3 @@ def unbounded_gfmm_membership_func4 (xl, xu, V, W, alpha = 1.0):
     xl, xu, V, W = preprocess (xl, xu, V , W)
     min_dist = calculate_term_middle_distances(xl, xu, V , W)
     return np.min(np.exp(-alpha * min_dist), axis = 1)
-
-
-# V1 = np.array([[None]])
-# W1 = np.array([[0.2]])
-
-# V2 = np.array([[0.3]])
-# W2 = np.array([[0.6]])
-
-# print (unbounded_gfmm_membership_func1(V1, W1, V2, W2))
-# print (unbounded_gfmm_membership_func2(V1, W1, V2, W2))
-# print (unbounded_gfmm_memebership_func3(V1, W1, V2, W2))
-# print (unbounded_gfmm_membership_func4 (V1, W1, V2, W2))
-
-# xl = np.array([[0.1]])
-# xu = np.array([[0.4]])
-
-# V = np.array([[0.2]])
-# W = np.array([[0.6]])
-
-# print (unbounded_gfmm_membership_func1(xl, xu , V, W))
-# print (unbounded_gfmm_membership_func2(xl, xu , V, W))
-# print (unbounded_gfmm_memebership_func3(xl, xu , V, W))
-# print (unbounded_gfmm_membership_func4 (xl, xu , V, W))
